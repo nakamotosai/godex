@@ -113,7 +113,7 @@ Status:
 
 ### Stage
 
-`product foundation + dogfood rollout`
+`beta delivery planning`
 
 ### Done
 
@@ -132,6 +132,7 @@ Status:
 - dogfood noise-tightening pass added for closeout and behavior-reporting weak spots
 - second benchmark round executed after paragraph-spacing tightening
 - third benchmark round executed with visual-layout stress coverage
+- next-phase beta delivery spec and plan added
 - current Codex workspace wired for `godex` dogfood
 
 ### Not Done Yet
@@ -160,6 +161,7 @@ Status:
 - [`specs/noise-tightening-20260415/`](specs/noise-tightening-20260415): current closeout-noise tightening spec
 - [`specs/paragraph-spacing-round2-20260415/`](specs/paragraph-spacing-round2-20260415): current paragraph-spacing + round-2 benchmark spec
 - [`specs/visual-layout-round3-20260415/`](specs/visual-layout-round3-20260415): current visual-layout + round-3 benchmark spec
+- [`specs/beta-delivery-20260415/`](specs/beta-delivery-20260415): next mainline beta-delivery spec and execution plan
 
 ## Release Bar
 
@@ -176,8 +178,8 @@ Status:
 
 The repository is now strong enough to present as a serious product foundation with a real dogfood lane.
 
-It is not yet an install-complete `v1`, but it now has a concrete path for local use before public hardening.
+It is not yet an install-complete `v1`, but the next mainline is now explicit: project-first beta delivery rather than more general prompt polishing.
 
 The third benchmark round now exists, and it sharpens the picture further. `godex` is now clearly stronger than the clean baseline on intake mirroring and on behavior/config reporting when many files must stay visible. Baseline caught up on full-objective retention, and the remaining stubborn weakness is now narrower still: review-style long findings are still denser than they should be.
 
-The biggest remaining product gaps are safer general installation, stronger benchmark automation, broader dogfood evidence, a stronger fix for review-output spacing, and license choice.
+The biggest remaining product gaps are a real project installer, installer-grade doctor states, user-facing proof after install, broader dogfood evidence, a stronger fix for review-output spacing, and license choice.
