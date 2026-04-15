@@ -16,6 +16,12 @@ Its job is to make the upgrade measurable instead of purely rhetorical.
 
 Each task should eventually be scoreable on a simple human-reviewable scale, such as `0-5`, with explicit criteria for weak, acceptable, and strong behavior.
 
+Current assets:
+
+- [`scoring-rubric.md`](scoring-rubric.md)
+- [`run-template.md`](run-template.md)
+- [`tasks/`](tasks)
+
 ## Benchmark Design Rules
 
 - tasks must be reproducible
@@ -25,5 +31,6 @@ Each task should eventually be scoreable on a simple human-reviewable scale, suc
 
 ## Current Status
 
-- categories defined
-- tasks and scoring rubric not implemented yet
+- first manual task set implemented
+- first scoring rubric implemented
+- automation not implemented yet

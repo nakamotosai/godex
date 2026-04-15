@@ -14,6 +14,12 @@ The skill pack should move long behavior logic out of giant root instructions an
 - `godex-doctor`: inspect installation state and drift
 - `godex-benchmark`: run or guide before/after proof tasks
 
+## Current Repo-Backed Utility Skills
+
+- `godex-dogfood-router`: route current dogfood use onto the lightweight default layer plus repo-local doctor and benchmark
+- `godex-doctor`: run the first repo-local `godex doctor`
+- `godex-benchmark`: run the first manual benchmark set
+
 ## Boundary Rules
 
 - each skill should have one clear job
@@ -23,4 +29,4 @@ The skill pack should move long behavior logic out of giant root instructions an
 ## Current Status
 
 - taxonomy defined
-- individual skill files not shipped yet
+- first dogfood utility skills shipped

@@ -69,9 +69,11 @@ Current design anchors:
 
 - Read the public product truth: [`README.md`](README.md)
 - Read the repo behavior contract: [`AGENTS.md`](AGENTS.md)
-- Read the full product spec: [`SPEC.md`](specs/product-foundation-20260415/SPEC.md)
-- Read the execution plan: [`PLAN.md`](specs/product-foundation-20260415/PLAN.md)
+- Read the current dogfood spec: [`SPEC.md`](specs/dogfood-rollout-20260415/SPEC.md)
+- Read the current dogfood plan: [`PLAN.md`](specs/dogfood-rollout-20260415/PLAN.md)
 - Read install safety and compatibility: [`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md)
+- Read current dogfood rollout notes: [`docs/DOGFOOD.md`](docs/DOGFOOD.md)
+- Read current doctor contract: [`docs/DOCTOR.md`](docs/DOCTOR.md)
 - Read publish and release gates: [`docs/PUBLISH.md`](docs/PUBLISH.md)
 
 ## Install Modes
@@ -111,7 +113,7 @@ Status:
 
 ### Stage
 
-`product foundation+`
+`product foundation + dogfood rollout`
 
 ### Done
 
@@ -123,13 +125,15 @@ Status:
 - first bootstrap prompt draft written
 - compatibility, acceptance, and publish docs added
 - prompt / skills / installers / benchmarks / examples directories promoted from empty shells to product contracts
+- new dogfood-first rollout spec and plan added
+- first usable `godex doctor` script added
+- first benchmark task set and scoring rubric added
+- current Codex workspace wired for `godex` dogfood
 
 ### Not Done Yet
 
 - working project installer
 - working global installer
-- doctor command
-- benchmark task suite
 - before/after demo set
 - release assets
 - OSS license selection
@@ -145,6 +149,7 @@ Status:
 - [`examples/`](examples): before/after showcase plan
 - [`docs/`](docs): compatibility, acceptance, publish, and research docs
 - [`specs/product-foundation-20260415/`](specs/product-foundation-20260415): foundation spec and execution plan
+- [`specs/dogfood-rollout-20260415/`](specs/dogfood-rollout-20260415): current product and local rollout spec
 
 ## Release Bar
 
@@ -159,8 +164,8 @@ Status:
 
 ## Current Boundary
 
-The repository is now strong enough to present as a serious product foundation.
+The repository is now strong enough to present as a serious product foundation with a real dogfood lane.
 
-It is not yet an install-complete `v1`.
+It is not yet an install-complete `v1`, but it now has a concrete path for local use before public hardening.
 
-The biggest remaining product gaps are install automation, doctor, benchmark, and license choice.
+The biggest remaining product gaps are safer general installation, stronger benchmark automation, broader dogfood evidence, and license choice.

@@ -15,6 +15,10 @@ That keeps the safest real path at the center of the product.
 - `backup-existing-config.sh`: backup existing rules before replacement or merge
 - `godex-doctor.sh`: inspect installed layers and report health
 
+## Current Script
+
+- `godex-doctor.sh`: first lightweight repo and local dogfood health check
+
 ## Safety Contract
 
 - do not silently overwrite an existing `AGENTS.md` or local skill setup
@@ -25,4 +29,5 @@ That keeps the safest real path at the center of the product.
 ## Current Status
 
 - install strategy defined
-- scripts not implemented yet
+- first doctor script implemented
+- project and global installers not implemented yet
