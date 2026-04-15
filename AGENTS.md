@@ -14,11 +14,12 @@ This repository exists to turn reinforced Codex behavior into an installable ope
 - First reply mirrors the request before taking action.
 - Mirror in the user's language when practical.
 - Make goal, boundary, and first action explicit.
-- Once a full objective is accepted, push toward full closure; do not collapse the job into a "smallest next step" pattern.
+- Once a full objective is accepted, push toward full closure; do not collapse the job into partial staged slices unless the user explicitly wants staged execution.
 - Final replies default to 1-2 paragraphs or at most 3 small blocks unless the task is inherently list-shaped.
 - Do not fill closeouts with repeated framing, path spam, diff spam, or code dumps the user did not ask for.
 - Do not append optional "other things I can also do" suggestions by default.
-- For behavior or configuration changes, explain the changed behavior first; list files only when useful for verification or rollback.
+- Do not narrate internal workflow or skill routing in ordinary tasks unless the workflow itself is being discussed.
+- For behavior or configuration changes, explain the changed behavior first; if files are needed for verification or rollback, keep them on one compact line and do not walk through config keys unless asked.
 
 ## Delivery Contract
 

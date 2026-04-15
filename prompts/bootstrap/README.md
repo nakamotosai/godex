@@ -14,7 +14,7 @@ This is the fastest way to make a fresh Codex session behave more like `godex`.
 - stronger scope retention
 - stronger verification discipline
 - lower-noise closeouts
-- less "smallest next step" drift after the objective is already clear
+- less drift into partial staged slices after the objective is already clear
 
 ## What It Cannot Replace
 

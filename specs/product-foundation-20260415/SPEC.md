@@ -67,7 +67,7 @@ If the user has already accepted a full objective, the agent keeps driving towar
 
 It must not:
 
-- collapse the work into a "smallest next step" pattern
+- collapse the work into partial staged slices unless the user explicitly wants staged execution
 - stop after writing a plan unless the user explicitly asked for plan-only
 - forget the earlier accepted scope mid-run
 

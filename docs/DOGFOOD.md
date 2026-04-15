@@ -38,6 +38,8 @@ Simple tasks should stay in light mode:
 - keep the full objective intact
 - verify before claiming done
 - keep the closeout low-noise
+- suppress irrelevant workflow narration
+- keep behavior/config reporting behavior-first and file-light
 
 ### 2. Escalate Spec Only When Needed
 
@@ -47,6 +49,8 @@ Use explicit `SPEC.md + PLAN.md` when:
 - scope changed
 - the task is ambiguous
 - the user explicitly wants spec-driven execution
+
+Do not escalate just because a clear local config/doc/rule change touches a few files.
 
 ### 3. Native Multi-Agent Only
 
@@ -95,7 +99,15 @@ Record the result with:
 
 This is still a maintainer dogfood lane, not yet a general public install experience.
 
-The first real benchmark round now exists, and it already shows the current split clearly:
+The first real benchmark round now exists, and it exposed the split clearly:
 
 - `godex` is stronger on intake mirroring and full-objective retention
-- the current dogfood stack is still too noisy on closeout and behavior/config reporting
+- round 1 showed too much closeout noise and too much behavior/config detail
+
+The current tightening pass now updates three defaults:
+
+- less user-visible workflow/process narration
+- more compact behavior-first closeouts
+- stricter spec escalation on medium-light tasks
+
+What is still missing is proof from a second benchmark round that these tighter defaults actually closed the gap.
