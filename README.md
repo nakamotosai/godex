@@ -128,6 +128,7 @@ Status:
 - new dogfood-first rollout spec and plan added
 - first usable `godex doctor` script added
 - first benchmark task set and scoring rubric added
+- first real baseline-vs-dogfood benchmark round executed
 - current Codex workspace wired for `godex` dogfood
 
 ### Not Done Yet
@@ -146,6 +147,7 @@ Status:
 - [`skills/`](skills): durable upgrade layer design
 - [`installers/`](installers): safe install contract and future scripts
 - [`benchmarks/`](benchmarks): proof layer design
+- [`benchmarks/runs/2026-04-15-round1.md`](benchmarks/runs/2026-04-15-round1.md): first real benchmark result
 - [`examples/`](examples): before/after showcase plan
 - [`docs/`](docs): compatibility, acceptance, publish, and research docs
 - [`specs/product-foundation-20260415/`](specs/product-foundation-20260415): foundation spec and execution plan
@@ -168,4 +170,6 @@ The repository is now strong enough to present as a serious product foundation w
 
 It is not yet an install-complete `v1`, but it now has a concrete path for local use before public hardening.
 
-The biggest remaining product gaps are safer general installation, stronger benchmark automation, broader dogfood evidence, and license choice.
+The first real benchmark round also made the current weakness explicit: `godex` is already stronger than the clean baseline on intake mirroring and full-objective retention, but it still needs another noise-reduction pass on final closeouts and behavior/config reporting.
+
+The biggest remaining product gaps are safer general installation, stronger benchmark automation, broader dogfood evidence, lower-noise closeout behavior, and license choice.

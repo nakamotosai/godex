@@ -89,7 +89,13 @@ Run the same benchmark tasks against:
 Record the result with:
 
 - [`benchmarks/run-template.md`](../benchmarks/run-template.md)
+- latest real result: [`benchmarks/runs/2026-04-15-round1.md`](../benchmarks/runs/2026-04-15-round1.md)
 
 ## Current Boundary
 
-This is a maintainer dogfood lane, not yet a general public install experience.
+This is still a maintainer dogfood lane, not yet a general public install experience.
+
+The first real benchmark round now exists, and it already shows the current split clearly:
+
+- `godex` is stronger on intake mirroring and full-objective retention
+- the current dogfood stack is still too noisy on closeout and behavior/config reporting

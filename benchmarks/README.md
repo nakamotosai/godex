@@ -21,6 +21,7 @@ Current assets:
 - [`scoring-rubric.md`](scoring-rubric.md)
 - [`run-template.md`](run-template.md)
 - [`tasks/`](tasks)
+- [`runs/2026-04-15-round1.md`](runs/2026-04-15-round1.md)
 
 ## Benchmark Design Rules
 
@@ -33,4 +34,5 @@ Current assets:
 
 - first manual task set implemented
 - first scoring rubric implemented
+- first real baseline-vs-dogfood round executed
 - automation not implemented yet
