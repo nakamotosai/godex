@@ -24,11 +24,18 @@ run_expect() {
 assert_contains() {
   local needle="$1"
   local file="$2"
-  if ! rg -Fq "${needle}" "${file}"; then
-    echo "missing expected text: ${needle} in ${file}" >&2
-    cat "${file}" >&2
-    exit 1
+  if command -v rg >/dev/null 2>&1; then
+    if rg -Fq "${needle}" "${file}"; then
+      return 0
+    fi
+  else
+    if grep -Fq "${needle}" "${file}"; then
+      return 0
+    fi
   fi
+  echo "missing expected text: ${needle} in ${file}" >&2
+  cat "${file}" >&2
+  exit 1
 }
 
 project_root="${artifact_root}/project"

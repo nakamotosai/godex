@@ -37,6 +37,6 @@ Global install exists for users who want a broader default layer and accept a sl
 
 ## Current Status
 
-- project install beta is implemented
-- global install beta is implemented
+- project install is implemented for `v1.0.0`
+- global install is implemented for `v1.0.0`
 - project and global backup, restore, doctor, and quick-proof surfaces are implemented

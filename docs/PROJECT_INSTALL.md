@@ -1,6 +1,6 @@
 # Project Install
 
-`godex` beta is project-first.
+`godex v1` stays project-first.
 
 The main install path is:
 

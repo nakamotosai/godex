@@ -69,10 +69,6 @@ Current design anchors:
 
 - Read the public product truth: [`README.md`](README.md)
 - Read the repo behavior contract: [`AGENTS.md`](AGENTS.md)
-- Read the earlier beta-delivery spec: [`SPEC.md`](specs/beta-delivery-20260415/SPEC.md)
-- Read the earlier beta-delivery plan: [`PLAN.md`](specs/beta-delivery-20260415/PLAN.md)
-- Read the earlier release-closeout spec: [`SPEC.md`](specs/release-closeout-20260415/SPEC.md)
-- Read the earlier release-closeout plan: [`PLAN.md`](specs/release-closeout-20260415/PLAN.md)
 - Read the current `v1` closeout spec: [`SPEC.md`](specs/v1-closeout-20260415/SPEC.md)
 - Read the current `v1` closeout plan: [`PLAN.md`](specs/v1-closeout-20260415/PLAN.md)
 - Read install safety and compatibility: [`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md)
@@ -90,7 +86,7 @@ Paste the bootstrap prompt into a fresh Codex session.
 
 Status:
 
-- first draft exists
+- supported in `v1.0.0`
 - lowest friction
 - not durable by itself
 
@@ -100,7 +96,7 @@ Install `godex` into one repository as a local operating layer.
 
 Status:
 
-- working beta install surface
+- supported in `v1.0.0`
 - safest default for real users
 - ships install, restore, doctor, quick proof, and example pack
 
@@ -110,7 +106,7 @@ Install `godex` into one Codex home as a broader default operating layer.
 
 Status:
 
-- working beta install surface
+- supported in `v1.0.0`
 - backup-first and restorable
 - ships doctor, quick proof, prompt copy, and example pack
 
@@ -118,49 +114,31 @@ Status:
 
 `README.md` is the single current status page for this repository.
 
-### Stage
+### Version
 
-`public beta`
+`v1.0.0`
 
-### Done
+### What Is Real Now
 
-- local git repo created
-- public GitHub repo created and pushed: `https://github.com/nakamotosai/godex`
-- root product README rewritten as a real landing page
-- repo-level `AGENTS.md` added as the durable behavior contract
-- product foundation `SPEC.md` and `PLAN.md` rewritten
-- first bootstrap prompt draft written
-- compatibility, acceptance, and publish docs added
-- prompt / skills / installers / benchmarks / examples directories promoted from empty shells to product contracts
-- new dogfood-first rollout spec and plan added
-- first usable `godex doctor` script added
-- first benchmark task set and scoring rubric added
-- first real baseline-vs-dogfood benchmark round executed
-- dogfood noise-tightening pass added for closeout and behavior-reporting weak spots
-- second benchmark round executed after paragraph-spacing tightening
-- third benchmark round executed with visual-layout stress coverage
-- next-phase beta delivery spec and plan added
-- current Codex workspace wired for `godex` dogfood
-- working project installer added
-- project restore path added
-- installer-grade project doctor added
-- quick post-install proof command added
-- first install-safe example pack added
-- MIT license added
-- working global installer added
-- global restore path added
-- installer-grade global doctor added
-- clean-surface install proof script added
-- recorded install proof added
-- public beta release pack added
-- review-layout tightening promoted into shipped behavior surfaces
-- `v1` closeout spec and plan added
+- quick paste bootstrap
+- project install and global install
+- backup, restore, doctor, and quick-proof surfaces for both durable install modes
+- `--dry-run` preflight before risky mutation
+- safe `manual_review` stop plus `docs/MANUAL_MERGE.md` for complex existing `AGENTS.md`
+- troubleshooting, upgrade, support matrix, contributing guide, issue templates, and CI release guard
+- release pack under [`releases/v1.0.0/`](releases/v1.0.0/)
 
-### Not Done Yet
+### Verification
 
-- broad outside-user validation
-- automatic handling for complex custom global policies
-- first public `v1` tag flow
+- repo doctor: `bash installers/godex-doctor.sh --repo-only`
+- install proof: `bash benchmarks/scripts/verify_install_surfaces.sh`
+- broader validation record: [`benchmarks/runs/2026-04-16-v1-validation-matrix.md`](benchmarks/runs/2026-04-16-v1-validation-matrix.md)
+
+### Current Boundary
+
+- complex existing project or global `AGENTS.md` stacks may stop at `manual_review` instead of auto-merge
+- support target is Codex CLI on Unix-like shells, including WSL-style Unix shells
+- validation is broader than maintainer-only proof, but it is still not broad community-scale validation
 
 ## Repo Map
 
@@ -174,9 +152,11 @@ Status:
 - [`benchmarks/runs/2026-04-15-round2.md`](benchmarks/runs/2026-04-15-round2.md): second benchmark result after spacing tightening
 - [`benchmarks/runs/2026-04-15-round3.md`](benchmarks/runs/2026-04-15-round3.md): third benchmark result with visual-layout stress
 - [`benchmarks/runs/2026-04-15-install-proof.md`](benchmarks/runs/2026-04-15-install-proof.md): isolated install-proof record
+- [`benchmarks/runs/2026-04-16-v1-validation-matrix.md`](benchmarks/runs/2026-04-16-v1-validation-matrix.md): broader `v1` validation record
 - [`examples/`](examples): shipped project/global example packs
 - [`docs/`](docs): compatibility, acceptance, publish, and research docs
-- [`releases/project-first-beta-20260415/`](releases/project-first-beta-20260415): public beta release pack
+- [`releases/project-first-beta-20260415/`](releases/project-first-beta-20260415): historical public-beta release pack
+- [`releases/v1.0.0/`](releases/v1.0.0/): `v1.0.0` release pack
 - [`specs/product-foundation-20260415/`](specs/product-foundation-20260415): foundation spec and execution plan
 - [`specs/dogfood-rollout-20260415/`](specs/dogfood-rollout-20260415): current product and local rollout spec
 - [`specs/noise-tightening-20260415/`](specs/noise-tightening-20260415): current closeout-noise tightening spec
@@ -186,36 +166,6 @@ Status:
 - [`specs/release-closeout-20260415/`](specs/release-closeout-20260415): earlier public-beta release-closeout spec and execution plan
 - [`specs/v1-closeout-20260415/`](specs/v1-closeout-20260415): current `v1` closeout spec and execution plan
 
-## Beta Bar
+## Historical Snapshots
 
-`godex` should not be presented as a real public beta until all of these are true:
-
-1. project install works end to end
-2. global install works end to end
-3. both installs are backup-first and restorable
-4. doctor can inspect both install types
-5. install proof exists outside the maintainer workspace itself
-6. release assets are ready for a public beta pass
-7. current boundaries are documented honestly
-
-## Current Boundary
-
-The repository is now strong enough to present as a real public beta with two working install surfaces.
-
-It is still not `v1`.
-
-What is now real:
-
-- project install
-- global install
-- backup + restore for both
-- doctor for both
-- clean-surface install proof
-- release assets for this beta
-- stronger shipped guidance for review-style long findings layout
-
-The benchmark rounds now show a stable pattern: `godex` is stronger than the clean baseline on intake mirroring and on behavior/config reporting when many files must stay visible.
-
-The remaining `v1` gaps are narrower: broad outside-user validation, better handling for complex custom global policies, and a real public release/tagging cycle beyond maintainer-run proof.
-
-Those remaining gaps now have a dedicated `v1` closeout spec and plan.
+The earlier beta packs and closeout specs are still kept in-tree for auditability, but they no longer define current project status.

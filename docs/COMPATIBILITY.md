@@ -4,7 +4,7 @@
 
 ## First Support Target
 
-For the current public beta, support is still honest and narrow:
+For `v1.0.0`, support is intentionally honest and narrow:
 
 - target first: Codex CLI with local repository access
 - safest default: project-level install

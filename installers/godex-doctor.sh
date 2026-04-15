@@ -63,7 +63,19 @@ check_pattern() {
   local label="$1"
   local pattern="$2"
   local path="$3"
-  if [[ -f "$path" ]] && rg -q "$pattern" "$path"; then
+  local found=1
+  if [[ -f "$path" ]]; then
+    if command -v rg >/dev/null 2>&1; then
+      if rg -q "$pattern" "$path"; then
+        found=0
+      fi
+    else
+      if grep -q "$pattern" "$path"; then
+        found=0
+      fi
+    fi
+  fi
+  if [[ -f "$path" && "${found}" -eq 0 ]]; then
     printf '[%s] healthy %s\n' "$label" "$path"
   else
     printf '[%s] missing %s\n' "$label" "$path"
