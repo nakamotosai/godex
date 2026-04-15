@@ -2,6 +2,18 @@
 
 All notable changes to `godex` are recorded here.
 
+## v1.0.1 - 2026-04-16
+
+### Fixed
+
+- global `--dry-run` no longer creates a missing target Codex-home directory before preflight finishes
+- global preflight now classifies a missing Codex-home target as `ready_create` instead of forcing a mutation first
+- install proof now covers the missing-target global dry-run regression and the matching first install path
+
+### Release Notes
+
+- `v1.0.0` has been superseded by `v1.0.1` because the original global dry-run path left behind a real target directory
+
 ## v1.0.0 - 2026-04-16
 
 ### Added

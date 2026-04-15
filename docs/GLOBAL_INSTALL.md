@@ -14,6 +14,8 @@ Preview first:
 bash installers/install-global.sh --dry-run ~/.codex
 ```
 
+Dry-run stays non-mutating even if the target Codex-home path does not exist yet.
+
 Or install into a specific Codex-home target:
 
 ```bash
@@ -38,6 +40,7 @@ Global install writes:
 
 - never silently overwrite an existing global `AGENTS.md`
 - backup before mutation
+- dry-run must not create a missing target Codex-home path
 - create a fresh root `AGENTS.md` if the Codex home did not already have one
 - replace an existing managed `godex` global block in place
 - append a new managed block if the Codex home has a simple pre-existing `AGENTS.md`

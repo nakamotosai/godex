@@ -75,6 +75,17 @@ def main() -> int:
     agents_path = target / "AGENTS.md"
 
     if not target.is_dir():
+        if args.mode == "global":
+            lines = [
+                f"[preflight] ready_create mode={args.mode} target={target}",
+                f"[reason] no existing directory was found for this {cfg['target_label']}; install will create it",
+            ]
+            if args.dry_run:
+                lines.append("[dry_run] no files changed")
+            else:
+                lines.append("[next] safe to create the Codex home and install")
+            print_lines(lines)
+            return 0
         print_lines(
             [
                 f"[preflight] unsupported mode={args.mode} target={target}",

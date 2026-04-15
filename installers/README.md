@@ -31,12 +31,13 @@ Global install exists for users who want a broader default layer and accept a sl
 - do not silently overwrite an existing `AGENTS.md`
 - backup before mutation
 - preflight with `--dry-run` before risky mutation
+- keep global dry-run non-mutating even when the target Codex-home path does not exist yet
 - stop safely on complex custom-policy cases
 - explain what changed
 - print the next verification step after install
 
 ## Current Status
 
-- project install is implemented for `v1.0.0`
-- global install is implemented for `v1.0.0`
+- project install is implemented for `v1.0.1`
+- global install is implemented for `v1.0.1`
 - project and global backup, restore, doctor, and quick-proof surfaces are implemented

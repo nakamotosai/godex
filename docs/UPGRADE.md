@@ -16,6 +16,8 @@ Global:
 bash installers/install-global.sh --dry-run ~/.codex
 ```
 
+For `v1.0.1`, global dry-run also stays non-mutating when the target Codex home does not exist yet.
+
 ## Expected Upgrade Paths
 
 - `ready_replace`: safe managed upgrade
@@ -58,5 +60,5 @@ Global:
 When upgrading across tagged releases, also read:
 
 - `CHANGELOG.md`
-- `releases/v1.0.0/RELEASE_NOTES.md`
+- `releases/v1.0.1/RELEASE_NOTES.md`
 - `docs/TROUBLESHOOTING.md`

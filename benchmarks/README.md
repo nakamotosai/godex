@@ -24,6 +24,7 @@ Its job is to make the upgrade measurable instead of purely rhetorical.
 - [`runs/2026-04-15-round3.md`](runs/2026-04-15-round3.md)
 - [`runs/2026-04-15-install-proof.md`](runs/2026-04-15-install-proof.md)
 - [`runs/2026-04-16-v1-validation-matrix.md`](runs/2026-04-16-v1-validation-matrix.md)
+- [`runs/2026-04-16-v1.0.1-patch-validation.md`](runs/2026-04-16-v1.0.1-patch-validation.md)
 - [`scripts/verify_install_surfaces.sh`](scripts/verify_install_surfaces.sh)
 
 ## Benchmark Design Rules

@@ -86,7 +86,7 @@ Paste the bootstrap prompt into a fresh Codex session.
 
 Status:
 
-- supported in `v1.0.0`
+- supported in `v1.0.1`
 - lowest friction
 - not durable by itself
 
@@ -96,7 +96,7 @@ Install `godex` into one repository as a local operating layer.
 
 Status:
 
-- supported in `v1.0.0`
+- supported in `v1.0.1`
 - safest default for real users
 - ships install, restore, doctor, quick proof, and example pack
 
@@ -106,7 +106,7 @@ Install `godex` into one Codex home as a broader default operating layer.
 
 Status:
 
-- supported in `v1.0.0`
+- supported in `v1.0.1`
 - backup-first and restorable
 - ships doctor, quick proof, prompt copy, and example pack
 
@@ -116,7 +116,7 @@ Status:
 
 ### Version
 
-`v1.0.0`
+`v1.0.1`
 
 ### What Is Real Now
 
@@ -124,15 +124,16 @@ Status:
 - project install and global install
 - backup, restore, doctor, and quick-proof surfaces for both durable install modes
 - `--dry-run` preflight before risky mutation
+- global `--dry-run` stays non-mutating even when the target Codex home does not exist yet
 - safe `manual_review` stop plus `docs/MANUAL_MERGE.md` for complex existing `AGENTS.md`
 - troubleshooting, upgrade, support matrix, contributing guide, issue templates, and CI release guard
-- release pack under [`releases/v1.0.0/`](releases/v1.0.0/)
+- release pack under [`releases/v1.0.1/`](releases/v1.0.1/)
 
 ### Verification
 
 - repo doctor: `bash installers/godex-doctor.sh --repo-only`
 - install proof: `bash benchmarks/scripts/verify_install_surfaces.sh`
-- broader validation record: [`benchmarks/runs/2026-04-16-v1-validation-matrix.md`](benchmarks/runs/2026-04-16-v1-validation-matrix.md)
+- broader validation record: [`benchmarks/runs/2026-04-16-v1.0.1-patch-validation.md`](benchmarks/runs/2026-04-16-v1.0.1-patch-validation.md)
 
 ### Current Boundary
 
@@ -153,10 +154,12 @@ Status:
 - [`benchmarks/runs/2026-04-15-round3.md`](benchmarks/runs/2026-04-15-round3.md): third benchmark result with visual-layout stress
 - [`benchmarks/runs/2026-04-15-install-proof.md`](benchmarks/runs/2026-04-15-install-proof.md): isolated install-proof record
 - [`benchmarks/runs/2026-04-16-v1-validation-matrix.md`](benchmarks/runs/2026-04-16-v1-validation-matrix.md): broader `v1` validation record
+- [`benchmarks/runs/2026-04-16-v1.0.1-patch-validation.md`](benchmarks/runs/2026-04-16-v1.0.1-patch-validation.md): patch validation for the global dry-run safety fix
 - [`examples/`](examples): shipped project/global example packs
 - [`docs/`](docs): compatibility, acceptance, publish, and research docs
 - [`releases/project-first-beta-20260415/`](releases/project-first-beta-20260415): historical public-beta release pack
-- [`releases/v1.0.0/`](releases/v1.0.0/): `v1.0.0` release pack
+- [`releases/v1.0.0/`](releases/v1.0.0/): historical `v1.0.0` release pack
+- [`releases/v1.0.1/`](releases/v1.0.1/): current `v1.0.1` release pack
 - [`specs/product-foundation-20260415/`](specs/product-foundation-20260415): foundation spec and execution plan
 - [`specs/dogfood-rollout-20260415/`](specs/dogfood-rollout-20260415): current product and local rollout spec
 - [`specs/noise-tightening-20260415/`](specs/noise-tightening-20260415): current closeout-noise tightening spec

@@ -21,8 +21,6 @@ print(os.path.abspath(os.path.expanduser(sys.argv[1])))
 PY
 )"
 
-mkdir -p "${target_home}"
-
 agents_path="${target_home}/AGENTS.md"
 godex_dir="${target_home}/godex"
 bin_dir="${godex_dir}/bin"
@@ -45,6 +43,7 @@ if [[ "${preflight_status}" -ne 0 || "${dry_run}" -eq 1 ]]; then
   exit "${preflight_status}"
 fi
 
+mkdir -p "${target_home}"
 mkdir -p "${bin_dir}" "${backups_dir}" "${docs_dir}" "${examples_dir}" "${prompts_dir}"
 
 render_block() {

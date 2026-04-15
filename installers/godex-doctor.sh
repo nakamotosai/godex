@@ -111,7 +111,7 @@ check_file "global_benchmark_script" "${repo_root}/installers/global-benchmark.s
 check_file "agents_preflight_script" "${repo_root}/installers/agents_preflight.py"
 check_file "install_proof_script" "${repo_root}/benchmarks/scripts/verify_install_surfaces.sh"
 check_file "release_pack" "${repo_root}/releases/project-first-beta-20260415/README.md"
-check_file "v1_release_pack" "${repo_root}/releases/v1.0.0/README.md"
+check_file "v1_release_pack" "${repo_root}/releases/v1.0.1/README.md"
 check_file "changelog" "${repo_root}/CHANGELOG.md"
 check_file "ci_workflow" "${repo_root}/.github/workflows/ci.yml"
 check_file "install_issue_template" "${repo_root}/.github/ISSUE_TEMPLATE/install-failure.yml"

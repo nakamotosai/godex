@@ -148,10 +148,19 @@ EOF
 run_expect 1 "${artifact_root}/global-missing.txt" "${repo_root}/installers/global-doctor.py" "${global_root}/clean-home"
 assert_contains "[overall] missing" "${artifact_root}/global-missing.txt"
 
+run_expect 0 "${artifact_root}/global-fresh-dry-run.txt" bash "${repo_root}/installers/install-global.sh" --dry-run "${global_root}/fresh-home"
+assert_contains "[preflight] ready_create" "${artifact_root}/global-fresh-dry-run.txt"
+assert_contains "[dry_run] no files changed" "${artifact_root}/global-fresh-dry-run.txt"
+[[ ! -e "${global_root}/fresh-home" ]]
+
 run_expect 0 "${artifact_root}/global-clean-dry-run.txt" bash "${repo_root}/installers/install-global.sh" --dry-run "${global_root}/clean-home"
 assert_contains "[preflight] ready_create" "${artifact_root}/global-clean-dry-run.txt"
 assert_contains "[dry_run] no files changed" "${artifact_root}/global-clean-dry-run.txt"
 [[ ! -e "${global_root}/clean-home/godex" ]]
+
+run_expect 0 "${artifact_root}/global-fresh-install.txt" bash "${repo_root}/installers/install-global.sh" "${global_root}/fresh-home"
+run_expect 0 "${artifact_root}/global-fresh-healthy.txt" "${global_root}/fresh-home/godex/bin/godex-doctor" "${global_root}/fresh-home"
+assert_contains "[overall] healthy" "${artifact_root}/global-fresh-healthy.txt"
 
 run_expect 0 "${artifact_root}/global-clean-install.txt" bash "${repo_root}/installers/install-global.sh" "${global_root}/clean-home"
 run_expect 0 "${artifact_root}/global-clean-healthy.txt" "${global_root}/clean-home/godex/bin/godex-doctor" "${global_root}/clean-home"
@@ -204,6 +213,6 @@ assert_contains "[overall] unsupported" "${artifact_root}/global-unsupported.txt
 printf '[artifact_root] %s\n' "${artifact_root}"
 printf '[ok] project install verified on isolated clean, dry-run, additive, and manual-review targets\n'
 printf '[ok] project doctor states verified: missing healthy partial drifted conflicted unsupported\n'
-printf '[ok] global install verified on isolated clean, dry-run, additive, and manual-review Codex-home targets\n'
+printf '[ok] global install verified on isolated missing-target, clean, dry-run, additive, and manual-review Codex-home targets\n'
 printf '[ok] global doctor states verified: missing healthy partial drifted conflicted unsupported\n'
 printf '[ok] project/global benchmark and restore paths verified\n'

@@ -4,15 +4,16 @@ This document defines what counts as "real progress" for `godex`.
 
 ## Current Accepted State
 
-`godex` is allowed to call itself `v1.0.0` when all of these are true:
+`godex` is allowed to call itself `v1.0.1` when all of these are true:
 
 1. quick paste, project install, and global install all exist and are documented
 2. both durable install modes back up before mutation and can restore prior state
 3. doctor and install proof both pass
-4. complex custom `AGENTS.md` cases stop safely and route to `docs/MANUAL_MERGE.md`
-5. broader validation evidence exists beyond the maintainer primary workspace
-6. release assets, support docs, and GitHub support surfaces are aligned
-7. the repo can be committed, pushed, tagged, and left clean
+4. global `--dry-run` leaves a missing Codex-home target untouched
+5. complex custom `AGENTS.md` cases stop safely and route to `docs/MANUAL_MERGE.md`
+6. broader validation evidence exists beyond the maintainer primary workspace
+7. release assets, support docs, and GitHub support surfaces are aligned
+8. the repo can be committed, pushed, tagged, and left clean
 
 ## Foundation Round Acceptance
 
@@ -54,7 +55,7 @@ The product foundation passes when all of these are true:
 6. complex custom-policy conflict handling is better than today's manual-review boundary
 7. release and tagging flow is fully exercised in the wild
 
-For `v1.0.0`, item 6 is satisfied by safe stop plus explicit manual-merge guidance, not by universal auto-merge.
+For `v1.0.1`, item 6 is satisfied by safe stop plus explicit manual-merge guidance, not by universal auto-merge.
 
 ## Verification For This Repository
 

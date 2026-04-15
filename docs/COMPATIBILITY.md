@@ -4,7 +4,7 @@
 
 ## First Support Target
 
-For `v1.0.0`, support is intentionally honest and narrow:
+For `v1.0.1`, support is intentionally honest and narrow:
 
 - target first: Codex CLI with local repository access
 - safest default: project-level install
@@ -28,6 +28,7 @@ See also: `docs/SUPPORT_MATRIX.md`.
 
 - Prefer adding project-scoped files before touching user-global files.
 - Never silently delete or replace a user's existing Codex rules.
+- Global dry-run must not create a missing target Codex-home path.
 - Global install creates a dated backup before any replacement.
 - If coexistence is unclear, stop at a safe partial state and explain the conflict.
 
