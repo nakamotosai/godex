@@ -1,174 +1,159 @@
 # godex
 
-> Upgrade vanilla Codex into a clearer, more disciplined, lower-noise engineering agent.
+> 把普通 Codex 强化成更清晰、更稳、更少废话的工程代理。
 
-`godex` is an open-source upgrade kit for Codex.
+English: [README.en.md](README.en.md)
 
-It packages the strongest parts of a reinforced Codex workflow into a product that ordinary users can install instead of handcrafting a private maze of prompts, notes, and habits.
+`README.md` 是这个仓库唯一的当前状态真相源。
 
-`godex` is intentionally hybrid:
+## 如果你只是想安装
 
-- a bootstrap prompt for instant session improvement
-- durable local rules and skills for repeatable behavior change
-- doctor and benchmark layers for proving the upgrade actually worked
+不要先研究 `godex` 的产品结构，也不要先让 Codex 给你出“进化方案”。
 
-## What Changes After Install
+先选一种安装方式，直接落地。
 
-- The first reply mirrors the request before execution begins.
-- Accepted full objectives stay full; the agent does not quietly shrink the job into scattered partial steps.
-- "Done" requires verification.
-- Closeouts change by scenario instead of using one noisy template for everything.
-- Final replies stay short, readable, and focused on signal.
-- Repeated user corrections become durable operating defaults instead of getting forgotten next session.
+### 1. 只想立刻体验，不改本地文件
 
-## Who This Is For
+直接把这个文件内容贴进一个新 Codex 会话：
 
-- vanilla Codex users who want a better default operating model
-- power users who want a cleaner, benchmarkable upgrade framework
-- creators and maintainers who want a public repo they can recommend with confidence
+- [prompts/bootstrap/GODEX_BOOTSTRAP.md](prompts/bootstrap/GODEX_BOOTSTRAP.md)
 
-## What `godex` Is Not
+### 2. 最推荐：项目级安装
 
-- not a giant always-on prompt
-- not a personal config dump pretending to be a product
-- not methodology-only prose with no install path
-- not a Codex binary replacement
+适合绝大多数人。只影响一个仓库，风险最低。
 
-## Product Layers
+```bash
+bash installers/install-project.sh --dry-run /path/to/your/repo
+```
 
-### 1. Bootstrap Prompt
+```bash
+bash installers/install-project.sh /path/to/your/repo
+```
 
-Fastest way to make a fresh Codex session behave better.
+```bash
+/path/to/your/repo/.godex/bin/godex-doctor /path/to/your/repo
+```
 
-Current artifact:
+安装说明：
 
-- [`prompts/bootstrap/GODEX_BOOTSTRAP.md`](prompts/bootstrap/GODEX_BOOTSTRAP.md)
+- [docs/PROJECT_INSTALL.md](docs/PROJECT_INSTALL.md)
 
-### 2. Durable Upgrade Layer
+### 3. 想让本机 Codex 默认都带上 godex 行为
 
-Repo rules, install surfaces, and skill boundaries that make the change stick.
+这是全局安装。范围更大，所以默认先 `dry-run`。
 
-Current design anchors:
+```bash
+bash installers/install-global.sh --dry-run ~/.codex
+```
 
-- [`AGENTS.md`](AGENTS.md)
-- [`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md)
-- [`installers/README.md`](installers/README.md)
-- [`skills/README.md`](skills/README.md)
+```bash
+bash installers/install-global.sh ~/.codex
+```
 
-### 3. Trust Layer
+```bash
+~/.codex/godex/bin/godex-doctor ~/.codex
+```
 
-Doctor, benchmarks, and examples that prove `godex` is better than vanilla Codex on real work.
+安装说明：
 
-Current design anchors:
+- [docs/GLOBAL_INSTALL.md](docs/GLOBAL_INSTALL.md)
 
-- [`benchmarks/README.md`](benchmarks/README.md)
-- [`examples/README.md`](examples/README.md)
-- [`docs/ACCEPTANCE.md`](docs/ACCEPTANCE.md)
+### 4. 如果你是让 Codex 替你安装
 
-## Start Here
+把下面这段和仓库链接一起发给它，不要只丢链接。
 
-- Read the public product truth: [`README.md`](README.md)
-- Read the repo behavior contract: [`AGENTS.md`](AGENTS.md)
-- Read the current `v1` closeout spec: [`SPEC.md`](specs/v1-closeout-20260415/SPEC.md)
-- Read the current `v1` closeout plan: [`PLAN.md`](specs/v1-closeout-20260415/PLAN.md)
-- Read install safety and compatibility: [`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md)
-- Read the project install walkthrough: [`docs/PROJECT_INSTALL.md`](docs/PROJECT_INSTALL.md)
-- Read the global install walkthrough: [`docs/GLOBAL_INSTALL.md`](docs/GLOBAL_INSTALL.md)
-- Read current dogfood rollout notes: [`docs/DOGFOOD.md`](docs/DOGFOOD.md)
-- Read current doctor contract: [`docs/DOCTOR.md`](docs/DOCTOR.md)
-- Read publish and release gates: [`docs/PUBLISH.md`](docs/PUBLISH.md)
+```text
+请安装这个仓库里的 godex，用来强化我当前的 Codex。
 
-## Install Modes
+默认走 project install，不要先做产品审视、借鉴分析、演化方案或发布包设计。
 
-### Quick Paste
+先读 README 和 docs/PROJECT_INSTALL.md，
+然后执行：
+1. dry-run
+2. install
+3. doctor
 
-Paste the bootstrap prompt into a fresh Codex session.
+如果遇到 manual_review，就停止实际改动，并明确告诉我为什么不能自动安装。
+```
 
-Status:
+### 5. 不要这样发给 Codex
 
-- supported in `v1.0.1`
-- lowest friction
-- not durable by itself
+下面这种说法很容易把 Codex 带偏：
 
-### Project Install
+- “审视并借鉴这个项目”
+- “对我本地 Codex 进行改进、进化”
+- “研究一下这个项目怎么设计的，再给我一个方案”
 
-Install `godex` into one repository as a local operating layer.
+这种提示会让它优先把 `godex` 当成一个要分析的开源产品，而不是一个要直接安装的强化包。
 
-Status:
+## 安装后会得到什么
 
-- supported in `v1.0.1`
-- safest default for real users
-- ships install, restore, doctor, quick proof, and example pack
+- 首条回复会先复述你的任务，再行动。
+- 已接受的完整目标不会被悄悄缩成“最小下一步”。
+- 没有验证，不算完成。
+- 收尾会更短、更清晰，不再默认塞一大堆废话和代码墙。
+- 反复强调过的偏好会更容易在会话里变成默认行为。
 
-### Global Install
-
-Install `godex` into one Codex home as a broader default operating layer.
-
-Status:
-
-- supported in `v1.0.1`
-- backup-first and restorable
-- ships doctor, quick proof, prompt copy, and example pack
-
-## Current Status
-
-`README.md` is the single current status page for this repository.
-
-### Version
+## 当前版本
 
 `v1.0.1`
 
-### What Is Real Now
+## 当前状态
 
-- quick paste bootstrap
-- project install and global install
-- backup, restore, doctor, and quick-proof surfaces for both durable install modes
-- `--dry-run` preflight before risky mutation
-- global `--dry-run` stays non-mutating even when the target Codex home does not exist yet
-- safe `manual_review` stop plus `docs/MANUAL_MERGE.md` for complex existing `AGENTS.md`
-- troubleshooting, upgrade, support matrix, contributing guide, issue templates, and CI release guard
-- release pack under [`releases/v1.0.1/`](releases/v1.0.1/)
+- quick paste 可用
+- project install 可用
+- global install 可用
+- project/global 都带 backup、restore、doctor、quick proof
+- `--dry-run` 预检可用
+- global `--dry-run` 对不存在路径保持零落盘
+- 复杂现有 `AGENTS.md` 会安全停在 `manual_review`
 
-### Verification
+## 当前验证
 
-- repo doctor: `bash installers/godex-doctor.sh --repo-only`
-- install proof: `bash benchmarks/scripts/verify_install_surfaces.sh`
-- broader validation record: [`benchmarks/runs/2026-04-16-v1.0.1-patch-validation.md`](benchmarks/runs/2026-04-16-v1.0.1-patch-validation.md)
+- repo doctor：
+  `bash installers/godex-doctor.sh --repo-only`
+- install proof：
+  `bash benchmarks/scripts/verify_install_surfaces.sh`
+- patch 验证记录：
+  [benchmarks/runs/2026-04-16-v1.0.1-patch-validation.md](benchmarks/runs/2026-04-16-v1.0.1-patch-validation.md)
+- 公开发布：
+  https://github.com/nakamotosai/godex/releases/tag/v1.0.1
 
-### Current Boundary
+## 当前边界
 
-- complex existing project or global `AGENTS.md` stacks may stop at `manual_review` instead of auto-merge
-- support target is Codex CLI on Unix-like shells, including WSL-style Unix shells
-- validation is broader than maintainer-only proof, but it is still not broad community-scale validation
+- 复杂已有 project/global `AGENTS.md` 栈不会强行自动合并，只会停在 `manual_review`
+- 一等支持目标是 Codex CLI 的 Unix shell 环境
+- Windows 当前走 WSL / Unix-shell 路线，不是 PowerShell-first
+- 这已经超出维护者自用验证，但还不是大规模社区验证
 
-## Repo Map
+## 常用文档
 
-- [`README.md`](README.md): product story and current status
-- [`AGENTS.md`](AGENTS.md): durable behavior contract for contributors and agentic workers
-- [`prompts/`](prompts): quick-paste acquisition layer
-- [`skills/`](skills): durable upgrade layer design
-- [`installers/`](installers): shipped project/global install, restore, doctor, and quick-proof scripts
-- [`benchmarks/`](benchmarks): proof layer design
-- [`benchmarks/runs/2026-04-15-round1.md`](benchmarks/runs/2026-04-15-round1.md): first real benchmark result
-- [`benchmarks/runs/2026-04-15-round2.md`](benchmarks/runs/2026-04-15-round2.md): second benchmark result after spacing tightening
-- [`benchmarks/runs/2026-04-15-round3.md`](benchmarks/runs/2026-04-15-round3.md): third benchmark result with visual-layout stress
-- [`benchmarks/runs/2026-04-15-install-proof.md`](benchmarks/runs/2026-04-15-install-proof.md): isolated install-proof record
-- [`benchmarks/runs/2026-04-16-v1-validation-matrix.md`](benchmarks/runs/2026-04-16-v1-validation-matrix.md): broader `v1` validation record
-- [`benchmarks/runs/2026-04-16-v1.0.1-patch-validation.md`](benchmarks/runs/2026-04-16-v1.0.1-patch-validation.md): patch validation for the global dry-run safety fix
-- [`examples/`](examples): shipped project/global example packs
-- [`docs/`](docs): compatibility, acceptance, publish, and research docs
-- [`releases/project-first-beta-20260415/`](releases/project-first-beta-20260415): historical public-beta release pack
-- [`releases/v1.0.0/`](releases/v1.0.0/): historical `v1.0.0` release pack
-- [`releases/v1.0.1/`](releases/v1.0.1/): current `v1.0.1` release pack
-- [`specs/product-foundation-20260415/`](specs/product-foundation-20260415): foundation spec and execution plan
-- [`specs/dogfood-rollout-20260415/`](specs/dogfood-rollout-20260415): current product and local rollout spec
-- [`specs/noise-tightening-20260415/`](specs/noise-tightening-20260415): current closeout-noise tightening spec
-- [`specs/paragraph-spacing-round2-20260415/`](specs/paragraph-spacing-round2-20260415): current paragraph-spacing + round-2 benchmark spec
-- [`specs/visual-layout-round3-20260415/`](specs/visual-layout-round3-20260415): current visual-layout + round-3 benchmark spec
-- [`specs/beta-delivery-20260415/`](specs/beta-delivery-20260415): earlier project-install beta-delivery spec and execution plan
-- [`specs/release-closeout-20260415/`](specs/release-closeout-20260415): earlier public-beta release-closeout spec and execution plan
-- [`specs/v1-closeout-20260415/`](specs/v1-closeout-20260415): current `v1` closeout spec and execution plan
+- 项目安装：
+  [docs/PROJECT_INSTALL.md](docs/PROJECT_INSTALL.md)
+- 全局安装：
+  [docs/GLOBAL_INSTALL.md](docs/GLOBAL_INSTALL.md)
+- 手工合并：
+  [docs/MANUAL_MERGE.md](docs/MANUAL_MERGE.md)
+- 故障排查：
+  [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md)
+- 升级说明：
+  [docs/UPGRADE.md](docs/UPGRADE.md)
+- 支持矩阵：
+  [docs/SUPPORT_MATRIX.md](docs/SUPPORT_MATRIX.md)
+- doctor 说明：
+  [docs/DOCTOR.md](docs/DOCTOR.md)
 
-## Historical Snapshots
+## 给维护者或研究者
 
-The earlier beta packs and closeout specs are still kept in-tree for auditability, but they no longer define current project status.
+如果你不是来安装，而是来研究这个项目的结构，再看这些：
+
+- 仓库行为约束：
+  [AGENTS.md](AGENTS.md)
+- 安装层设计：
+  [installers/README.md](installers/README.md)
+- proof 层设计：
+  [benchmarks/README.md](benchmarks/README.md)
+- 当前发布口径：
+  [docs/PUBLISH.md](docs/PUBLISH.md)
+- 当前规格：
+  [specs/v1-closeout-20260415/SPEC.md](specs/v1-closeout-20260415/SPEC.md)

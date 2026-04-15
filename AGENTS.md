@@ -6,6 +6,7 @@ This repository exists to turn reinforced Codex behavior into an installable ope
 
 - Success is behavior change plus proof, not code volume.
 - Root [`README.md`](README.md) is the single current status page.
+- Root [`README.md`](README.md) is also the default user acquisition and installation entry, not just a product overview page.
 - Root [`AGENTS.md`](AGENTS.md) is the durable behavior contract for this repo.
 - [`SPEC.md`](specs/product-foundation-20260415/SPEC.md) and [`PLAN.md`](specs/product-foundation-20260415/PLAN.md) carry design and execution detail.
 
@@ -29,6 +30,8 @@ This repository exists to turn reinforced Codex behavior into an installable ope
 - For behavior or configuration changes, explain the changed behavior first; if files are needed for verification or rollback, keep them on one compact line and do not walk through config keys unless asked.
 - If changed files exceed 4, switch to a dedicated file block instead of forcing a one-line file dump.
 - If verification spans multiple checks, summarize the acceptance surfaces first instead of dumping raw command inventory.
+- If a user intent is to adopt or install `godex`, default to the install path first.
+- Do not silently switch an install/adoption request into product audit, benchmark review, or evolution-plan mode unless the user explicitly asked for that.
 
 ## Delivery Contract
 
