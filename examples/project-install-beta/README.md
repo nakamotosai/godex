@@ -39,7 +39,7 @@ instead of being only a private maintainer setup.
 - intake mirroring is stronger than the clean baseline
 - full-objective retention is at parity or better
 - behavior-first reporting is stronger under file-heavy closeouts
-- review-style long findings are still the main open formatting weakness
+- review-style long findings now have a stronger explicit layout rule in shipped install surfaces
 
 ## Installed Reading Path
 

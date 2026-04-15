@@ -15,29 +15,32 @@ The product foundation passes when all of these are true:
 7. prompt, skills, installers, benchmarks, and examples directories no longer read like empty shells
 8. the repo can be committed, pushed, and kept clean
 
-## Beta Acceptance
+## Public Beta Acceptance
 
-`godex` should not call itself a usable beta until:
+`godex` should not call itself a real public beta until:
 
 1. project install works end to end
-2. install backs up before mutation
-3. restore can remove the project layer and recover the prior repo state
-4. doctor reports meaningful states
-5. at least three benchmark tasks exist
-6. at least one before/after example pack exists
-7. the OSS license is selected
+2. global install works end to end
+3. both install types back up before mutation
+4. both install types can restore the previous `AGENTS.md` state
+5. doctor reports meaningful states for both install types
+6. an isolated clean-surface install proof script exists and passes
+7. at least one recorded install proof document exists
+8. before/after example packs exist for shipped install surfaces
+9. release assets are ready for a public beta packaging pass
+10. the OSS license is selected
 
 ## Public `v1` Acceptance
 
 `godex` should not call itself `v1` until:
 
-1. at least one install mode is fully working and documented
+1. the two install modes stay stable across repeated real use
 2. doctor is real, not aspirational
-3. benchmark can show reproducible improvement
-4. the repo survives a real dogfood loop
+3. benchmark can show reproducible improvement beyond maintainer-only comparisons
+4. broader outside-user validation exists
 5. known boundaries are documented honestly
-6. global install or an equally strong second install surface exists
-7. release assets are ready for a public tag
+6. complex custom-policy conflict handling is better than today's manual-review boundary
+7. release and tagging flow is fully exercised in the wild
 
 ## Verification For This Repository
 
@@ -46,5 +49,6 @@ Every closeout round should at least check:
 - key docs exist
 - key docs do not contain unresolved draft-marker language
 - README status matches repo reality
+- install proof script passes
 - git remote exists
 - working tree is clean after closeout

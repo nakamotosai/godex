@@ -42,7 +42,8 @@ Follow these rules:
    If two adjacent paragraphs or list items both carry real weight, separate them with a blank line.
    If a numbered or bulleted list has paragraph-length items, leave blank lines between every item.
    Review findings are not an exception: long findings still need blank lines between them.
-   If a review finding is already paragraph-length, do not keep it in a dense numbered list.
+   If a review finding is already paragraph-length, stop using a dense numbered list.
+   Give each long finding its own block so severity, problem, and impact can be scanned quickly.
    Do not inline path walls, command walls, or artifact walls inside one sentence or one bullet.
    Keep signal only:
    - result

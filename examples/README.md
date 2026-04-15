@@ -2,13 +2,10 @@
 
 This directory holds public showcase material for `godex`.
 
-## Planned Example Packs
+## Shipped Example Packs
 
-- vanilla Codex vs `godex` on the same task
-- noisy closeout vs low-noise closeout
-- weak verification vs evidence-first verification
-- partial-step drift vs full-objective closure
-- install walkthroughs
+- `project-install-beta/`
+- `global-install-beta/`
 
 ## Why This Matters
 
@@ -18,6 +15,6 @@ They also keep the repo honest by showing the exact behavior change being claime
 
 ## Current Status
 
-- `project-install-beta/` is the first shipped before/after example pack
-- the pack is designed to survive copying into an installed target repo under `.godex/examples/`
-- more scenario packs are still pending
+- `project-install-beta/` is the project-surface example pack
+- `global-install-beta/` is the global-surface example pack
+- both packs are designed to survive copying into installed targets

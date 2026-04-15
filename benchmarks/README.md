@@ -1,6 +1,6 @@
 # benchmarks
 
-This directory will hold the proof layer for `godex`.
+This directory holds the proof layer for `godex`.
 
 Its job is to make the upgrade measurable instead of purely rhetorical.
 
@@ -13,18 +13,17 @@ Its job is to make the upgrade measurable instead of purely rhetorical.
 - behavior/config reporting: did it report changed behavior clearly?
 - visual layout stress: can it stay readable when many files and checks must be mentioned?
 
-## Expected Scoring Shape
-
-Each task should eventually be scoreable on a simple human-reviewable scale, such as `0-5`, with explicit criteria for weak, acceptable, and strong behavior.
-
-Current assets:
+## Current Proof Assets
 
 - [`scoring-rubric.md`](scoring-rubric.md)
 - [`run-template.md`](run-template.md)
 - [`tasks/`](tasks)
+- [`tasks/07-review-findings-layout.md`](tasks/07-review-findings-layout.md)
 - [`runs/2026-04-15-round1.md`](runs/2026-04-15-round1.md)
 - [`runs/2026-04-15-round2.md`](runs/2026-04-15-round2.md)
 - [`runs/2026-04-15-round3.md`](runs/2026-04-15-round3.md)
+- [`runs/2026-04-15-install-proof.md`](runs/2026-04-15-install-proof.md)
+- [`scripts/verify_install_surfaces.sh`](scripts/verify_install_surfaces.sh)
 
 ## Benchmark Design Rules
 
@@ -32,12 +31,12 @@ Current assets:
 - tasks must be understandable without hidden private context
 - scoring must reward behavior quality, not verbosity
 - before/after comparison should be easy for maintainers to explain publicly
+- install proof should run on isolated targets, not only the maintainer workspace
 
 ## Current Status
 
 - first manual task set implemented
-- first scoring rubric implemented
-- first real baseline-vs-dogfood round executed
-- second round executed after spacing tightening
-- third round executed with a visual-layout stress task
-- automation not implemented yet
+- scoring rubric implemented
+- three baseline-vs-dogfood rounds recorded
+- review-findings layout task added
+- clean-surface install proof script implemented and recorded

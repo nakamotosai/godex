@@ -112,14 +112,12 @@ The current tightening pass now updates three defaults:
 - more compact behavior-first closeouts
 - stricter spec escalation on medium-light tasks
 
-The third benchmark round now exists.
+The third benchmark round exposed one remaining weak spot:
 
-It now shows three things clearly:
+- review-style long findings still stacked too densely
 
-- ordinary closeout noise improved
-- file-heavy behavior/config reporting improved
-- review-style long findings still stack too densely
+That weakness has now been tightened in the shipped bootstrap prompt, repo contract, project install block, global install block, and review-layout example surfaces.
 
-So the remaining dogfood gap is no longer “general closeout noise” or “multi-file config reporting”.
+The remaining dogfood question is no longer whether the rule exists.
 
-It is specifically review-output spacing under dense findings.
+It is how broadly the strengthened rule holds up across more real users and client UIs.

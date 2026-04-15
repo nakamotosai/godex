@@ -6,37 +6,42 @@ This document tracks how `godex` moves from foundation to public release.
 
 - public GitHub repository exists: `https://github.com/nakamotosai/godex`
 - default branch: `main`
-- foundation and dogfood commits are already pushed
-- repository is now in project-first beta stage, not `v1`
+- repository is now in public beta stage, not `v1`
+- release assets now live under `releases/project-first-beta-20260415/`
+
+## Current Beta Pack
+
+- release pack: `releases/project-first-beta-20260415/`
+- release notes: `releases/project-first-beta-20260415/RELEASE_NOTES.md`
+- GitHub release body: `releases/project-first-beta-20260415/GITHUB_RELEASE_BODY.md`
+- short public announcement: `releases/project-first-beta-20260415/X_ANNOUNCEMENT.md`
+- checklist: `releases/project-first-beta-20260415/CHECKLIST.md`
 
 ## Release Sequence
 
-1. keep the project-install beta path working and README-aligned
-2. gather broader install proof beyond maintainer-only loops
-3. tighten the remaining review-output density weakness
-4. prepare release assets
-5. decide whether `v1` needs global install or another second install surface
-6. tag the first public release
+1. keep project install and global install working
+2. keep install proof current on isolated targets
+3. keep README and release assets aligned with reality
+4. gather broader outside-user validation
+5. improve complex-policy conflict handling
+6. tag the first public `v1` release
 
 ## Hard `v1` Blockers
 
-- no second install surface beyond project install beta
-- no broader external install proof yet
-- no release assets yet
-- review-style long findings are still denser than the product target
+- no broad outside-user validation yet
+- complex existing global policies still require manual review
+- the first public release tag flow has not been exercised yet
 
 ## Publish Rule
 
-Do not market `godex` as a finished upgrade product while the repo still lacks `v1` proof.
+It is acceptable to present `godex` publicly today as:
 
-It is acceptable to present it publicly today as:
-
-- a real project-first beta
-- an open-source Codex upgrade kit with one working install mode
-- an actively iterated product with honest boundaries
+- a real public beta
+- an open-source Codex upgrade kit with project and global install
+- a product with install proof, doctor, restore, and release assets
 
 It is not acceptable to present it today as:
 
 - finished `v1`
-- universal install
-- fully solved on every output-formatting edge case
+- universal merge with arbitrary existing global policies
+- broadly community-validated

@@ -11,6 +11,7 @@
 
 - Task file:
 - Notes:
+- Evidence:
 
 ## Scores
 
@@ -21,6 +22,7 @@
 | Verification Discipline |  |  |  |
 | Low-Noise Closeout |  |  |  |
 | Behavior / Config Reporting |  |  |  |
+| Visual Layout Stress |  |  |  |
 
 ## Verdict
 

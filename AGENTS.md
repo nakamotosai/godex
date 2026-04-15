@@ -20,6 +20,7 @@ This repository exists to turn reinforced Codex behavior into an installable ope
 - If a numbered or bulleted list contains paragraph-length items, leave blank lines between every item.
 - In review outputs, paragraph-length findings must also be separated with blank lines.
 - In review outputs, avoid dense numbered lists for paragraph-length findings; use separated finding blocks instead.
+- In review outputs, each long finding should make severity, problem, and impact easy to scan without reading a wall.
 - Do not create path walls, command walls, or artifact walls by inlining many long references inside one sentence or one bullet.
 - Keep visible file labels short; the link target can stay absolute, but the displayed text should not be a full-path wall.
 - Do not fill closeouts with repeated framing, path spam, diff spam, or code dumps the user did not ask for.

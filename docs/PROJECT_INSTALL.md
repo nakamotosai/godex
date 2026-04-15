@@ -63,10 +63,11 @@ It enforces the strongest `godex` defaults that matter to ordinary users:
 - first reply mirrors the task before action
 - accepted full objectives stay intact instead of shrinking into a "smallest next step" handoff
 - done requires verification
+- review-style long findings must be separated with real blank lines
 - closeouts report behavior first and stay visually readable
 
 ## Current Boundary
 
-Project install is the beta-defining install mode.
+Project install remains the safest default install mode.
 
-Global install is still deferred.
+Global install now exists as the broader Codex-home option.

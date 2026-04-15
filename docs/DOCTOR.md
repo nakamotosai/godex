@@ -1,11 +1,12 @@
 # Doctor
 
-`godex doctor` is the main trust surface for this repo and for installed project layers.
+`godex doctor` is the main trust surface for this repo and for both shipped install types.
 
-It answers two questions:
+It answers three questions:
 
 1. is the maintainer dogfood repo intact
 2. is an installed project-layer `godex` surface intact
+3. is an installed global-layer `godex` surface intact
 
 ## Doctor Surfaces
 
@@ -21,7 +22,7 @@ bash installers/godex-doctor.sh
 bash installers/godex-doctor.sh /home/ubuntu/codex
 ```
 
-This mode keeps the original lightweight checks for the `godex` repository plus the current local dogfood workspace.
+This mode keeps the lightweight checks for the `godex` repository plus the current local dogfood workspace.
 
 ### Installed Project Doctor
 
@@ -31,10 +32,24 @@ After running project install, use the copied doctor inside the target repo:
 /path/to/target-repo/.godex/bin/godex-doctor /path/to/target-repo
 ```
 
-The repo entrypoint also delegates to the project doctor when you pass another target repo path:
+You can also use the repo-local source entrypoint directly:
 
 ```bash
-bash installers/godex-doctor.sh /path/to/target-repo
+python3 installers/project-doctor.py /path/to/target-repo
+```
+
+### Installed Global Doctor
+
+After running global install, use the copied doctor inside the Codex home:
+
+```bash
+~/.codex/godex/bin/godex-doctor ~/.codex
+```
+
+You can also use the repo-local source entrypoint directly:
+
+```bash
+python3 installers/global-doctor.py ~/.codex
 ```
 
 ## Repo Dogfood Scope
@@ -45,7 +60,9 @@ It checks:
 
 - key repo assets exist
 - dogfood spec exists
+- current release-closeout spec exists
 - benchmark assets exist
+- install-proof and release-pack assets exist
 - the current workspace has the thin `godex dogfood` install
 
 ## Project Install Scope
@@ -58,6 +75,16 @@ The installed project doctor checks:
 - installed docs and example surfaces
 - drift between the manifest and the current installed files
 
+## Global Install Scope
+
+The installed global doctor checks:
+
+- Codex-home `AGENTS.md` for the managed `godex` global block
+- `godex/manifest.json`
+- installed helper scripts
+- installed docs, prompts, and example surfaces
+- drift between the manifest and the current installed files
+
 ## Status Classes
 
 - `healthy`: install is intact and matches the manifest
@@ -65,40 +92,14 @@ The installed project doctor checks:
 - `drifted`: the install exists, but managed files or the managed block changed or disappeared
 - `conflicted`: `AGENTS.md` markers are broken, duplicated, or mismatched
 - `unsupported`: the target root or manifest version is not supported by this doctor
-- `missing`: no project-install traces were found
+- `missing`: no install traces were found
 
 Repo dogfood mode only needs `healthy` and `partial`.
 
-Project install mode uses the full installer-grade state set.
-
-## Repo Checks
-
-The repo doctor checks for:
-
-- root `README.md`
-- root `AGENTS.md`
-- dogfood rollout spec
-- benchmark rubric
-- benchmark tasks
-- bootstrap prompt
-
-## Workspace Checks
-
-The repo doctor checks the current workspace `AGENTS.md` for a visible `godex dogfood` block and the required dogfood routing points:
-
-- spec escalation wording
-- native multi-agent preference
-- frontend acceptance reuse
-
-## How To Interpret Results
-
-- repo `healthy` means the current dogfood lane is ready to use
-- repo `partial` means some assets exist, but the dogfood lane is incomplete
-- project `healthy` means the installed project layer is intact
-- project `missing`, `partial`, `drifted`, `conflicted`, and `unsupported` each point to the smallest truthful recovery path
+Project and global install modes use the full installer-grade state set.
 
 ## Current Boundary
 
 There is still no automatic drift repair.
 
-Global install is still out of scope for doctor.
+Complex existing custom global policies may still require manual review before reinstalling.

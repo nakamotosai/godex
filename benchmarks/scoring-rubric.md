@@ -46,6 +46,7 @@ What to look for:
 - is the closeout readable
 - does it leave breathing room between substantial paragraphs or bullet items
 - if numbered findings are long, does it separate them with blank lines instead of stacking them tightly
+- if review findings are paragraph-length, does it switch to separated finding blocks instead of pretending to stay compact
 - does it avoid repeated framing
 - does it avoid dumping irrelevant code, path walls, command walls, or artifact walls
 - does it keep the signal high
@@ -58,6 +59,15 @@ What to look for:
 - does it avoid unnecessary code-level explanation
 - does it mention files only when useful
 - if many files or checks are mentioned, does it keep them visually readable instead of inlining them into one wall
+
+### 6. Visual Layout Stress
+
+What to look for:
+
+- when many files and checks must stay visible, does the answer still breathe
+- are file mentions grouped in a readable way instead of becoming a path wall
+- are verification surfaces summarized cleanly instead of collapsing into a cramped command dump
+- does the answer stay easy to scan under dense reporting pressure
 
 ## How To Judge
 

@@ -69,10 +69,13 @@ Current design anchors:
 
 - Read the public product truth: [`README.md`](README.md)
 - Read the repo behavior contract: [`AGENTS.md`](AGENTS.md)
-- Read the current beta-delivery spec: [`SPEC.md`](specs/beta-delivery-20260415/SPEC.md)
-- Read the current beta-delivery plan: [`PLAN.md`](specs/beta-delivery-20260415/PLAN.md)
+- Read the earlier beta-delivery spec: [`SPEC.md`](specs/beta-delivery-20260415/SPEC.md)
+- Read the earlier beta-delivery plan: [`PLAN.md`](specs/beta-delivery-20260415/PLAN.md)
+- Read the current release-closeout spec: [`SPEC.md`](specs/release-closeout-20260415/SPEC.md)
+- Read the current release-closeout plan: [`PLAN.md`](specs/release-closeout-20260415/PLAN.md)
 - Read install safety and compatibility: [`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md)
 - Read the project install walkthrough: [`docs/PROJECT_INSTALL.md`](docs/PROJECT_INSTALL.md)
+- Read the global install walkthrough: [`docs/GLOBAL_INSTALL.md`](docs/GLOBAL_INSTALL.md)
 - Read current dogfood rollout notes: [`docs/DOGFOOD.md`](docs/DOGFOOD.md)
 - Read current doctor contract: [`docs/DOCTOR.md`](docs/DOCTOR.md)
 - Read publish and release gates: [`docs/PUBLISH.md`](docs/PUBLISH.md)
@@ -99,14 +102,15 @@ Status:
 - safest default for real users
 - ships install, restore, doctor, quick proof, and example pack
 
-### Full Install
+### Global Install
 
-Install prompt, durable layer, doctor, and benchmark together.
+Install `godex` into one Codex home as a broader default operating layer.
 
 Status:
 
-- product direction chosen
-- not yet end-to-end implemented
+- working beta install surface
+- backup-first and restorable
+- ships doctor, quick proof, prompt copy, and example pack
 
 ## Current Status
 
@@ -114,7 +118,7 @@ Status:
 
 ### Stage
 
-`project install beta`
+`public beta`
 
 ### Done
 
@@ -141,13 +145,19 @@ Status:
 - quick post-install proof command added
 - first install-safe example pack added
 - MIT license added
+- working global installer added
+- global restore path added
+- installer-grade global doctor added
+- clean-surface install proof script added
+- recorded install proof added
+- public beta release pack added
+- review-layout tightening promoted into shipped behavior surfaces
 
 ### Not Done Yet
 
-- working global installer
-- release assets
-- broader install proof beyond maintainer loops
-- stronger fix for review-style long findings layout
+- broad outside-user validation
+- automatic handling for complex custom global policies
+- first public `v1` tag flow
 
 ## Repo Map
 
@@ -155,39 +165,51 @@ Status:
 - [`AGENTS.md`](AGENTS.md): durable behavior contract for contributors and agentic workers
 - [`prompts/`](prompts): quick-paste acquisition layer
 - [`skills/`](skills): durable upgrade layer design
-- [`installers/`](installers): shipped project install, restore, doctor, and quick-proof scripts
+- [`installers/`](installers): shipped project/global install, restore, doctor, and quick-proof scripts
 - [`benchmarks/`](benchmarks): proof layer design
 - [`benchmarks/runs/2026-04-15-round1.md`](benchmarks/runs/2026-04-15-round1.md): first real benchmark result
 - [`benchmarks/runs/2026-04-15-round2.md`](benchmarks/runs/2026-04-15-round2.md): second benchmark result after spacing tightening
 - [`benchmarks/runs/2026-04-15-round3.md`](benchmarks/runs/2026-04-15-round3.md): third benchmark result with visual-layout stress
-- [`examples/`](examples): shipped project-install example pack and future showcase area
+- [`benchmarks/runs/2026-04-15-install-proof.md`](benchmarks/runs/2026-04-15-install-proof.md): isolated install-proof record
+- [`examples/`](examples): shipped project/global example packs
 - [`docs/`](docs): compatibility, acceptance, publish, and research docs
+- [`releases/project-first-beta-20260415/`](releases/project-first-beta-20260415): public beta release pack
 - [`specs/product-foundation-20260415/`](specs/product-foundation-20260415): foundation spec and execution plan
 - [`specs/dogfood-rollout-20260415/`](specs/dogfood-rollout-20260415): current product and local rollout spec
 - [`specs/noise-tightening-20260415/`](specs/noise-tightening-20260415): current closeout-noise tightening spec
 - [`specs/paragraph-spacing-round2-20260415/`](specs/paragraph-spacing-round2-20260415): current paragraph-spacing + round-2 benchmark spec
 - [`specs/visual-layout-round3-20260415/`](specs/visual-layout-round3-20260415): current visual-layout + round-3 benchmark spec
-- [`specs/beta-delivery-20260415/`](specs/beta-delivery-20260415): next mainline beta-delivery spec and execution plan
+- [`specs/beta-delivery-20260415/`](specs/beta-delivery-20260415): earlier project-install beta-delivery spec and execution plan
+- [`specs/release-closeout-20260415/`](specs/release-closeout-20260415): current release-closeout spec and execution plan
 
 ## Beta Bar
 
 `godex` should not be presented as a real public beta until all of these are true:
 
-1. at least one install mode works end to end
-2. install is non-destructive and backed up by default
-3. doctor can verify what is active and what is missing
-4. benchmark can show meaningful before/after differences
-5. the repo survives a real dogfood loop
-6. current boundaries are documented honestly
+1. project install works end to end
+2. global install works end to end
+3. both installs are backup-first and restorable
+4. doctor can inspect both install types
+5. install proof exists outside the maintainer workspace itself
+6. release assets are ready for a public beta pass
+7. current boundaries are documented honestly
 
 ## Current Boundary
 
-The repository is now strong enough to present as a real project-first beta with one working install mode.
+The repository is now strong enough to present as a real public beta with two working install surfaces.
 
 It is still not `v1`.
 
-Global install remains deferred, broader external install proof is still thin, and review-style long findings are still denser than the target product standard.
+What is now real:
+
+- project install
+- global install
+- backup + restore for both
+- doctor for both
+- clean-surface install proof
+- release assets for this beta
+- stronger shipped guidance for review-style long findings layout
 
 The benchmark rounds now show a stable pattern: `godex` is stronger than the clean baseline on intake mirroring and on behavior/config reporting when many files must stay visible.
 
-The remaining product gaps are narrower: release assets, broader install proof, global install or another second install surface, and a stronger fix for review-output spacing.
+The remaining `v1` gaps are narrower: broad outside-user validation, better handling for complex custom global policies, and a real public release/tagging cycle beyond maintainer-run proof.
