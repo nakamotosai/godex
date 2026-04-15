@@ -1,5 +1,13 @@
 # godex
 
+## This is an installable upgrade for your current Codex
+
+> The primary purpose is simple: install it to strengthen the Codex you already use.
+>
+> It is not mainly a research repo, a design essay, or a release-package template.
+>
+> When someone opens this repository, the default thought should be "how do I install this into my Codex?" rather than "how is this product designed?"
+
 > Upgrade vanilla Codex into a clearer, steadier, lower-noise engineering agent.
 
 Chinese-first default README: [README.md](README.md)
