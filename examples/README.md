@@ -1,14 +1,22 @@
 # examples
 
-This directory will hold before/after examples for `godex`.
+This directory will hold public showcase material for `godex`.
 
-Planned contents:
+## Planned Example Packs
 
-- example vanilla Codex outputs
-- example godex-upgraded outputs
+- vanilla Codex vs `godex` on the same task
+- noisy closeout vs low-noise closeout
+- weak verification vs evidence-first verification
+- partial-step drift vs full-objective closure
 - install walkthroughs
-- benchmark demos
 
-Current stage:
+## Why This Matters
 
-- examples not added yet
+Examples are the fastest way to make the product feel real to a new visitor.
+
+They also keep the repo honest by showing the exact behavior change being claimed.
+
+## Current Status
+
+- example surfaces defined
+- no before/after packs recorded yet

@@ -1,237 +1,223 @@
 # godex Product Foundation Spec
 
+> Current status truth lives in the repository root [`README.md`](../../README.md). This spec defines the product contract for the foundation round.
+
 ## Goal
 
-Build `godex`, an open-source hybrid upgrade kit that helps ordinary Codex users systematically upgrade their Codex behavior through a combination of:
+Build `godex`, an open-source Codex upgrade kit that turns a mostly vanilla Codex setup into a more disciplined, better-structured, lower-noise engineering agent.
 
-- prompt-first bootstrap
-- durable local skills
-- doctor and benchmark validation
+The product is hybrid by design:
 
-The first milestone is not “ship a random prompt pack”.
+- bootstrap prompt for immediate session lift
+- durable local rules and skills for repeatable behavior change
+- doctor and benchmark layers for proof
 
-It is to define a product foundation strong enough to become a serious GitHub open-source project.
+The foundation round is successful when the repository already feels like a real product, not a loose collection of ideas.
 
 ## Product Thesis
 
-Most Codex users do not fail because the base model is weak.
+The quality gap between vanilla Codex and reinforced Codex is often not a pure model gap.
 
-They fail because the operating system around the model is weak:
+It is usually a workflow gap:
 
-- unclear task intake
-- inconsistent planning
-- weak verification
-- poor output shaping
-- no durable memory of repeated user corrections
-- no standard way to self-upgrade
+- weak task intake
+- weak planning discipline
+- weak verification discipline
+- weak output shaping
+- weak persistence of user preferences and prior mistakes
 
-`godex` turns those missing behaviors into an installable product.
+`godex` productizes the missing operating system around Codex.
 
-## Why Hybrid, Not Prompt-Only
+## What `godex` Must Productize
 
-Prompt-only products spread fast, but they are fragile.
-
-Skill packs are durable, but they spread slower.
-
-Doctor and benchmark layers create trust, but they are rarely present in prompt repos.
-
-The chosen product shape is therefore hybrid:
-
-1. **Prompt** brings adoption.
-2. **Skills** bring durable behavior change.
-3. **Doctor + benchmark** bring proof.
-
-This gives `godex` stronger product quality than:
-
-- pure prompt libraries
-- one-off personal configs
-- “methodology only” repositories with no install surface
-
-## Research Notes
-
-### Official Codex Context
-
-OpenAI’s official Codex guidance emphasizes that Codex works best with:
-
-- clear repository guidance
-- configured dev environments
-- reliable testing setups
-- AGENTS-style documentation
-
-That validates the core thesis behind `godex`:
-
-behavioral scaffolding matters.
-
-### Similar Product Reference 1: `obra/superpowers`
-
-What it proves:
-
-- workflow upgrades can be shipped as composable skills
-- users will install agent methodology if installation is simple enough
-- product value increases when the behavior change is broad, not single-purpose
-
-What `godex` should learn:
-
-- strong workflow decomposition
-- install story matters
-- README must explain outcomes, not just internals
-
-What `godex` should not copy blindly:
-
-- optimize only for one agent ecosystem
-- require heavy process everywhere
-
-### Similar Product Reference 2: `cat9999aaa/dev-planner-skill`
-
-What it proves:
-
-- a mostly text-driven repo can still feel like a product
-- novice-friendly install guidance dramatically increases usability
-- prompt/skill packaging can act as a software layer even with minimal code
-
-What `godex` should learn:
-
-- installation instructions must be platform-aware
-- product language should be accessible to non-expert users
-- prompt-only surfaces can be real acquisition channels
-
-What `godex` must do better:
-
-- move beyond planning into full upgrade, verification, and self-improvement
-- prove results through benchmark and doctor, not description alone
-
-## Current Reinforced Codex Traits To Productize
-
-The current high-performing Codex setup behind this project has a number of durable strengths worth productizing:
+The current reinforced Codex setup behind this project has several durable strengths worth turning into a public product:
 
 1. task-first intake reflection
 2. spec-driven execution
-3. continuous closure toward full objective
-4. verification-first completion gate
-5. output-by-scenario formatting
+3. continuous closure toward the full objective
+4. evidence-first completion
+5. output shape that changes by scenario
 6. low-noise final reporting
-7. durable memory and mistakebook retention
-8. workflow routing and skill selection
-9. repo-first / local-fact-first execution
-10. self-upgrade via rule strengthening after repeated corrections
+7. durable memory of preferences and anti-patterns
+8. workflow routing
+9. local-fact-first execution
+10. self-upgrade after repeated user corrections
 
-`godex` is the attempt to convert those strengths from a private reinforced setup into a reusable open product.
+These are not side notes.
+
+They are the product.
+
+## Required Behavior Contract
+
+Every serious `godex` install should move Codex toward these defaults:
+
+### 1. First Reply Mirrors The Task
+
+Before action, the agent briefly restates:
+
+- the real goal
+- the important scope or boundary
+- the first action it will take
+
+If ambiguity matters, it names the key interpretation branches instead of silently choosing one.
+
+### 2. The Objective Stays Intact
+
+If the user has already accepted a full objective, the agent keeps driving toward full closure.
+
+It must not:
+
+- collapse the work into a "smallest next step" pattern
+- stop after writing a plan unless the user explicitly asked for plan-only
+- forget the earlier accepted scope mid-run
+
+### 3. Verification Gates Completion
+
+The agent does not claim success from confidence alone.
+
+Completion requires verification appropriate to the change:
+
+- code change: tests, build, lint, or runtime proof
+- config change: parse and state checks
+- doc/product change: file existence, linkage, and repo consistency checks
+
+### 4. Output Changes By Scenario
+
+Design, repair, review, validation, config change, and blockage should not all look the same.
+
+`godex` must eventually ship scenario-specific output contracts for at least:
+
+- implementation
+- design / product planning
+- code review
+- validation / audit
+- config or behavior change
+- blocked / not-finished cases
+
+### 5. The Final Reply Stays Low Noise
+
+Default closeout should be easy to scan:
+
+- 1-2 paragraphs by default
+- or at most 3 small blocks when the task is naturally list-shaped
+
+It should keep signal and remove:
+
+- repeated framing
+- verbose internal process narration
+- code or diff dumps the user did not request
+- generic "other things I can also do" add-ons
+
+### 6. Repeated Corrections Become Durable
+
+If a user repeats the same correction, `godex` should treat it as a missing default and strengthen the local operating rules instead of relearning it every session.
 
 ## Product Users
 
 ### Primary User
 
-An ordinary Codex user who:
+A mostly vanilla Codex user who wants:
 
-- uses mostly default Codex
-- may have partial local tweaks
-- wants stronger execution quality
-- does not want to handcraft a complex personal workflow
+- better execution quality
+- less noise
+- stronger verification
+- a system they can install without becoming a prompt engineer
 
 ### Secondary User
 
-A power user who:
+A power user who wants:
 
-- already customizes Codex
-- wants a benchmarkable upgrade framework
-- wants composable skills instead of one giant prompt
+- benchmarkable upgrades
+- a cleaner workflow stack
+- modular skills instead of one giant instruction blob
 
 ### Tertiary User
 
-A content creator / OSS maintainer who wants:
+A creator or maintainer who wants:
 
-- a repo they can recommend publicly
-- a low-friction “paste this to upgrade your Codex” path
-- real proof that the install improves outcomes
+- a public repo they can recommend
+- a simple "paste this first" entry point
+- credible proof that the upgrade is real
 
-## Non-Goals
+## Non-Goals For v1
 
 `godex` v1 will not try to:
 
 - replace the Codex binary
 - depend on private hosted infrastructure
-- become a full plugin marketplace
-- support every AI coding tool equally on day one
-- force one personality or one writing style on all users
+- support every AI coding tool equally
+- impose one personality on every user
+- solve all customization conflicts automatically
 
-## Product Principles
-
-1. **Codex-native first**
-   Design for Codex first; cross-tool portability is a later bonus.
-2. **Behavioral upgrade over prompt bloat**
-   Improvements should come from workflow structure, not giant always-on prompt mass.
-3. **Proof over claims**
-   Doctor and benchmark are core product surfaces, not optional afterthoughts.
-4. **Durable defaults**
-   Long workflows belong in skills; root instructions stay lean.
-5. **Non-programmer friendly**
-   README, install, and examples must be understandable by people who are not prompt engineers.
-6. **Safe by default**
-   The product must not silently destroy or overwrite a user’s existing Codex setup.
-
-## Supported Product Surfaces
+## Product Surfaces
 
 ### Surface A: Bootstrap Prompt
 
 Purpose:
 
-- fast entry point
-- easy sharing
-- immediate first win
+- fast acquisition
+- low-friction first win
+- social sharing surface
 
-Responsibilities:
+Deliverable for foundation round:
 
-- detect if the session looks vanilla or partially customized
-- explain the available install modes
-- guide the user into the durable installation path
-- run or recommend first validation
+- first draft prompt at [`prompts/bootstrap/GODEX_BOOTSTRAP.md`](../../prompts/bootstrap/GODEX_BOOTSTRAP.md)
 
-### Surface B: Core Skill Pack
+### Surface B: Repo-Level Behavior Contract
 
 Purpose:
 
-- durable local behavior change
-- reusable workflows
+- make the product behavior legible
+- define the durable rules the rest of the system should enforce
 
-Planned skill families:
+Deliverable for foundation round:
 
-- `godex-intake`
-- `godex-spec-loop`
-- `godex-verification`
-- `godex-output`
-- `godex-memory`
-- `godex-doctor`
-- `godex-benchmark`
+- root [`AGENTS.md`](../../AGENTS.md)
 
-### Surface C: Doctor
+### Surface C: Skill Pack
 
 Purpose:
 
-- inspect installation state
-- detect missing pieces
-- verify activation
+- durable, reusable workflow modules
+- keep long behavior logic out of one giant root instruction file
 
-Doctor should answer:
+Foundation round output:
 
-- Which godex layers are installed?
-- Which are active?
-- Which are missing or drifted?
-- Is the current Codex environment compatible?
+- skill taxonomy and boundaries documented in [`skills/README.md`](../../skills/README.md)
 
-### Surface D: Benchmark
+### Surface D: Install Layer
 
 Purpose:
 
-- prove actual quality upgrade
-- give users a before/after experience
+- safe installation
+- backup before mutation
+- project-level and global-level rollout
 
-The benchmark should test representative tasks such as:
+Foundation round output:
 
-- task understanding
-- scoped implementation
-- verification discipline
-- output shaping
-- configuration-change reporting
+- install contract documented in [`installers/README.md`](../../installers/README.md)
+
+### Surface E: Doctor
+
+Purpose:
+
+- inspect what is installed
+- explain what is active, missing, or conflicting
+
+Foundation round output:
+
+- minimum contract defined in this spec and supporting docs
+
+### Surface F: Benchmark
+
+Purpose:
+
+- prove `godex` improves real Codex behavior
+- give maintainers and users a before/after lens
+
+Foundation round output:
+
+- benchmark categories and scoring direction documented in [`benchmarks/README.md`](../../benchmarks/README.md)
 
 ## Installation Modes
 
@@ -239,176 +225,201 @@ The benchmark should test representative tasks such as:
 
 User pastes the bootstrap prompt into Codex.
 
-Best for:
+Properties:
 
-- social sharing
-- first contact
-- low-commitment experimentation
+- fastest adoption path
+- almost no setup friction
+- behavior improvement is temporary unless the user also installs durable layers
 
-### Mode 2: Local Skill Install
+### Mode 2: Project Install
 
-User installs the `godex` skill pack into local Codex.
+User installs `godex` into one repository.
 
-Best for:
+Properties:
 
-- durable upgrade
-- repeated usage
-- users who already work locally
+- safest durable path
+- preferred v1 install target
+- avoids mutating global user setup by default
 
-### Mode 3: Full Product Install
+### Mode 3: Full Install
 
-User installs:
+User installs prompt, durable layer, doctor, and benchmark together.
 
-- bootstrap prompt
-- core skills
-- doctor
-- benchmark
+Properties:
 
-Best for:
+- best long-term experience
+- highest trust
+- not yet implemented end to end in the foundation round
 
-- serious users
-- creators
-- dogfooding and public demos
-
-## Compatibility Strategy
+## Compatibility And Safety Strategy
 
 `godex` must assume real users will have different local realities:
 
-- totally vanilla Codex
-- Codex with partial AGENTS tweaks
-- Codex with third-party skills
-- Codex with messy local instructions
-- users who only want project-level install
-- users who want global install
+- fully vanilla Codex
+- partial custom `AGENTS.md`
+- third-party skills
+- mixed-quality old prompt glue
+- project-only users
+- global power users
 
-Therefore the design must support:
+The design must therefore enforce:
 
-1. **non-destructive install**
-2. **backup before replacement**
-3. **project-level and global-level guidance**
-4. **doctor-driven compatibility reporting**
+1. project-level install is the default safe recommendation
+2. global install requires backup before replacement
+3. no silent overwrite of existing user rules
+4. compatibility is reported explicitly by doctor instead of guessed
+
+For the first public release, compatibility support should be honest and narrow:
+
+- target first: Codex CLI with local repository access
+- safe default: project-level installation
+- later expansion: richer global install and more conflict handling
+
+## Doctor Contract
+
+The doctor layer must eventually answer:
+
+1. which `godex` layers are installed
+2. which are active right now
+3. what is missing
+4. what conflicts with the current user setup
+5. whether benchmark is ready to run
+
+Minimum expected doctor result classes:
+
+- `healthy`
+- `partial`
+- `drifted`
+- `conflicted`
+- `unsupported`
+
+## Benchmark Contract
+
+The benchmark layer must measure more than "did the model write code".
+
+It should score at least these dimensions:
+
+1. intake fidelity
+2. scope retention and closure
+3. verification discipline
+4. output clarity and signal density
+5. behavior/config change reporting
+
+Benchmark tasks must be:
+
+- reproducible
+- understandable by humans
+- runnable without hidden private context
+- representative of real Codex work
+
+## Output Contract By Scenario
+
+`godex` should eventually ship explicit output rules for these common cases:
+
+### Design / Product Planning
+
+Expected emphasis:
+
+- problem
+- chosen product direction
+- current scope
+- release boundary
+
+### Implementation / Repair
+
+Expected emphasis:
+
+- result
+- verification
+- current boundary
+
+### Review
+
+Expected emphasis:
+
+- findings first
+- severity ordering
+- residual risk
+
+### Validation / Audit
+
+Expected emphasis:
+
+- what was checked
+- what passed
+- what failed or remains uncovered
+
+### Behavior Or Config Change
+
+Expected emphasis:
+
+- changed behavior
+- relevant files only when needed
+- verification
+- boundary
 
 ## Repository Architecture
 
-The repository should be organized around product surfaces, not abstract theory.
+`godex` should be organized around product surfaces, not abstract philosophy.
 
-### Top Level
+Top-level contract:
 
-- `README.md`
-- `specs/`
-- `prompts/`
-- `skills/`
-- `installers/`
-- `benchmarks/`
-- `examples/`
-- `docs/`
+- [`README.md`](../../README.md): product story and current status
+- [`AGENTS.md`](../../AGENTS.md): behavior contract
+- [`prompts/`](../../prompts): acquisition layer
+- [`skills/`](../../skills): durable workflow layer
+- [`installers/`](../../installers): install and repair layer
+- [`benchmarks/`](../../benchmarks): proof layer
+- [`examples/`](../../examples): before/after showcase layer
+- [`docs/`](../../docs): support docs
+- [`specs/`](..): versioned design and execution specs
 
-### Prompt Layer
+## Foundation Deliverables
 
-- bootstrap prompt
-- upgrade prompt pack
-- migration prompt
-- example prompts for before/after demo
+The foundation round should leave the repo with:
 
-### Skill Layer
-
-Each skill should be narrow and composable.
-
-Avoid one giant monolith skill.
-
-### Installer Layer
-
-Installers should support:
-
-- project-level setup
-- global-level setup
-- safe backup
-- drift-aware re-run
-
-### Benchmark Layer
-
-Benchmarks should ship with:
-
-- representative tasks
-- expected strong behaviors
-- scoring rubric
-- before/after runner or checklist
-
-## Testing Strategy
-
-Testing for `godex` is not only code testing.
-
-It has four layers:
-
-1. **Static integrity**
-   Files exist, structure is correct, references resolve.
-2. **Install integrity**
-   A clean user can follow the install path successfully.
-3. **Behavior integrity**
-   The upgraded Codex behaves differently on representative tasks.
-4. **Regression integrity**
-   Updating `godex` should not silently break prior install surfaces.
+- a public GitHub repository
+- a product-grade root README
+- a durable repo-level behavior contract
+- a rewritten spec and execution plan
+- a first bootstrap prompt draft
+- compatibility, acceptance, and publish docs
+- upgraded directory-level docs for prompts, skills, installers, benchmarks, and examples
 
 ## Acceptance Standard
 
-`godex` foundation is acceptable when:
+The foundation round is acceptable when:
 
-1. README clearly explains what the product is, why it exists, and how it differs from ordinary prompt repos.
-2. The spec covers product, install, compatibility, benchmark, release, and acceptance.
-3. The plan is detailed enough to execute as a real open-source project.
-4. The local git repo is initialized cleanly.
-5. A GitHub repo is created and connected, or the blocking point is made explicit.
+1. the repository already reads like a coherent product
+2. current status in the root README matches repository reality
+3. the behavior contract is explicit
+4. compatibility and install safety are explicit
+5. publish and acceptance gates are explicit
+6. no key document still reads like an empty shell
+7. the repo is committed, pushed, and clean
 
-`godex` v1 release is acceptable when:
+`godex` should not claim `v1` until:
 
-1. at least one install mode is fully working end to end
-2. doctor can verify installation state
-3. benchmark can show before/after differences
-4. README contains reproducible installation and verification instructions
-5. the product survives at least one full dogfood loop
+1. at least one install mode works end to end
+2. doctor exists and reports meaningful states
+3. benchmark exists and can show before/after improvement
+4. at least one dogfood loop is recorded
+5. current boundaries are documented honestly
 
-## Release Design
+## Known Boundaries After Foundation
 
-Release should not be “push docs and hope”.
+- install scripts are not implemented yet
+- doctor is designed but not implemented yet
+- benchmark is designed but not implemented yet
+- the skill pack taxonomy exists, but individual skills are not shipped yet
+- OSS license is not selected yet because that requires maintainer choice
 
-It should follow a predictable pipeline:
+## Foundation Round Decision
 
-1. write / refine product docs
-2. implement install surface
-3. implement doctor
-4. implement benchmark
-5. dogfood on clean Codex environment
-6. document known boundaries
-7. publish GitHub repo
-8. tag release
-
-## Risks
-
-1. **Prompt bloat**
-   If the bootstrap layer grows too large, it will hurt context quality.
-2. **Install fragility**
-   If install logic is not careful, users will fear breaking their setup.
-3. **Weak benchmark**
-   If benchmark tasks are vague, product claims will feel fake.
-4. **Overfitting to one private setup**
-   `godex` must generalize beyond this current Codex environment.
-5. **Too much methodology, not enough product**
-   If the repo reads like philosophy, it will not convert users.
-
-## Open Questions To Resolve During Implementation
-
-1. Should `godex` ship one main install script or separate project/global installers?
-2. Should benchmark be fully automated, semi-automated, or checklist-based in v1?
-3. Which parts should remain prompt-only versus become skill-native?
-4. What is the minimum viable doctor surface for v1?
-5. How should `godex` handle merging with an existing user `AGENTS.md`?
-
-## Decision For This Foundation Round
-
-For the first foundation round, `godex` will be treated as:
+For this round, `godex` is officially treated as:
 
 - a public GitHub open-source product
 - Codex-native first
+- project-install-first for safety
 - hybrid by design
-- benchmark-driven by default
-- documentation-heavy now, implementation-heavy next
+- proof-driven rather than prompt-hype-driven

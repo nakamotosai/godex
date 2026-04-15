@@ -1,295 +1,166 @@
 # godex
 
-> Turn vanilla Codex into a more structured, self-checking, self-improving engineering agent.
+> Upgrade vanilla Codex into a clearer, more disciplined, lower-noise engineering agent.
 
-`godex` is an open-source upgrade kit for ordinary Codex users.
+`godex` is an open-source upgrade kit for Codex.
 
-It is not just a long prompt.
+It packages the strongest parts of a reinforced Codex workflow into a product that ordinary users can install instead of handcrafting a private maze of prompts, notes, and habits.
 
-It is a hybrid product:
+`godex` is intentionally hybrid:
 
-- a bootstrap prompt that can wake up a plain Codex session
-- a skill pack that installs durable workflows
-- a doctor and benchmark layer that proves the upgrade actually worked
+- a bootstrap prompt for instant session improvement
+- durable local rules and skills for repeatable behavior change
+- doctor and benchmark layers for proving the upgrade actually worked
 
-The product goal is simple:
+## What Changes After Install
 
-after installing `godex`, a normal Codex user should get much closer to the behavior of a heavily reinforced, high-discipline Codex without having to manually invent that system from scratch.
+- The first reply mirrors the request before execution begins.
+- Accepted full objectives stay full; the agent does not quietly shrink the job into scattered partial steps.
+- "Done" requires verification.
+- Closeouts change by scenario instead of using one noisy template for everything.
+- Final replies stay short, readable, and focused on signal.
+- Repeated user corrections become durable operating defaults instead of getting forgotten next session.
 
-## Why This Exists
+## Who This Is For
 
-Most Codex users are still on a mostly raw setup:
+- vanilla Codex users who want a better default operating model
+- power users who want a cleaner, benchmarkable upgrade framework
+- creators and maintainers who want a public repo they can recommend with confidence
 
-- default behavior
-- partial custom instructions
-- scattered prompt tweaks
-- no stable verification loop
-- no reusable upgrade method
+## What `godex` Is Not
 
-That leads to the same problems over and over:
+- not a giant always-on prompt
+- not a personal config dump pretending to be a product
+- not methodology-only prose with no install path
+- not a Codex binary replacement
 
-- jumps into action without clarifying the task
-- writes code before shaping the plan
-- says “fixed” without strong verification
-- gives noisy or badly structured closeouts
-- forgets stable user preferences and repeated mistakes
+## Product Layers
 
-`godex` packages a better default operating model as a product.
+### 1. Bootstrap Prompt
 
-## What `godex` Productizes
+Fastest way to make a fresh Codex session behave better.
 
-`godex` is based on the strongest traits of a highly reinforced Codex workflow.
+Current artifact:
 
-These are the capabilities we want to make installable:
+- [`prompts/bootstrap/GODEX_BOOTSTRAP.md`](prompts/bootstrap/GODEX_BOOTSTRAP.md)
 
-1. **Task intake that mirrors the request first**
-   The agent briefly restates the real goal, boundary, and first action before execution.
-2. **Spec-driven execution**
-   The agent uses goal, scope, constraints, and acceptance as the true control plane instead of ad-hoc hacking.
-3. **Continuous closure**
-   Once a full objective is accepted, the agent keeps pushing toward full closure instead of shrinking the task into scattered partial steps.
-4. **Evidence-first verification**
-   “Done” requires verification, not confidence.
-5. **Output by scenario**
-   Different tasks should produce different response shapes:
-   repair, review, design, configuration change, validation, and blockage should not all look the same.
-6. **Low-noise reporting**
-   Keep the important information, remove repeated framing, path spam, diff spam, and process noise.
-7. **Durable memory and anti-pattern retention**
-   Stable preferences, repeated mistakes, and reusable patterns should survive across sessions.
-8. **Workflow routing**
-   The agent should know when to brainstorm, when to spec, when to plan, when to execute, and when to verify.
-9. **Self-upgrade behavior**
-   The agent should be able to strengthen its own local operating rules when repeated user corrections expose missing defaults.
-10. **Benchmarkable improvement**
-   The upgrade should be provable through before/after tasks, not just described in README prose.
+### 2. Durable Upgrade Layer
 
-## Product Shape
+Repo rules, install surfaces, and skill boundaries that make the change stick.
 
-`godex` will ship in three layers.
+Current design anchors:
 
-### Layer 1: Bootstrap Prompt
+- [`AGENTS.md`](AGENTS.md)
+- [`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md)
+- [`installers/README.md`](installers/README.md)
+- [`skills/README.md`](skills/README.md)
 
-A prompt-only install surface for fast adoption.
+### 3. Trust Layer
 
-This is the viral entry point:
+Doctor, benchmarks, and examples that prove `godex` is better than vanilla Codex on real work.
 
-- easy to copy
-- easy to tweet
-- easy to paste into a fresh Codex session
+Current design anchors:
 
-Its job is not to carry the whole system forever.
+- [`benchmarks/README.md`](benchmarks/README.md)
+- [`examples/README.md`](examples/README.md)
+- [`docs/ACCEPTANCE.md`](docs/ACCEPTANCE.md)
 
-Its job is to:
+## Start Here
 
-- detect environment
-- explain the upgrade path
-- install or activate the durable layer
-- run a first doctor pass
-
-### Layer 2: Godex Skills
-
-A composable skill pack that installs the durable behavior model.
-
-This is the real product core.
-
-It will contain workflows for:
-
-- intake shaping
-- spec-driven delivery
-- verification gating
-- output shaping by scenario
-- memory and mistake capture
-- self-doctor and self-upgrade
-- benchmark and acceptance
-
-### Layer 3: Doctor + Benchmark
-
-This is the trust layer.
-
-It answers:
-
-- Did `godex` install correctly?
-- Which parts are active?
-- What changed versus vanilla Codex?
-- Is the upgraded Codex actually better on representative tasks?
-
-Without this layer, the product is just philosophy.
-
-With it, `godex` becomes measurable.
+- Read the public product truth: [`README.md`](README.md)
+- Read the repo behavior contract: [`AGENTS.md`](AGENTS.md)
+- Read the full product spec: [`SPEC.md`](specs/product-foundation-20260415/SPEC.md)
+- Read the execution plan: [`PLAN.md`](specs/product-foundation-20260415/PLAN.md)
+- Read install safety and compatibility: [`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md)
+- Read publish and release gates: [`docs/PUBLISH.md`](docs/PUBLISH.md)
 
 ## Install Modes
 
-`godex` is designed to support three install modes.
+### Quick Paste
 
-### 1. Prompt-Only Mode
+Paste the bootstrap prompt into a fresh Codex session.
 
-For users who want instant behavior improvement with near-zero setup.
+Status:
 
-### 2. Skill-Pack Mode
+- first draft exists
+- lowest friction
+- not durable by itself
 
-For users who want durable local upgrades without changing the Codex binary.
+### Project Install
 
-### 3. Full Mode
+Install `godex` into one repository as a local operating layer.
 
-For users who want:
+Status:
 
-- bootstrap prompt
-- skills
-- doctor
-- benchmark
-- repo-level or global rollout
+- target v1 install surface
+- safest default for real users
+- install contract designed, scripts not shipped yet
 
-This is the recommended mode.
+### Full Install
 
-## Differentiation
+Install prompt, durable layer, doctor, and benchmark together.
 
-`godex` is not trying to be:
+Status:
 
-- just another “awesome prompt”
-- a one-off personal config dump
-- a Claude-only workflow port
-- an abstract methodology with no install path
-
-It aims to be:
-
-- **portable**
-- **installable**
-- **benchmarkable**
-- **self-improving**
-- **Codex-native first**
+- product direction chosen
+- not yet end-to-end implemented
 
 ## Current Status
 
-This README is the single current status page for the project.
+`README.md` is the single current status page for this repository.
 
 ### Stage
 
-`product foundation`
+`product foundation+`
 
-### Completed
+### Done
 
-- project name selected: `godex`
-- local git repository initialized
-- product direction selected: hybrid upgrade kit
-- market and reference scan started
-- first product README written
-- first full product spec and implementation plan being drafted
+- local git repo created
+- public GitHub repo created and pushed: `https://github.com/nakamotosai/godex`
+- root product README rewritten as a real landing page
+- repo-level `AGENTS.md` added as the durable behavior contract
+- product foundation `SPEC.md` and `PLAN.md` rewritten
+- first bootstrap prompt draft written
+- compatibility, acceptance, and publish docs added
+- prompt / skills / installers / benchmarks / examples directories promoted from empty shells to product contracts
 
-### In Progress
+### Not Done Yet
 
-- defining the exact repository architecture
-- defining the bootstrap prompt architecture
-- defining the install surfaces
-- defining benchmark and acceptance criteria
-
-### Not Started
-
-- first installable prompt pack
-- first skill pack
+- working project installer
+- working global installer
 - doctor command
-- benchmark suite
-- example before/after demos
+- benchmark task suite
+- before/after demo set
 - release assets
+- OSS license selection
 
-## Planned Repository Structure
+## Repo Map
 
-```text
-godex/
-├── README.md
-├── specs/
-│   └── product-foundation-20260415/
-│       ├── SPEC.md
-│       └── PLAN.md
-├── prompts/
-│   ├── bootstrap/
-│   └── upgrade/
-├── skills/
-│   ├── godex-intake/
-│   ├── godex-spec-loop/
-│   ├── godex-output/
-│   ├── godex-doctor/
-│   └── godex-benchmark/
-├── installers/
-├── benchmarks/
-├── examples/
-└── docs/
-```
+- [`README.md`](README.md): product story and current status
+- [`AGENTS.md`](AGENTS.md): durable behavior contract for contributors and agentic workers
+- [`prompts/`](prompts): quick-paste acquisition layer
+- [`skills/`](skills): durable upgrade layer design
+- [`installers/`](installers): safe install contract and future scripts
+- [`benchmarks/`](benchmarks): proof layer design
+- [`examples/`](examples): before/after showcase plan
+- [`docs/`](docs): compatibility, acceptance, publish, and research docs
+- [`specs/product-foundation-20260415/`](specs/product-foundation-20260415): foundation spec and execution plan
 
-## Release Standard
+## Release Bar
 
-`godex` should not be published as a serious product until all of these are true:
+`godex` should not be presented as a finished product until all of these are true:
 
-1. a fresh Codex user can install it in a low-friction way
-2. the upgraded behavior is visible on real tasks
-3. the doctor can verify what is active
-4. the benchmark can show meaningful before/after improvement
-5. the README makes the value obvious to non-expert users
+1. at least one install mode works end to end
+2. install is non-destructive and backed up by default
+3. doctor can verify what is active and what is missing
+4. benchmark can show meaningful before/after differences
+5. the repo survives a real dogfood loop
+6. current boundaries are documented honestly
 
-## Roadmap
+## Current Boundary
 
-### Phase 1
+The repository is now strong enough to present as a serious product foundation.
 
-Product foundation:
+It is not yet an install-complete `v1`.
 
-- product positioning
-- architecture
-- README
-- spec
-- plan
-
-### Phase 2
-
-Prompt-first experience:
-
-- bootstrap prompt
-- upgrade prompt pack
-- quickstart examples
-
-### Phase 3
-
-Durable Codex upgrade layer:
-
-- core skills
-- install flows
-- compatibility rules
-
-### Phase 4
-
-Trust layer:
-
-- doctor
-- benchmark
-- acceptance suite
-
-### Phase 5
-
-Open-source release:
-
-- public GitHub repo
-- release notes
-- example tasks
-- demo media
-
-## Design Constraint
-
-`godex` must improve Codex without turning it into a bloated, fragile meta-system.
-
-That means:
-
-- keep root instructions lean
-- push long workflows into skills
-- avoid giant always-on prompts
-- verify improvements on real tasks
-- preserve compatibility with different Codex setups
-
-## Next Repository Milestone
-
-A complete product foundation spec that defines:
-
-- users
-- product surfaces
-- repo structure
-- install modes
-- benchmark design
-- release and acceptance rules
+The biggest remaining product gaps are install automation, doctor, benchmark, and license choice.

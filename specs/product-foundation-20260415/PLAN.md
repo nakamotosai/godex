@@ -2,246 +2,162 @@
 
 > **For agentic workers:** In Codex, use `superpowers:executing-plans` by default. Use `superpowers:subagent-driven-development` only when independent lanes exist and the user explicitly allows delegation or parallel agent work. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Turn `godex` from a product thesis into a real open-source Codex upgrade kit with a durable install surface, benchmark proof, and publishable GitHub repository.
+**Goal:** Turn `godex` into a real open-source Codex upgrade product with a clear public story, a durable behavior contract, safe install direction, and a credible path to doctor and benchmark proof.
 
-**Architecture:** Build `godex` in layers: product docs first, then bootstrap prompt, then durable skill pack, then doctor and benchmark, then packaging and release. Treat README as the single current status page and keep long design detail in task-scoped specs.
+**Architecture:** Build `godex` in layers. First make the repository itself product-grade and internally consistent. Then ship the prompt-first surface, durable install layer, doctor, benchmark, and release assets in that order. Keep README as the single current status page and use supporting docs only for depth.
 
-**Tech Stack:** Markdown docs, Codex-compatible skills, shell/Python installer utilities, benchmark fixtures, GitHub releases, local verification commands.
+**Tech Stack:** Markdown docs, Codex-compatible prompt and skill files, shell/Python installer utilities, benchmark fixtures, GitHub releases.
 
 ---
 
-### Task 1: Product Foundation Docs
+### Task 1: Foundation Truth Layer
 
 **Files:**
-- Create: `README.md`
-- Create: `specs/product-foundation-20260415/SPEC.md`
-- Create: `specs/product-foundation-20260415/PLAN.md`
+- Modify: `README.md`
+- Create: `AGENTS.md`
+- Modify: `specs/product-foundation-20260415/SPEC.md`
+- Modify: `specs/product-foundation-20260415/PLAN.md`
+- Create: `docs/COMPATIBILITY.md`
+- Create: `docs/ACCEPTANCE.md`
+- Create: `docs/PUBLISH.md`
 
-- [ ] Define the public product story in `README.md`
-- [ ] Write the product foundation spec covering:
-  - product thesis
-  - user personas
-  - install modes
-  - compatibility strategy
-  - testing and acceptance
-  - release design
-- [ ] Write the implementation plan that turns the spec into execution phases
-- [ ] Review the docs for:
-  - duplicated claims
-  - unclear scope
-  - missing acceptance
-  - product/story mismatch
+- [x] Rewrite the root README as a real product landing page instead of a draft memo
+- [x] Add a repo-level behavior contract that preserves the strongest reinforced Codex traits
+- [x] Rewrite the product spec to make compatibility, safety, output, doctor, and benchmark requirements explicit
+- [x] Rewrite the plan around product phases and exit gates instead of loose topic buckets
+- [x] Add compatibility, acceptance, and publish support docs
 
 **Verify**
-- Run: `rg -n "TODO|TBD|placeholder" README.md specs/product-foundation-20260415`
-- Expected: no unresolved placeholders
+- Run: `rg -n "TODO|TBD" README.md AGENTS.md docs specs/product-foundation-20260415`
+- Expected: no unresolved draft markers
 
-### Task 2: Repository Baseline
-
-**Files:**
-- Create: `.gitignore`
-- Optional Create: `LICENSE`
-- Optional Create: `docs/`
-- Optional Create: `prompts/`
-- Optional Create: `skills/`
-- Optional Create: `installers/`
-- Optional Create: `benchmarks/`
-- Optional Create: `examples/`
-
-- [ ] Create the top-level repository skeleton required by the spec
-- [ ] Add a pragmatic `.gitignore` for docs + future script/tool output
-- [ ] Decide whether to include `LICENSE` in the first public push or defer with explicit note
-- [ ] Ensure the repo shape matches the README and spec
-
-**Verify**
-- Run: `find . -maxdepth 2 | sort`
-- Expected: repository structure matches the documented architecture
-
-### Task 3: Bootstrap Prompt Surface
+### Task 2: Prompt-First Surface
 
 **Files:**
+- Modify: `prompts/README.md`
 - Create: `prompts/bootstrap/README.md`
 - Create: `prompts/bootstrap/GODEX_BOOTSTRAP.md`
 - Create: `prompts/upgrade/README.md`
 
-- [ ] Define what the bootstrap prompt is allowed to do and what it must hand off to skills
-- [ ] Write the first bootstrap prompt in a portable Markdown form
-- [ ] Document how users invoke it in Codex
-- [ ] Define the “quick paste” install experience
+- [x] Define the quick-paste acquisition layer
+- [x] Write the first bootstrap prompt draft
+- [x] Document what the bootstrap prompt can and cannot do
+- [ ] Validate the bootstrap prompt on at least one clean Codex session
 
 **Verify**
-- Check that bootstrap prompt clearly states:
+- Check that `prompts/bootstrap/GODEX_BOOTSTRAP.md` clearly states:
   - purpose
-  - supported environments
+  - required behavior changes
   - limits
-  - durable install recommendation
+  - handoff to durable install
 
-### Task 4: Core Skill Pack Design
-
-**Files:**
-- Create: `skills/README.md`
-- Create: `skills/godex-intake/SKILL.md`
-- Create: `skills/godex-spec-loop/SKILL.md`
-- Create: `skills/godex-verification/SKILL.md`
-- Create: `skills/godex-output/SKILL.md`
-- Create: `skills/godex-doctor/SKILL.md`
-- Create: `skills/godex-benchmark/SKILL.md`
-
-- [ ] Define the minimal skill taxonomy
-- [ ] Ensure each skill has one clear purpose
-- [ ] Keep root rules lean and push long workflows into skills
-- [ ] Document which skills are core versus optional
-
-**Verify**
-- Run a manual boundary review:
-  - Can each skill be explained in one sentence?
-  - Does any skill duplicate another?
-  - Is any skill too broad?
-
-### Task 5: Install and Compatibility Layer
+### Task 3: Durable Skill Layer
 
 **Files:**
-- Create: `installers/README.md`
-- Create: `installers/install-project.sh`
-- Create: `installers/install-global.sh`
-- Create: `installers/backup-existing-config.sh`
-- Create: `docs/COMPATIBILITY.md`
+- Modify: `skills/README.md`
+- Future Create: `skills/godex-intake/SKILL.md`
+- Future Create: `skills/godex-spec-loop/SKILL.md`
+- Future Create: `skills/godex-verification/SKILL.md`
+- Future Create: `skills/godex-output/SKILL.md`
+- Future Create: `skills/godex-memory/SKILL.md`
+- Future Create: `skills/godex-doctor/SKILL.md`
+- Future Create: `skills/godex-benchmark/SKILL.md`
 
-- [ ] Design project-level install flow
-- [ ] Design global-level install flow
-- [ ] Add backup logic before touching user config
-- [ ] Document compatibility assumptions and failure modes
-- [ ] Explicitly define how `godex` coexists with existing `AGENTS.md` and local skills
+- [x] Define the minimal skill taxonomy
+- [x] Give each planned skill family one clear purpose
+- [ ] Implement the first core skill
+- [ ] Verify that the skill pack can coexist with a user's existing Codex setup
 
-**Verify**
-- On a clean test directory, confirm installer can:
-  - create backup
-  - place files in expected locations
-  - print next verification step
+**Exit Gate**
+- A first user can understand the skill boundaries in under 2 minutes
+- No planned skill duplicates another
 
-### Task 6: Doctor Surface
-
-**Files:**
-- Create: `docs/DOCTOR.md`
-- Create: `installers/godex-doctor.sh`
-- Create: `benchmarks/doctor-fixtures/`
-
-- [ ] Define the minimum doctor contract:
-  - what it checks
-  - what success means
-  - what failure classes exist
-- [ ] Implement the first doctor script
-- [ ] Document common failure cases and suggested fixes
-
-**Verify**
-- Doctor should report at least:
-  - installed layers
-  - missing layers
-  - conflicting setup
-  - benchmark readiness
-
-### Task 7: Benchmark Suite
+### Task 4: Install And Compatibility Layer
 
 **Files:**
-- Create: `benchmarks/README.md`
-- Create: `benchmarks/tasks/`
-- Create: `benchmarks/scoring-rubric.md`
-- Create: `examples/before-after/README.md`
+- Modify: `installers/README.md`
+- Future Create: `installers/install-project.sh`
+- Future Create: `installers/install-global.sh`
+- Future Create: `installers/backup-existing-config.sh`
 
-- [ ] Design representative benchmark tasks
-- [ ] Define scoring rubric for:
-  - intake quality
-  - closure quality
-  - verification quality
-  - output clarity
-  - config-change visibility
-- [ ] Add before/after examples
-- [ ] Make benchmark useful for both maintainers and end users
+- [x] Define project-first install strategy
+- [x] Define global install safety requirements
+- [x] Define backup-before-mutation policy
+- [ ] Implement project installer
+- [ ] Implement global installer
+- [ ] Prove install does not silently overwrite an existing setup
 
-**Verify**
-- Benchmark tasks should be:
-  - representative
-  - reproducible
-  - human-reviewable
-  - not dependent on hidden private context
+**Exit Gate**
+- A clean repo can be upgraded with the project installer
+- A user with existing config gets a backup before any replacement
 
-### Task 8: Dogfood and Acceptance
+### Task 5: Doctor Layer
 
 **Files:**
-- Create: `docs/DOGFOOD.md`
-- Create: `docs/ACCEPTANCE.md`
-- Create: `docs/RELEASE_CHECKLIST.md`
+- Future Create: `installers/godex-doctor.sh`
+- Future Create: `docs/DOCTOR.md`
 
-- [ ] Run `godex` against real Codex tasks in a clean-ish environment
-- [ ] Record what improved and what still drifted
-- [ ] Convert findings into acceptance gates
-- [ ] Define hard release blockers
+- [x] Define the doctor contract in product docs
+- [ ] Implement a first doctor command
+- [ ] Verify doctor reports installed, missing, and conflicting layers correctly
 
-**Verify**
-- Acceptance must explicitly cover:
-  - install success
-  - doctor success
-  - benchmark usability
-  - README clarity
-  - no destructive overwrite behavior
+**Exit Gate**
+- Doctor returns meaningful status classes instead of generic success/fail
 
-### Task 9: GitHub Publish Pipeline
+### Task 6: Benchmark And Examples Layer
 
 **Files:**
-- Create: `.github/`
-- Create: `.github/workflows/` when automation is justified
-- Create: `docs/PUBLISH.md`
+- Modify: `benchmarks/README.md`
+- Modify: `examples/README.md`
+- Future Create: `benchmarks/tasks/`
+- Future Create: `benchmarks/scoring-rubric.md`
+- Future Create: `examples/before-after/`
 
-- [ ] Create the GitHub repo
-- [ ] Configure origin
-- [ ] Push foundation branch or `main`
-- [ ] Document release steps
-- [ ] Add workflow automation only where it reduces real friction
+- [x] Define the benchmark categories
+- [x] Define the example surfaces
+- [ ] Write benchmark tasks
+- [ ] Write the scoring rubric
+- [ ] Add before/after demos
+
+**Exit Gate**
+- A maintainer can run a reproducible before/after evaluation with no private context
+
+### Task 7: Dogfood And Release Readiness
+
+**Files:**
+- Modify: `README.md`
+- Modify: `docs/ACCEPTANCE.md`
+- Modify: `docs/PUBLISH.md`
+- Future Create: release assets as needed
+
+- [x] Define release gates and current product boundary
+- [ ] Run at least one clean-ish dogfood loop
+- [ ] Choose OSS license with maintainer confirmation
+- [ ] Tag first beta or `v0.1.0` only after install, doctor, and benchmark are real
 
 **Verify**
 - Run:
   - `git remote -v`
-  - `git status --short`
   - `git branch --show-current`
+  - `git status --short`
 - Expected:
-  - origin configured
-  - clean working tree after baseline commit
-  - `main` branch active
+  - public origin exists
+  - branch is `main`
+  - working tree is clean after closeout
 
-### Task 10: Public Product Polish
+## Current Coverage
 
-**Files:**
-- Modify: `README.md`
-- Modify: `docs/*`
-- Modify: `examples/*`
+This plan already covers the full product shape:
 
-- [ ] Rewrite README after implementation reality exists
-- [ ] Add screenshots or terminal demos if they materially improve conversion
-- [ ] Ensure README explains:
-  - what `godex` is
-  - who it is for
-  - how to install
-  - how to verify
-  - how it differs from prompt-only repos
-- [ ] Make the repo legible to both power users and non-expert Codex users
+- product story
+- durable behavior contract
+- compatibility and install safety
+- prompt acquisition layer
+- skill taxonomy
+- doctor contract
+- benchmark contract
+- publish and release gates
 
-**Verify**
-- README review checklist:
-  - Can a first-time visitor understand the product in under 60 seconds?
-  - Can a serious user find install and verification in under 2 minutes?
-  - Is the current project stage obvious?
+The next major milestone is not "more docs".
 
-## Spec Coverage Check
-
-This plan covers:
-
-- product thesis
-- install modes
-- compatibility
-- doctor
-- benchmark
-- testing
-- release
-- acceptance
-
-Remaining implementation detail will live in future task-scoped specs once Phase 1 foundation is accepted.
+It is a working project-install beta with a real doctor pass.
