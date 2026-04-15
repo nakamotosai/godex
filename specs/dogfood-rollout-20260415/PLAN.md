@@ -133,8 +133,8 @@
 
 - [x] Run the first local doctor
 - [x] Scan for unresolved draft markers in the newly touched `godex` files
-- [ ] Commit the `godex` repo changes
-- [ ] Push to `origin/main`
+- [x] Commit the `godex` repo changes
+- [x] Push to `origin/main`
 
 **Verify**
 - Run:
