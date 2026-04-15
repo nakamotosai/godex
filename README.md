@@ -71,8 +71,10 @@ Current design anchors:
 - Read the repo behavior contract: [`AGENTS.md`](AGENTS.md)
 - Read the earlier beta-delivery spec: [`SPEC.md`](specs/beta-delivery-20260415/SPEC.md)
 - Read the earlier beta-delivery plan: [`PLAN.md`](specs/beta-delivery-20260415/PLAN.md)
-- Read the current release-closeout spec: [`SPEC.md`](specs/release-closeout-20260415/SPEC.md)
-- Read the current release-closeout plan: [`PLAN.md`](specs/release-closeout-20260415/PLAN.md)
+- Read the earlier release-closeout spec: [`SPEC.md`](specs/release-closeout-20260415/SPEC.md)
+- Read the earlier release-closeout plan: [`PLAN.md`](specs/release-closeout-20260415/PLAN.md)
+- Read the current `v1` closeout spec: [`SPEC.md`](specs/v1-closeout-20260415/SPEC.md)
+- Read the current `v1` closeout plan: [`PLAN.md`](specs/v1-closeout-20260415/PLAN.md)
 - Read install safety and compatibility: [`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md)
 - Read the project install walkthrough: [`docs/PROJECT_INSTALL.md`](docs/PROJECT_INSTALL.md)
 - Read the global install walkthrough: [`docs/GLOBAL_INSTALL.md`](docs/GLOBAL_INSTALL.md)
@@ -152,6 +154,7 @@ Status:
 - recorded install proof added
 - public beta release pack added
 - review-layout tightening promoted into shipped behavior surfaces
+- `v1` closeout spec and plan added
 
 ### Not Done Yet
 
@@ -180,7 +183,8 @@ Status:
 - [`specs/paragraph-spacing-round2-20260415/`](specs/paragraph-spacing-round2-20260415): current paragraph-spacing + round-2 benchmark spec
 - [`specs/visual-layout-round3-20260415/`](specs/visual-layout-round3-20260415): current visual-layout + round-3 benchmark spec
 - [`specs/beta-delivery-20260415/`](specs/beta-delivery-20260415): earlier project-install beta-delivery spec and execution plan
-- [`specs/release-closeout-20260415/`](specs/release-closeout-20260415): current release-closeout spec and execution plan
+- [`specs/release-closeout-20260415/`](specs/release-closeout-20260415): earlier public-beta release-closeout spec and execution plan
+- [`specs/v1-closeout-20260415/`](specs/v1-closeout-20260415): current `v1` closeout spec and execution plan
 
 ## Beta Bar
 
@@ -213,3 +217,5 @@ What is now real:
 The benchmark rounds now show a stable pattern: `godex` is stronger than the clean baseline on intake mirroring and on behavior/config reporting when many files must stay visible.
 
 The remaining `v1` gaps are narrower: broad outside-user validation, better handling for complex custom global policies, and a real public release/tagging cycle beyond maintainer-run proof.
+
+Those remaining gaps now have a dedicated `v1` closeout spec and plan.
