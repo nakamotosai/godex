@@ -131,6 +131,7 @@ Status:
 - first real baseline-vs-dogfood benchmark round executed
 - dogfood noise-tightening pass added for closeout and behavior-reporting weak spots
 - second benchmark round executed after paragraph-spacing tightening
+- third benchmark round executed with visual-layout stress coverage
 - current Codex workspace wired for `godex` dogfood
 
 ### Not Done Yet
@@ -151,12 +152,14 @@ Status:
 - [`benchmarks/`](benchmarks): proof layer design
 - [`benchmarks/runs/2026-04-15-round1.md`](benchmarks/runs/2026-04-15-round1.md): first real benchmark result
 - [`benchmarks/runs/2026-04-15-round2.md`](benchmarks/runs/2026-04-15-round2.md): second benchmark result after spacing tightening
+- [`benchmarks/runs/2026-04-15-round3.md`](benchmarks/runs/2026-04-15-round3.md): third benchmark result with visual-layout stress
 - [`examples/`](examples): before/after showcase plan
 - [`docs/`](docs): compatibility, acceptance, publish, and research docs
 - [`specs/product-foundation-20260415/`](specs/product-foundation-20260415): foundation spec and execution plan
 - [`specs/dogfood-rollout-20260415/`](specs/dogfood-rollout-20260415): current product and local rollout spec
 - [`specs/noise-tightening-20260415/`](specs/noise-tightening-20260415): current closeout-noise tightening spec
 - [`specs/paragraph-spacing-round2-20260415/`](specs/paragraph-spacing-round2-20260415): current paragraph-spacing + round-2 benchmark spec
+- [`specs/visual-layout-round3-20260415/`](specs/visual-layout-round3-20260415): current visual-layout + round-3 benchmark spec
 
 ## Release Bar
 
@@ -175,6 +178,6 @@ The repository is now strong enough to present as a serious product foundation w
 
 It is not yet an install-complete `v1`, but it now has a concrete path for local use before public hardening.
 
-The second benchmark round now exists, and it clarified the current state more precisely. `godex` is already stronger than the clean baseline on intake mirroring, full-objective retention, and behavior/config reporting. The remaining stubborn gap is narrower: long review findings still stack too densely, so output spacing is not fully solved yet.
+The third benchmark round now exists, and it sharpens the picture further. `godex` is now clearly stronger than the clean baseline on intake mirroring and on behavior/config reporting when many files must stay visible. Baseline caught up on full-objective retention, and the remaining stubborn weakness is now narrower still: review-style long findings are still denser than they should be.
 
 The biggest remaining product gaps are safer general installation, stronger benchmark automation, broader dogfood evidence, a stronger fix for review-output spacing, and license choice.

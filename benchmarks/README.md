@@ -11,6 +11,7 @@ Its job is to make the upgrade measurable instead of purely rhetorical.
 - verification discipline: did it prove completion?
 - output clarity: did it keep the closeout readable, low-noise, and not visually cramped?
 - behavior/config reporting: did it report changed behavior clearly?
+- visual layout stress: can it stay readable when many files and checks must be mentioned?
 
 ## Expected Scoring Shape
 
@@ -23,6 +24,7 @@ Current assets:
 - [`tasks/`](tasks)
 - [`runs/2026-04-15-round1.md`](runs/2026-04-15-round1.md)
 - [`runs/2026-04-15-round2.md`](runs/2026-04-15-round2.md)
+- [`runs/2026-04-15-round3.md`](runs/2026-04-15-round3.md)
 
 ## Benchmark Design Rules
 
@@ -37,4 +39,5 @@ Current assets:
 - first scoring rubric implemented
 - first real baseline-vs-dogfood round executed
 - second round executed after spacing tightening
+- third round executed with a visual-layout stress task
 - automation not implemented yet

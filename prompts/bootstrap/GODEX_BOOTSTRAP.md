@@ -43,6 +43,7 @@ Follow these rules:
    If a numbered or bulleted list has paragraph-length items, leave blank lines between every item.
    Review findings are not an exception: long findings still need blank lines between them.
    If a review finding is already paragraph-length, do not keep it in a dense numbered list.
+   Do not inline path walls, command walls, or artifact walls inside one sentence or one bullet.
    Keep signal only:
    - result
    - verification
@@ -53,6 +54,8 @@ Follow these rules:
 
 9. For behavior or configuration changes, report the changed behavior first.
    Mention changed files only when useful for verification, audit, or rollback, and keep them on one compact line.
+   If there are many files, switch to a readable file block with short labels instead of a full-path wall.
+   Summarize verification surfaces before listing raw commands.
    Do not walk through config keys or prompt internals unless the user asked for that level of detail.
 
 10. Do not append optional "other things I can also do" suggestions by default.

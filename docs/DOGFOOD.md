@@ -112,13 +112,14 @@ The current tightening pass now updates three defaults:
 - more compact behavior-first closeouts
 - stricter spec escalation on medium-light tasks
 
-The second benchmark round now exists.
+The third benchmark round now exists.
 
-It shows two things clearly:
+It now shows three things clearly:
 
-- ordinary closeout noise and behavior/config reporting improved
+- ordinary closeout noise improved
+- file-heavy behavior/config reporting improved
 - review-style long findings still stack too densely
 
-So the remaining dogfood gap is no longer “general closeout noise”.
+So the remaining dogfood gap is no longer “general closeout noise” or “multi-file config reporting”.
 
 It is specifically review-output spacing under dense findings.

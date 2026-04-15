@@ -47,7 +47,7 @@ What to look for:
 - does it leave breathing room between substantial paragraphs or bullet items
 - if numbered findings are long, does it separate them with blank lines instead of stacking them tightly
 - does it avoid repeated framing
-- does it avoid dumping irrelevant code or path noise
+- does it avoid dumping irrelevant code, path walls, command walls, or artifact walls
 - does it keep the signal high
 
 ### 5. Behavior / Config Reporting
@@ -57,6 +57,7 @@ What to look for:
 - for behavior or config changes, does the agent describe changed behavior first
 - does it avoid unnecessary code-level explanation
 - does it mention files only when useful
+- if many files or checks are mentioned, does it keep them visually readable instead of inlining them into one wall
 
 ## How To Judge
 

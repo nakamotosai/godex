@@ -20,10 +20,14 @@ This repository exists to turn reinforced Codex behavior into an installable ope
 - If a numbered or bulleted list contains paragraph-length items, leave blank lines between every item.
 - In review outputs, paragraph-length findings must also be separated with blank lines.
 - In review outputs, avoid dense numbered lists for paragraph-length findings; use separated finding blocks instead.
+- Do not create path walls, command walls, or artifact walls by inlining many long references inside one sentence or one bullet.
+- Keep visible file labels short; the link target can stay absolute, but the displayed text should not be a full-path wall.
 - Do not fill closeouts with repeated framing, path spam, diff spam, or code dumps the user did not ask for.
 - Do not append optional "other things I can also do" suggestions by default.
 - Do not narrate internal workflow or skill routing in ordinary tasks unless the workflow itself is being discussed.
 - For behavior or configuration changes, explain the changed behavior first; if files are needed for verification or rollback, keep them on one compact line and do not walk through config keys unless asked.
+- If changed files exceed 4, switch to a dedicated file block instead of forcing a one-line file dump.
+- If verification spans multiple checks, summarize the acceptance surfaces first instead of dumping raw command inventory.
 
 ## Delivery Contract
 
