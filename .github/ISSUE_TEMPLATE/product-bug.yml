@@ -1,0 +1,46 @@
+name: Product bug
+description: Report a non-install product bug in behavior, docs, proof, or release surfaces.
+title: "[bug] "
+labels:
+  - bug
+body:
+  - type: input
+    id: area
+    attributes:
+      label: Area
+      placeholder: e.g. benchmark, doctor, docs, release pack
+    validations:
+      required: true
+  - type: input
+    id: runtime
+    attributes:
+      label: Runtime and OS
+      placeholder: e.g. Codex CLI on macOS
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: Bug summary
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction
+      description: Include the smallest truthful repro path.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Paste doctor output, validation output, or screenshots as needed.
+    validations:
+      required: false

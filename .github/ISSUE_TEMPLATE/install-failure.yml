@@ -1,0 +1,51 @@
+name: Install failure
+description: Report a project-install or global-install failure with the required evidence.
+title: "[install] "
+labels:
+  - install
+body:
+  - type: dropdown
+    id: install_mode
+    attributes:
+      label: Install mode
+      options:
+        - project install
+        - global install
+        - quick paste
+    validations:
+      required: true
+  - type: input
+    id: runtime
+    attributes:
+      label: Runtime and OS
+      placeholder: e.g. Codex CLI on Ubuntu 24.04
+    validations:
+      required: true
+  - type: textarea
+    id: dry_run
+    attributes:
+      label: Dry-run output
+      description: Paste the exact output from the relevant `--dry-run` command.
+    validations:
+      required: true
+  - type: textarea
+    id: doctor
+    attributes:
+      label: Doctor output
+      description: Paste the exact doctor output if install completed or partially completed.
+    validations:
+      required: false
+  - type: textarea
+    id: restore
+    attributes:
+      label: Restore attempt
+      description: State whether restore was attempted and what happened.
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional context
+      description: Include any custom AGENTS setup or manual-merge context.
+    validations:
+      required: false

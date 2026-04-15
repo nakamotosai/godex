@@ -3,9 +3,17 @@ set -euo pipefail
 
 START_MARKER="<!-- GODEX PROJECT BLOCK START -->"
 END_MARKER="<!-- GODEX PROJECT BLOCK END -->"
+BLOCK_PATH="blocks/project-agents-block.md"
+MANUAL_DOC="docs/MANUAL_MERGE.md"
+
+dry_run=0
+if [[ "${1:-}" = "--dry-run" ]]; then
+  dry_run=1
+  shift
+fi
 
 if [[ "${1:-}" = "" ]]; then
-  echo "usage: $0 <target-project-root>" >&2
+  echo "usage: $0 [--dry-run] <target-project-root>" >&2
   exit 1
 fi
 
@@ -28,27 +36,24 @@ backups_dir="${godex_dir}/backups"
 docs_dir="${godex_dir}/docs"
 examples_dir="${godex_dir}/examples/project-install-beta"
 manifest_path="${godex_dir}/manifest.json"
+block_path="${repo_root}/${BLOCK_PATH}"
+
+set +e
+python3 "${repo_root}/installers/agents_preflight.py" \
+  --mode project \
+  --target "${target_root}" \
+  --doc "${repo_root}/${MANUAL_DOC}" \
+  $([[ "${dry_run}" -eq 1 ]] && printf '%s' '--dry-run')
+preflight_status=$?
+set -e
+if [[ "${preflight_status}" -ne 0 || "${dry_run}" -eq 1 ]]; then
+  exit "${preflight_status}"
+fi
 
 mkdir -p "${bin_dir}" "${backups_dir}" "${docs_dir}" "${examples_dir}"
 
 render_block() {
-  cat <<'EOF'
-<!-- GODEX PROJECT BLOCK START -->
-## godex Project Policy
-
-- First reply briefly mirrors the task before action.
-- Keep the accepted full objective intact. Do not silently collapse it into a "smallest next step" handoff.
-- Verify before calling work done.
-- Final replies default to result, verification, and real boundary.
-- Report behavior change before code churn.
-- Keep closeouts low-noise and visually readable.
-- Separate dense blocks with blank lines.
-- In review outputs, paragraph-length findings must be separated into distinct blocks with blank lines.
-- Do not stack long review findings inside a dense numbered list.
-- Avoid path walls, command walls, and artifact walls.
-- If many files must stay visible, list them in a dedicated file block with short labels.
-<!-- GODEX PROJECT BLOCK END -->
-EOF
+  cat "${block_path}"
 }
 
 start_count=0
@@ -104,29 +109,16 @@ if [[ -f "${agents_path}" ]]; then
       agents_backup=".godex/backups/AGENTS.md.pre-godex-${timestamp}.bak"
       cp "${agents_path}" "${target_root}/${agents_backup}"
     fi
-    python3 - <<'PY' "${agents_path}" "${START_MARKER}" "${END_MARKER}"
+    python3 - <<'PY' "${agents_path}" "${START_MARKER}" "${END_MARKER}" "${block_path}"
 from pathlib import Path
 import sys
 
 path = Path(sys.argv[1])
 start = sys.argv[2]
 end = sys.argv[3]
+block_path = Path(sys.argv[4])
 text = path.read_text()
-block = """<!-- GODEX PROJECT BLOCK START -->
-## godex Project Policy
-
-- First reply briefly mirrors the task before action.
-- Keep the accepted full objective intact. Do not silently collapse it into a "smallest next step" handoff.
-- Verify before calling work done.
-- Final replies default to result, verification, and real boundary.
-- Report behavior change before code churn.
-- Keep closeouts low-noise and visually readable.
-- Separate dense blocks with blank lines.
-- In review outputs, paragraph-length findings must be separated into distinct blocks with blank lines.
-- Do not stack long review findings inside a dense numbered list.
-- Avoid path walls, command walls, and artifact walls.
-- If many files must stay visible, list them in a dedicated file block with short labels.
-<!-- GODEX PROJECT BLOCK END -->"""
+block = block_path.read_text().strip()
 start_idx = text.index(start)
 end_idx = text.index(end) + len(end)
 updated = text[:start_idx].rstrip() + "\n\n" + block + text[end_idx:]

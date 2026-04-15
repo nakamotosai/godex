@@ -11,6 +11,8 @@ For the current public beta, support is still honest and narrow:
 - global install is now available for one Codex home with backup-first mutation
 - quick-paste mode works without file mutation
 
+See also: `docs/SUPPORT_MATRIX.md`.
+
 ## Expected User Setups
 
 | User setup | Recommended mode | Mutation level | Main risk | Required behavior |
@@ -46,3 +48,5 @@ Doctor now flags:
 Backup and drift visibility are implemented for both install modes.
 
 Automated merge for complex custom global policies is not implemented.
+
+`v1` handles those cases with preflight classification plus `docs/MANUAL_MERGE.md`.

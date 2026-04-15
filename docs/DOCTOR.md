@@ -63,6 +63,7 @@ It checks:
 - current release-closeout spec exists
 - benchmark assets exist
 - install-proof and release-pack assets exist
+- support docs and GitHub support surfaces exist
 - the current workspace has the thin `godex dogfood` install
 
 ## Project Install Scope

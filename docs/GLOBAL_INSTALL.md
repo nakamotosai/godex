@@ -8,6 +8,12 @@ The main install path is:
 bash installers/install-global.sh
 ```
 
+Preview first:
+
+```bash
+bash installers/install-global.sh --dry-run ~/.codex
+```
+
 Or install into a specific Codex-home target:
 
 ```bash
@@ -35,6 +41,7 @@ Global install writes:
 - create a fresh root `AGENTS.md` if the Codex home did not already have one
 - replace an existing managed `godex` global block in place
 - append a new managed block if the Codex home has a simple pre-existing `AGENTS.md`
+- stop with `manual_review` if the existing `AGENTS.md` is too complex for safe automatic append
 - stop with conflict if markers are broken or duplicated
 
 ## Verify After Install
@@ -78,3 +85,5 @@ It enforces the strongest `godex` defaults that should survive across repos:
 Global install is broader than project install, so it stays conservative.
 
 Complex existing global `AGENTS.md` policies may still require manual review.
+
+If preflight returns `manual_review`, use `docs/MANUAL_MERGE.md`.

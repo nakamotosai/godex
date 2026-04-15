@@ -8,6 +8,12 @@ The main install path is:
 bash installers/install-project.sh /path/to/target-repo
 ```
 
+Preview first:
+
+```bash
+bash installers/install-project.sh --dry-run /path/to/target-repo
+```
+
 ## What It Adds
 
 Project install writes:
@@ -28,6 +34,7 @@ Project install writes:
 - create a fresh root `AGENTS.md` if the repo did not already have one
 - replace an existing managed `godex` block in place
 - append a new managed block if the repo has a simple pre-existing `AGENTS.md`
+- stop with `manual_review` if the existing `AGENTS.md` is too complex for safe automatic append
 - stop with conflict if markers are broken or duplicated
 
 ## Verify After Install
@@ -71,3 +78,5 @@ It enforces the strongest `godex` defaults that matter to ordinary users:
 Project install remains the safest default install mode.
 
 Global install now exists as the broader Codex-home option.
+
+If preflight returns `manual_review`, use `docs/MANUAL_MERGE.md`.

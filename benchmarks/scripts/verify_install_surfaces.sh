@@ -34,25 +34,51 @@ assert_contains() {
 project_root="${artifact_root}/project"
 global_root="${artifact_root}/global"
 
-mkdir -p "${project_root}/clean" "${project_root}/simple" "${project_root}/drift" "${project_root}/partial" "${project_root}/conflicted"
-mkdir -p "${global_root}/clean-home" "${global_root}/simple-home" "${global_root}/drift-home" "${global_root}/partial-home" "${global_root}/conflicted-home"
+mkdir -p "${project_root}/clean" "${project_root}/simple" "${project_root}/complex" "${project_root}/drift" "${project_root}/partial" "${project_root}/conflicted"
+mkdir -p "${global_root}/clean-home" "${global_root}/simple-home" "${global_root}/complex-home" "${global_root}/drift-home" "${global_root}/partial-home" "${global_root}/conflicted-home"
 
 git -C "${project_root}/clean" init -q
 git -C "${project_root}/simple" init -q
+git -C "${project_root}/complex" init -q
 git -C "${project_root}/drift" init -q
 git -C "${project_root}/partial" init -q
 git -C "${project_root}/conflicted" init -q
 
 printf '## Existing Policy\n\n- Keep changelog synced.\n' >"${project_root}/simple/AGENTS.md"
 cp "${project_root}/simple/AGENTS.md" "${project_root}/simple/original-agents.md"
+cat >"${project_root}/complex/AGENTS.md" <<'EOF'
+# Existing Repo Rules
+
+## Build
+
+- Keep release docs aligned.
+- Run targeted tests before merge.
+
+## Deploy
+
+1. Review staging config.
+2. Confirm production rollback.
+
+Custom note:
+This repo already carries a fuller local instruction stack.
+EOF
 
 run_expect 1 "${artifact_root}/project-missing.txt" "${repo_root}/installers/project-doctor.py" "${project_root}/clean"
 assert_contains "[overall] missing" "${artifact_root}/project-missing.txt"
+
+run_expect 0 "${artifact_root}/project-clean-dry-run.txt" bash "${repo_root}/installers/install-project.sh" --dry-run "${project_root}/clean"
+assert_contains "[preflight] ready_create" "${artifact_root}/project-clean-dry-run.txt"
+assert_contains "[dry_run] no files changed" "${artifact_root}/project-clean-dry-run.txt"
+[[ ! -e "${project_root}/clean/.godex" ]]
 
 run_expect 0 "${artifact_root}/project-clean-install.txt" bash "${repo_root}/installers/install-project.sh" "${project_root}/clean"
 run_expect 0 "${artifact_root}/project-clean-healthy.txt" "${project_root}/clean/.godex/bin/godex-doctor" "${project_root}/clean"
 run_expect 0 "${artifact_root}/project-clean-benchmark.txt" "${project_root}/clean/.godex/bin/godex-benchmark" "${project_root}/clean"
 assert_contains "[overall] healthy" "${artifact_root}/project-clean-healthy.txt"
+
+run_expect 0 "${artifact_root}/project-simple-dry-run.txt" bash "${repo_root}/installers/install-project.sh" --dry-run "${project_root}/simple"
+assert_contains "[preflight] ready_append" "${artifact_root}/project-simple-dry-run.txt"
+assert_contains "[dry_run] no files changed" "${artifact_root}/project-simple-dry-run.txt"
 
 run_expect 0 "${artifact_root}/project-simple-install.txt" bash "${repo_root}/installers/install-project.sh" "${project_root}/simple"
 run_expect 0 "${artifact_root}/project-simple-reinstall.txt" bash "${repo_root}/installers/install-project.sh" "${project_root}/simple"
@@ -61,6 +87,13 @@ if ! cmp -s "${project_root}/simple/original-agents.md" "${project_root}/simple/
   echo "project restore did not recover original AGENTS.md" >&2
   exit 1
 fi
+
+run_expect 3 "${artifact_root}/project-complex-dry-run.txt" bash "${repo_root}/installers/install-project.sh" --dry-run "${project_root}/complex"
+assert_contains "[preflight] manual_review" "${artifact_root}/project-complex-dry-run.txt"
+assert_contains "docs/MANUAL_MERGE.md" "${artifact_root}/project-complex-dry-run.txt"
+run_expect 3 "${artifact_root}/project-complex-install.txt" bash "${repo_root}/installers/install-project.sh" "${project_root}/complex"
+assert_contains "[preflight] manual_review" "${artifact_root}/project-complex-install.txt"
+[[ ! -e "${project_root}/complex/.godex" ]]
 
 run_expect 0 "${artifact_root}/project-drift-install.txt" bash "${repo_root}/installers/install-project.sh" "${project_root}/drift"
 rm "${project_root}/drift/.godex/bin/godex-benchmark"
@@ -88,14 +121,39 @@ assert_contains "[overall] unsupported" "${artifact_root}/project-unsupported.tx
 
 printf '## Existing Global Policy\n\n- Keep provider config explicit.\n' >"${global_root}/simple-home/AGENTS.md"
 cp "${global_root}/simple-home/AGENTS.md" "${global_root}/simple-home/original-agents.md"
+cat >"${global_root}/complex-home/AGENTS.md" <<'EOF'
+# Existing Global Rules
+
+## Models
+
+- Keep provider routing explicit.
+- Avoid silent auth fallbacks.
+
+## Runtime
+
+1. Prefer local auditability.
+2. Keep safety rules documented.
+
+Custom note:
+This Codex home already carries a complex instruction stack.
+EOF
 
 run_expect 1 "${artifact_root}/global-missing.txt" "${repo_root}/installers/global-doctor.py" "${global_root}/clean-home"
 assert_contains "[overall] missing" "${artifact_root}/global-missing.txt"
+
+run_expect 0 "${artifact_root}/global-clean-dry-run.txt" bash "${repo_root}/installers/install-global.sh" --dry-run "${global_root}/clean-home"
+assert_contains "[preflight] ready_create" "${artifact_root}/global-clean-dry-run.txt"
+assert_contains "[dry_run] no files changed" "${artifact_root}/global-clean-dry-run.txt"
+[[ ! -e "${global_root}/clean-home/godex" ]]
 
 run_expect 0 "${artifact_root}/global-clean-install.txt" bash "${repo_root}/installers/install-global.sh" "${global_root}/clean-home"
 run_expect 0 "${artifact_root}/global-clean-healthy.txt" "${global_root}/clean-home/godex/bin/godex-doctor" "${global_root}/clean-home"
 run_expect 0 "${artifact_root}/global-clean-benchmark.txt" "${global_root}/clean-home/godex/bin/godex-benchmark" "${global_root}/clean-home"
 assert_contains "[overall] healthy" "${artifact_root}/global-clean-healthy.txt"
+
+run_expect 0 "${artifact_root}/global-simple-dry-run.txt" bash "${repo_root}/installers/install-global.sh" --dry-run "${global_root}/simple-home"
+assert_contains "[preflight] ready_append" "${artifact_root}/global-simple-dry-run.txt"
+assert_contains "[dry_run] no files changed" "${artifact_root}/global-simple-dry-run.txt"
 
 run_expect 0 "${artifact_root}/global-simple-install.txt" bash "${repo_root}/installers/install-global.sh" "${global_root}/simple-home"
 run_expect 0 "${artifact_root}/global-simple-reinstall.txt" bash "${repo_root}/installers/install-global.sh" "${global_root}/simple-home"
@@ -104,6 +162,13 @@ if ! cmp -s "${global_root}/simple-home/original-agents.md" "${global_root}/simp
   echo "global restore did not recover original AGENTS.md" >&2
   exit 1
 fi
+
+run_expect 3 "${artifact_root}/global-complex-dry-run.txt" bash "${repo_root}/installers/install-global.sh" --dry-run "${global_root}/complex-home"
+assert_contains "[preflight] manual_review" "${artifact_root}/global-complex-dry-run.txt"
+assert_contains "docs/MANUAL_MERGE.md" "${artifact_root}/global-complex-dry-run.txt"
+run_expect 3 "${artifact_root}/global-complex-install.txt" bash "${repo_root}/installers/install-global.sh" "${global_root}/complex-home"
+assert_contains "[preflight] manual_review" "${artifact_root}/global-complex-install.txt"
+[[ ! -e "${global_root}/complex-home/godex" ]]
 
 run_expect 0 "${artifact_root}/global-drift-install.txt" bash "${repo_root}/installers/install-global.sh" "${global_root}/drift-home"
 rm "${global_root}/drift-home/godex/bin/godex-benchmark"
@@ -130,8 +195,8 @@ run_expect 1 "${artifact_root}/global-unsupported.txt" "${repo_root}/installers/
 assert_contains "[overall] unsupported" "${artifact_root}/global-unsupported.txt"
 
 printf '[artifact_root] %s\n' "${artifact_root}"
-printf '[ok] project install verified on isolated clean and additive targets\n'
+printf '[ok] project install verified on isolated clean, dry-run, additive, and manual-review targets\n'
 printf '[ok] project doctor states verified: missing healthy partial drifted conflicted unsupported\n'
-printf '[ok] global install verified on isolated clean and additive Codex-home targets\n'
+printf '[ok] global install verified on isolated clean, dry-run, additive, and manual-review Codex-home targets\n'
 printf '[ok] global doctor states verified: missing healthy partial drifted conflicted unsupported\n'
 printf '[ok] project/global benchmark and restore paths verified\n'
