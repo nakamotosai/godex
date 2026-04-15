@@ -23,7 +23,7 @@ For `v1.0.1`, global dry-run also stays non-mutating when the target Codex home 
 - `ready_replace`: safe managed upgrade
 - `ready_append`: safe additive upgrade
 - `ready_create`: first install, not an upgrade
-- `manual_review`: stop and use `docs/MANUAL_MERGE.md`
+- `manual_review`: the target file explicitly blocks automatic append, so stop and use `docs/MANUAL_MERGE.md`
 
 ## Upgrade Then Verify
 

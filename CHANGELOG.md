@@ -2,6 +2,14 @@
 
 All notable changes to `godex` are recorded here.
 
+## Unreleased
+
+### Fixed
+
+- install preflight no longer misclassifies ordinary structured `AGENTS.md` files as `manual_review`
+- `manual_review` is now reserved for explicit opt-out markers such as `godex: manual_review` and `godex: no_auto_append`
+- install proof now covers both structured-compatible targets and explicit manual-review opt-out targets
+
 ## v1.0.1 - 2026-04-16
 
 ### Fixed

@@ -103,4 +103,4 @@ Project and global install modes use the full installer-grade state set.
 
 There is still no automatic drift repair.
 
-Complex existing custom global policies may still require manual review before reinstalling.
+Targets that explicitly block automatic godex append may still require manual review before reinstalling.

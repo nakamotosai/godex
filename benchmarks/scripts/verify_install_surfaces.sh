@@ -41,19 +41,20 @@ assert_contains() {
 project_root="${artifact_root}/project"
 global_root="${artifact_root}/global"
 
-mkdir -p "${project_root}/clean" "${project_root}/simple" "${project_root}/complex" "${project_root}/drift" "${project_root}/partial" "${project_root}/conflicted"
-mkdir -p "${global_root}/clean-home" "${global_root}/simple-home" "${global_root}/complex-home" "${global_root}/drift-home" "${global_root}/partial-home" "${global_root}/conflicted-home"
+mkdir -p "${project_root}/clean" "${project_root}/simple" "${project_root}/structured" "${project_root}/guarded" "${project_root}/drift" "${project_root}/partial" "${project_root}/conflicted"
+mkdir -p "${global_root}/clean-home" "${global_root}/simple-home" "${global_root}/structured-home" "${global_root}/guarded-home" "${global_root}/drift-home" "${global_root}/partial-home" "${global_root}/conflicted-home"
 
 git -C "${project_root}/clean" init -q
 git -C "${project_root}/simple" init -q
-git -C "${project_root}/complex" init -q
+git -C "${project_root}/structured" init -q
+git -C "${project_root}/guarded" init -q
 git -C "${project_root}/drift" init -q
 git -C "${project_root}/partial" init -q
 git -C "${project_root}/conflicted" init -q
 
 printf '## Existing Policy\n\n- Keep changelog synced.\n' >"${project_root}/simple/AGENTS.md"
 cp "${project_root}/simple/AGENTS.md" "${project_root}/simple/original-agents.md"
-cat >"${project_root}/complex/AGENTS.md" <<'EOF'
+cat >"${project_root}/structured/AGENTS.md" <<'EOF'
 # Existing Repo Rules
 
 ## Build
@@ -68,6 +69,17 @@ cat >"${project_root}/complex/AGENTS.md" <<'EOF'
 
 Custom note:
 This repo already carries a fuller local instruction stack.
+EOF
+
+cat >"${project_root}/guarded/AGENTS.md" <<'EOF'
+# Existing Repo Rules
+
+<!-- godex: manual_review -->
+
+## Build
+
+- Keep release docs aligned.
+- Run targeted tests before merge.
 EOF
 
 run_expect 1 "${artifact_root}/project-missing.txt" "${repo_root}/installers/project-doctor.py" "${project_root}/clean"
@@ -95,12 +107,19 @@ if ! cmp -s "${project_root}/simple/original-agents.md" "${project_root}/simple/
   exit 1
 fi
 
-run_expect 3 "${artifact_root}/project-complex-dry-run.txt" bash "${repo_root}/installers/install-project.sh" --dry-run "${project_root}/complex"
-assert_contains "[preflight] manual_review" "${artifact_root}/project-complex-dry-run.txt"
-assert_contains "docs/MANUAL_MERGE.md" "${artifact_root}/project-complex-dry-run.txt"
-run_expect 3 "${artifact_root}/project-complex-install.txt" bash "${repo_root}/installers/install-project.sh" "${project_root}/complex"
-assert_contains "[preflight] manual_review" "${artifact_root}/project-complex-install.txt"
-[[ ! -e "${project_root}/complex/.godex" ]]
+run_expect 0 "${artifact_root}/project-structured-dry-run.txt" bash "${repo_root}/installers/install-project.sh" --dry-run "${project_root}/structured"
+assert_contains "[preflight] ready_append" "${artifact_root}/project-structured-dry-run.txt"
+assert_contains "[dry_run] no files changed" "${artifact_root}/project-structured-dry-run.txt"
+run_expect 0 "${artifact_root}/project-structured-install.txt" bash "${repo_root}/installers/install-project.sh" "${project_root}/structured"
+run_expect 0 "${artifact_root}/project-structured-healthy.txt" "${project_root}/structured/.godex/bin/godex-doctor" "${project_root}/structured"
+assert_contains "[overall] healthy" "${artifact_root}/project-structured-healthy.txt"
+
+run_expect 3 "${artifact_root}/project-guarded-dry-run.txt" bash "${repo_root}/installers/install-project.sh" --dry-run "${project_root}/guarded"
+assert_contains "[preflight] manual_review" "${artifact_root}/project-guarded-dry-run.txt"
+assert_contains "explicitly blocks automatic godex append" "${artifact_root}/project-guarded-dry-run.txt"
+run_expect 3 "${artifact_root}/project-guarded-install.txt" bash "${repo_root}/installers/install-project.sh" "${project_root}/guarded"
+assert_contains "[preflight] manual_review" "${artifact_root}/project-guarded-install.txt"
+[[ ! -e "${project_root}/guarded/.godex" ]]
 
 run_expect 0 "${artifact_root}/project-drift-install.txt" bash "${repo_root}/installers/install-project.sh" "${project_root}/drift"
 rm "${project_root}/drift/.godex/bin/godex-benchmark"
@@ -128,7 +147,7 @@ assert_contains "[overall] unsupported" "${artifact_root}/project-unsupported.tx
 
 printf '## Existing Global Policy\n\n- Keep provider config explicit.\n' >"${global_root}/simple-home/AGENTS.md"
 cp "${global_root}/simple-home/AGENTS.md" "${global_root}/simple-home/original-agents.md"
-cat >"${global_root}/complex-home/AGENTS.md" <<'EOF'
+cat >"${global_root}/structured-home/AGENTS.md" <<'EOF'
 # Existing Global Rules
 
 ## Models
@@ -143,6 +162,17 @@ cat >"${global_root}/complex-home/AGENTS.md" <<'EOF'
 
 Custom note:
 This Codex home already carries a complex instruction stack.
+EOF
+
+cat >"${global_root}/guarded-home/AGENTS.md" <<'EOF'
+# Existing Global Rules
+
+<!-- godex: no_auto_append -->
+
+## Models
+
+- Keep provider routing explicit.
+- Avoid silent auth fallbacks.
 EOF
 
 run_expect 1 "${artifact_root}/global-missing.txt" "${repo_root}/installers/global-doctor.py" "${global_root}/clean-home"
@@ -179,12 +209,19 @@ if ! cmp -s "${global_root}/simple-home/original-agents.md" "${global_root}/simp
   exit 1
 fi
 
-run_expect 3 "${artifact_root}/global-complex-dry-run.txt" bash "${repo_root}/installers/install-global.sh" --dry-run "${global_root}/complex-home"
-assert_contains "[preflight] manual_review" "${artifact_root}/global-complex-dry-run.txt"
-assert_contains "docs/MANUAL_MERGE.md" "${artifact_root}/global-complex-dry-run.txt"
-run_expect 3 "${artifact_root}/global-complex-install.txt" bash "${repo_root}/installers/install-global.sh" "${global_root}/complex-home"
-assert_contains "[preflight] manual_review" "${artifact_root}/global-complex-install.txt"
-[[ ! -e "${global_root}/complex-home/godex" ]]
+run_expect 0 "${artifact_root}/global-structured-dry-run.txt" bash "${repo_root}/installers/install-global.sh" --dry-run "${global_root}/structured-home"
+assert_contains "[preflight] ready_append" "${artifact_root}/global-structured-dry-run.txt"
+assert_contains "[dry_run] no files changed" "${artifact_root}/global-structured-dry-run.txt"
+run_expect 0 "${artifact_root}/global-structured-install.txt" bash "${repo_root}/installers/install-global.sh" "${global_root}/structured-home"
+run_expect 0 "${artifact_root}/global-structured-healthy.txt" "${global_root}/structured-home/godex/bin/godex-doctor" "${global_root}/structured-home"
+assert_contains "[overall] healthy" "${artifact_root}/global-structured-healthy.txt"
+
+run_expect 3 "${artifact_root}/global-guarded-dry-run.txt" bash "${repo_root}/installers/install-global.sh" --dry-run "${global_root}/guarded-home"
+assert_contains "[preflight] manual_review" "${artifact_root}/global-guarded-dry-run.txt"
+assert_contains "explicitly blocks automatic godex append" "${artifact_root}/global-guarded-dry-run.txt"
+run_expect 3 "${artifact_root}/global-guarded-install.txt" bash "${repo_root}/installers/install-global.sh" "${global_root}/guarded-home"
+assert_contains "[preflight] manual_review" "${artifact_root}/global-guarded-install.txt"
+[[ ! -e "${global_root}/guarded-home/godex" ]]
 
 run_expect 0 "${artifact_root}/global-drift-install.txt" bash "${repo_root}/installers/install-global.sh" "${global_root}/drift-home"
 rm "${global_root}/drift-home/godex/bin/godex-benchmark"

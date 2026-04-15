@@ -16,7 +16,7 @@ Global install exists for users who want a broader default layer and accept a sl
 ## Shipped Scripts
 
 - `install-project.sh`: install `godex` into one repository
-- `agents_preflight.py`: classify install targets before mutation and stop on unsafe custom-policy cases
+- `agents_preflight.py`: classify install targets before mutation and stop only on explicit no-auto-append cases or marker conflicts
 - `project-doctor.py`: inspect an installed project and classify it as `healthy`, `partial`, `drifted`, `conflicted`, `unsupported`, or `missing`
 - `project-restore.py`: remove the managed project layer and restore the previous `AGENTS.md` state when possible
 - `project-benchmark.sh`: run the quick post-install proof loop
@@ -32,7 +32,7 @@ Global install exists for users who want a broader default layer and accept a sl
 - backup before mutation
 - preflight with `--dry-run` before risky mutation
 - keep global dry-run non-mutating even when the target Codex-home path does not exist yet
-- stop safely on complex custom-policy cases
+- stop safely on explicit no-auto-append cases
 - explain what changed
 - print the next verification step after install
 

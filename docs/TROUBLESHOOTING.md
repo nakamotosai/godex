@@ -3,9 +3,9 @@
 ## Install Preflight States
 
 - `ready_create`: no existing `AGENTS.md`; install can create one
-- `ready_append`: existing `AGENTS.md` looks simple enough for additive install
+- `ready_append`: existing `AGENTS.md` is compatible with additive install
 - `ready_replace`: an existing managed `godex` block can be upgraded in place
-- `manual_review`: existing `AGENTS.md` is too complex for safe automatic append
+- `manual_review`: existing `AGENTS.md` explicitly blocks automatic godex append
 - `conflicted`: markers are duplicated or mismatched
 - `unsupported`: target path is not a usable repo or Codex home
 
@@ -45,6 +45,11 @@ bash installers/install-global.sh --dry-run ~/.codex
 ### `manual_review`
 
 Do not force the install.
+
+This state now means the target file explicitly opted out, for example with:
+
+- `<!-- godex: manual_review -->`
+- `<!-- godex: no_auto_append -->`
 
 Use [MANUAL_MERGE.md](MANUAL_MERGE.md).
 

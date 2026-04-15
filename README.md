@@ -81,7 +81,7 @@ bash installers/install-global.sh ~/.codex
 2. install
 3. doctor
 
-如果遇到 manual_review，就停止实际改动，并明确告诉我为什么不能自动安装。
+如果遇到 manual_review，就停止实际改动，并明确告诉我这是因为目标 AGENTS.md 显式禁止自动追加，而不是因为它“看起来复杂”。
 ```
 
 ### 5. 不要这样发给 Codex
@@ -104,7 +104,8 @@ bash installers/install-global.sh ~/.codex
 
 ## 当前版本
 
-`v1.0.1`
+- main 分支：`v1.0.2-dev`
+- 最新公开发布：`v1.0.1`
 
 ## 当前状态
 
@@ -114,7 +115,8 @@ bash installers/install-global.sh ~/.codex
 - project/global 都带 backup、restore、doctor、quick proof
 - `--dry-run` 预检可用
 - global `--dry-run` 对不存在路径保持零落盘
-- 复杂现有 `AGENTS.md` 会安全停在 `manual_review`
+- 普通结构化 `AGENTS.md` 默认可自动追加安装
+- `manual_review` 现在只用于显式禁止自动追加的 `AGENTS.md`
 
 ## 当前验证
 
@@ -122,14 +124,14 @@ bash installers/install-global.sh ~/.codex
   `bash installers/godex-doctor.sh --repo-only`
 - install proof：
   `bash benchmarks/scripts/verify_install_surfaces.sh`
-- patch 验证记录：
-  [benchmarks/runs/2026-04-16-v1.0.1-patch-validation.md](benchmarks/runs/2026-04-16-v1.0.1-patch-validation.md)
+- 本轮兼容性修复验证记录：
+  [benchmarks/runs/2026-04-16-install-compat-validation.md](benchmarks/runs/2026-04-16-install-compat-validation.md)
 - 公开发布：
   https://github.com/nakamotosai/godex/releases/tag/v1.0.1
 
 ## 当前边界
 
-- 复杂已有 project/global `AGENTS.md` 栈不会强行自动合并，只会停在 `manual_review`
+- 如果 project/global `AGENTS.md` 显式写了 `godex: manual_review` 或 `godex: no_auto_append`，安装器会停在 `manual_review`
 - 一等支持目标是 Codex CLI 的 Unix shell 环境
 - Windows 当前走 WSL / Unix-shell 路线，不是 PowerShell-first
 - 这已经超出维护者自用验证，但还不是大规模社区验证

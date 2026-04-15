@@ -33,8 +33,8 @@ Project install writes:
 - backup before mutation
 - create a fresh root `AGENTS.md` if the repo did not already have one
 - replace an existing managed `godex` block in place
-- append a new managed block if the repo has a simple pre-existing `AGENTS.md`
-- stop with `manual_review` if the existing `AGENTS.md` is too complex for safe automatic append
+- append a new managed block if the repo has a pre-existing `AGENTS.md` that does not explicitly block automatic godex append
+- stop with `manual_review` only if the existing `AGENTS.md` explicitly asks godex not to auto-append
 - stop with conflict if markers are broken or duplicated
 
 ## Verify After Install

@@ -30,7 +30,7 @@ This document tracks how `godex` moves from foundation to public release.
 
 - `v1.0.1` is allowed to be honest and lean
 - safe install is more important than clever auto-merge
-- complex existing `AGENTS.md` stacks may stop at `manual_review`
+- explicit no-auto-append `AGENTS.md` targets may stop at `manual_review`
 - support target stays Codex CLI on Unix-like shells
 
 ## Historical Snapshot

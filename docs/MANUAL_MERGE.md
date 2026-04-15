@@ -2,18 +2,18 @@
 
 Use this guide when `godex` install preflight reports `manual_review`.
 
-That status means the existing `AGENTS.md` looks too complex for safe automatic append.
+That status now means the existing `AGENTS.md` explicitly blocks automatic godex append.
 
 ## Why `godex` Stops
 
-`v1` prefers safe stop over risky mutation.
+`v1` prefers explicit opt-out over silent mutation.
 
-Typical signals:
+Typical opt-out markers:
 
-- multiple headings
-- numbered workflow sections
-- code fences or tables
-- a longer custom policy stack
+- `<!-- godex: manual_review -->`
+- `<!-- godex: no_auto_append -->`
+- `<!-- godex: manual_merge_only -->`
+- `<!-- godex: no_auto_merge -->`
 
 ## Safe Path
 

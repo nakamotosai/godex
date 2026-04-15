@@ -4,7 +4,7 @@
 
 ## First Support Target
 
-For `v1.0.1`, support is intentionally honest and narrow:
+For the current mainline after `v1.0.1`, support is intentionally honest and narrow:
 
 - target first: Codex CLI with local repository access
 - safest default: project-level install
@@ -21,7 +21,7 @@ See also: `docs/SUPPORT_MATRIX.md`.
 | Prompt-only user | Quick paste | None | Low | Improve behavior without claiming durable install |
 | Existing custom `AGENTS.md` in one repo | Project install first | Low | Medium | Do not overwrite repo rules; detect and report custom rules |
 | Existing global `AGENTS.md` with light customization | Global install | Medium | Medium | Backup first and preserve the user's prior state |
-| Existing third-party skills or complex global policy | Project install first | Low | Higher | Avoid broad mutation and surface the manual-review boundary honestly |
+| Existing third-party skills or large custom global policy | Project install first | Low | Higher | Backup first, append by default, and only stop when the file explicitly blocks auto-append |
 | Shared team repository | Project install | Medium | Medium | Keep repo rules explicit and reviewable |
 
 ## Merge Rules
@@ -48,6 +48,6 @@ Doctor now flags:
 
 Backup and drift visibility are implemented for both install modes.
 
-Automated merge for complex custom global policies is not implemented.
+Semantic merge for arbitrary custom policies is still not implemented.
 
-`v1` handles those cases with preflight classification plus `docs/MANUAL_MERGE.md`.
+`v1` now defaults ordinary existing `AGENTS.md` files to additive install and reserves `manual_review` for explicit opt-out markers plus `docs/MANUAL_MERGE.md`.

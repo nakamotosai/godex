@@ -43,8 +43,8 @@ Global install writes:
 - dry-run must not create a missing target Codex-home path
 - create a fresh root `AGENTS.md` if the Codex home did not already have one
 - replace an existing managed `godex` global block in place
-- append a new managed block if the Codex home has a simple pre-existing `AGENTS.md`
-- stop with `manual_review` if the existing `AGENTS.md` is too complex for safe automatic append
+- append a new managed block if the Codex home has a pre-existing `AGENTS.md` that does not explicitly block automatic godex append
+- stop with `manual_review` only if the existing `AGENTS.md` explicitly asks godex not to auto-append
 - stop with conflict if markers are broken or duplicated
 
 ## Verify After Install
@@ -87,6 +87,8 @@ It enforces the strongest `godex` defaults that should survive across repos:
 
 Global install is broader than project install, so it stays conservative.
 
-Complex existing global `AGENTS.md` policies may still require manual review.
+Global install no longer stops just because an existing `AGENTS.md` is structured or long.
+
+It only stops at `manual_review` when the file explicitly blocks automatic godex append.
 
 If preflight returns `manual_review`, use `docs/MANUAL_MERGE.md`.

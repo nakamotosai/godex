@@ -22,9 +22,9 @@ This document defines the honest `godex v1` support contract.
 
 These are real `v1` cases, but not auto-merge cases:
 
-- complex existing project `AGENTS.md`
-- complex existing global `AGENTS.md`
-- pre-existing custom policy stacks that exceed the simple-append heuristic
+- project `AGENTS.md` explicitly contains an opt-out marker such as `godex: manual_review`
+- global `AGENTS.md` explicitly contains an opt-out marker such as `godex: no_auto_append`
+- user wants to preserve an explicit no-auto-append policy and continue by manual merge
 
 Expected behavior:
 

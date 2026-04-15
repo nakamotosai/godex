@@ -20,40 +20,21 @@ MODE_CONFIG = {
 }
 
 
-def nonempty_lines(text: str) -> list[str]:
-    return [line.rstrip() for line in text.splitlines() if line.strip()]
+MANUAL_REVIEW_DIRECTIVES = {
+    "godex: manual_review": "godex: manual_review",
+    "godex: no_auto_append": "godex: no_auto_append",
+    "godex: manual_merge_only": "godex: manual_merge_only",
+    "godex: no_auto_merge": "godex: no_auto_merge",
+}
 
 
-def analyze_complexity(text: str) -> list[str]:
-    lines = nonempty_lines(text)
-    stripped = [line.strip() for line in lines]
-    signals: list[str] = []
-
-    if len(lines) > 12:
-        signals.append("more than 12 non-empty lines")
-    if sum(line.startswith("#") for line in stripped) > 1:
-        signals.append("multiple headings")
-    if any(line.startswith("```") for line in stripped):
-        signals.append("code fences")
-    if any("|" in line and line.count("|") >= 2 for line in stripped):
-        signals.append("table-like markdown")
-    if any(line.startswith("<!--") for line in stripped):
-        signals.append("HTML comments")
-    if any(line[:1].isdigit() and ". " in line[:4] for line in stripped):
-        signals.append("numbered lists")
-    freeform = [
-        line
-        for line in stripped
-        if not (
-            line.startswith("#")
-            or line.startswith("- ")
-            or line.startswith("* ")
-            or line.startswith("<!--")
-        )
-    ]
-    if len(freeform) > 3:
-        signals.append("multiple freeform prose lines")
-    return signals
+def find_manual_review_directives(text: str) -> list[str]:
+    normalized = text.lower().replace("-", "_")
+    found: list[str] = []
+    for needle, label in MANUAL_REVIEW_DIRECTIVES.items():
+        if needle in normalized:
+            found.append(label)
+    return found
 
 
 def print_lines(lines: list[str]) -> None:
@@ -132,12 +113,12 @@ def main() -> int:
         print_lines(lines)
         return 0
 
-    signals = analyze_complexity(text)
+    signals = find_manual_review_directives(text)
     if signals:
         print_lines(
             [
                 f"[preflight] manual_review mode={args.mode} target={target}",
-                f"[reason] existing AGENTS.md looks too complex for safe automatic append in this {cfg['target_label']}",
+                f"[reason] existing AGENTS.md explicitly blocks automatic godex append in this {cfg['target_label']}",
                 f"[signals] {'; '.join(signals)}",
                 f"[next] read {doc} and merge the godex block manually instead of mutating automatically",
             ]
@@ -146,7 +127,7 @@ def main() -> int:
 
     lines = [
         f"[preflight] ready_append mode={args.mode} target={target}",
-        f"[reason] existing AGENTS.md looks simple enough for additive install in this {cfg['target_label']}",
+        f"[reason] existing AGENTS.md is compatible with additive godex install in this {cfg['target_label']}",
     ]
     if args.dry_run:
         lines.append("[dry_run] no files changed")

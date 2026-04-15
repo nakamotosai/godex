@@ -80,7 +80,7 @@ Read README and docs/PROJECT_INSTALL.md, then run:
 2. install
 3. doctor
 
-If preflight returns manual_review, stop and explain why automatic install is unsafe.
+If preflight returns manual_review, stop and explain that the target AGENTS.md explicitly blocks automatic append, not that it merely "looks complex."
 ```
 
 ## What You Get After Install
@@ -93,11 +93,13 @@ If preflight returns manual_review, stop and explain why automatic install is un
 
 ## Current Version
 
-`v1.0.1`
+- main branch: `v1.0.2-dev`
+- latest public release: `v1.0.1`
 
 ## Current Boundary
 
-- complex existing `AGENTS.md` stacks stop at `manual_review`
+- ordinary structured `AGENTS.md` files now default to additive install
+- `manual_review` is reserved for targets that explicitly block automatic godex append
 - first-class support target is Codex CLI on Unix-like shells
 - Windows currently means WSL / Unix-shell style usage, not PowerShell-first install
 
