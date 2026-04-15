@@ -1,0 +1,13 @@
+.artifacts/
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
+*.tmp
+*.swp
+*.swo
+__pycache__/
+.pytest_cache/
+.venv/
+.env
