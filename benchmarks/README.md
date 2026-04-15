@@ -9,7 +9,7 @@ Its job is to make the upgrade measurable instead of purely rhetorical.
 - intake fidelity: did the agent mirror the task before acting?
 - scope retention: did it keep the accepted objective intact?
 - verification discipline: did it prove completion?
-- output clarity: did it keep the closeout readable and low-noise?
+- output clarity: did it keep the closeout readable, low-noise, and not visually cramped?
 - behavior/config reporting: did it report changed behavior clearly?
 
 ## Expected Scoring Shape
@@ -22,6 +22,7 @@ Current assets:
 - [`run-template.md`](run-template.md)
 - [`tasks/`](tasks)
 - [`runs/2026-04-15-round1.md`](runs/2026-04-15-round1.md)
+- [`runs/2026-04-15-round2.md`](runs/2026-04-15-round2.md)
 
 ## Benchmark Design Rules
 
@@ -35,4 +36,5 @@ Current assets:
 - first manual task set implemented
 - first scoring rubric implemented
 - first real baseline-vs-dogfood round executed
+- second round executed after spacing tightening
 - automation not implemented yet

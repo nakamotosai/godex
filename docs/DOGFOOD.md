@@ -38,6 +38,8 @@ Simple tasks should stay in light mode:
 - keep the full objective intact
 - verify before claiming done
 - keep the closeout low-noise
+- leave real blank lines between dense output blocks
+- long numbered findings also count as dense blocks and must be separated
 - suppress irrelevant workflow narration
 - keep behavior/config reporting behavior-first and file-light
 
@@ -110,4 +112,13 @@ The current tightening pass now updates three defaults:
 - more compact behavior-first closeouts
 - stricter spec escalation on medium-light tasks
 
-What is still missing is proof from a second benchmark round that these tighter defaults actually closed the gap.
+The second benchmark round now exists.
+
+It shows two things clearly:
+
+- ordinary closeout noise and behavior/config reporting improved
+- review-style long findings still stack too densely
+
+So the remaining dogfood gap is no longer “general closeout noise”.
+
+It is specifically review-output spacing under dense findings.

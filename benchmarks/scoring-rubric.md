@@ -44,6 +44,8 @@ What to look for:
 What to look for:
 
 - is the closeout readable
+- does it leave breathing room between substantial paragraphs or bullet items
+- if numbered findings are long, does it separate them with blank lines instead of stacking them tightly
 - does it avoid repeated framing
 - does it avoid dumping irrelevant code or path noise
 - does it keep the signal high

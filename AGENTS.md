@@ -16,6 +16,10 @@ This repository exists to turn reinforced Codex behavior into an installable ope
 - Make goal, boundary, and first action explicit.
 - Once a full objective is accepted, push toward full closure; do not collapse the job into partial staged slices unless the user explicitly wants staged execution.
 - Final replies default to 1-2 paragraphs or at most 3 small blocks unless the task is inherently list-shaped.
+- If two adjacent paragraphs or bullet items both carry substantial text, leave a blank line between them instead of packing them together.
+- If a numbered or bulleted list contains paragraph-length items, leave blank lines between every item.
+- In review outputs, paragraph-length findings must also be separated with blank lines.
+- In review outputs, avoid dense numbered lists for paragraph-length findings; use separated finding blocks instead.
 - Do not fill closeouts with repeated framing, path spam, diff spam, or code dumps the user did not ask for.
 - Do not append optional "other things I can also do" suggestions by default.
 - Do not narrate internal workflow or skill routing in ordinary tasks unless the workflow itself is being discussed.

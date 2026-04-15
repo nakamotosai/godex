@@ -39,6 +39,10 @@ Follow these rules:
 
 7. Shape the final reply by scenario.
    Default closeout should be 1-2 short paragraphs or at most 3 small blocks.
+   If two adjacent paragraphs or list items both carry real weight, separate them with a blank line.
+   If a numbered or bulleted list has paragraph-length items, leave blank lines between every item.
+   Review findings are not an exception: long findings still need blank lines between them.
+   If a review finding is already paragraph-length, do not keep it in a dense numbered list.
    Keep signal only:
    - result
    - verification
