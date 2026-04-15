@@ -1,33 +1,34 @@
 # installers
 
-This directory will hold installation, backup, repair, and doctor entrypoints for `godex`.
+This directory ships the install, restore, doctor, and quick-proof entrypoints for `godex`.
 
 ## Product Direction
 
-`godex` should ship with project-first installation before it attempts broad global mutation.
+`godex` ships project-first installation before it attempts broad global mutation.
 
 That keeps the safest real path at the center of the product.
 
-## Planned Scripts
+## Shipped Scripts
 
 - `install-project.sh`: install `godex` into one repository
+- `project-doctor.py`: inspect an installed project and classify it as `healthy`, `partial`, `drifted`, `conflicted`, `unsupported`, or `missing`
+- `project-restore.py`: remove the managed project layer and restore the previous `AGENTS.md` state when possible
+- `project-benchmark.sh`: run the quick post-install proof loop
+- `godex-doctor.sh`: keep the current repo dogfood check and delegate to project doctor for target repos
+
+## Deferred Script
+
 - `install-global.sh`: install `godex` into a user's broader local Codex environment
-- `backup-existing-config.sh`: backup existing rules before replacement or merge
-- `godex-doctor.sh`: inspect installed layers and report health
-
-## Current Script
-
-- `godex-doctor.sh`: first lightweight repo and local dogfood health check
 
 ## Safety Contract
 
-- do not silently overwrite an existing `AGENTS.md` or local skill setup
-- backup before replacement
+- do not silently overwrite an existing `AGENTS.md` or local repo policy
+- backup before mutation
 - explain what changed
 - print the next verification step after install
 
 ## Current Status
 
-- install strategy defined
-- first doctor script implemented
-- project and global installers not implemented yet
+- project install beta is implemented
+- backup, restore, doctor, and quick-proof surfaces are implemented
+- global install is still deferred

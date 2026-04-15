@@ -6,40 +6,37 @@ This document tracks how `godex` moves from foundation to public release.
 
 - public GitHub repository exists: `https://github.com/nakamotosai/godex`
 - default branch: `main`
-- foundation commit is already pushed
-- repository is in product-foundation stage, not release stage
+- foundation and dogfood commits are already pushed
+- repository is now in project-first beta stage, not `v1`
 
 ## Release Sequence
 
-1. finish the product foundation and keep README aligned with reality
-2. ship a real project-install path
-3. ship doctor
-4. ship benchmark tasks and scoring
-5. run at least one dogfood loop
-6. document current boundaries honestly
-7. choose OSS license
-8. tag the first public release
+1. keep the project-install beta path working and README-aligned
+2. gather broader install proof beyond maintainer-only loops
+3. tighten the remaining review-output density weakness
+4. prepare release assets
+5. decide whether `v1` needs global install or another second install surface
+6. tag the first public release
 
-## Hard Release Blockers
+## Hard `v1` Blockers
 
-- no working installer
-- no doctor
-- no benchmark
-- no dogfood evidence
-- no license decision from the maintainer
+- no second install surface beyond project install beta
+- no broader external install proof yet
+- no release assets yet
+- review-style long findings are still denser than the product target
 
 ## Publish Rule
 
-Do not market `godex` as a finished upgrade product while the repo still lacks install proof.
+Do not market `godex` as a finished upgrade product while the repo still lacks `v1` proof.
 
 It is acceptable to present it publicly today as:
 
-- an open-source product foundation
-- a serious design and bootstrap draft
-- an actively built Codex upgrade kit
+- a real project-first beta
+- an open-source Codex upgrade kit with one working install mode
+- an actively iterated product with honest boundaries
 
 It is not acceptable to present it today as:
 
-- finished
-- fully installable
-- benchmark-proven
+- finished `v1`
+- universal install
+- fully solved on every output-formatting edge case

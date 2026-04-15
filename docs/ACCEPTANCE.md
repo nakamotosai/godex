@@ -21,9 +21,11 @@ The product foundation passes when all of these are true:
 
 1. project install works end to end
 2. install backs up before mutation
-3. doctor reports meaningful states
-4. at least three benchmark tasks exist
-5. at least one before/after example pack exists
+3. restore can remove the project layer and recover the prior repo state
+4. doctor reports meaningful states
+5. at least three benchmark tasks exist
+6. at least one before/after example pack exists
+7. the OSS license is selected
 
 ## Public `v1` Acceptance
 
@@ -34,7 +36,8 @@ The product foundation passes when all of these are true:
 3. benchmark can show reproducible improvement
 4. the repo survives a real dogfood loop
 5. known boundaries are documented honestly
-6. the OSS license is selected
+6. global install or an equally strong second install surface exists
+7. release assets are ready for a public tag
 
 ## Verification For This Repository
 

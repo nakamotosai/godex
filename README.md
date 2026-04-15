@@ -69,9 +69,10 @@ Current design anchors:
 
 - Read the public product truth: [`README.md`](README.md)
 - Read the repo behavior contract: [`AGENTS.md`](AGENTS.md)
-- Read the current dogfood spec: [`SPEC.md`](specs/dogfood-rollout-20260415/SPEC.md)
-- Read the current dogfood plan: [`PLAN.md`](specs/dogfood-rollout-20260415/PLAN.md)
+- Read the current beta-delivery spec: [`SPEC.md`](specs/beta-delivery-20260415/SPEC.md)
+- Read the current beta-delivery plan: [`PLAN.md`](specs/beta-delivery-20260415/PLAN.md)
 - Read install safety and compatibility: [`docs/COMPATIBILITY.md`](docs/COMPATIBILITY.md)
+- Read the project install walkthrough: [`docs/PROJECT_INSTALL.md`](docs/PROJECT_INSTALL.md)
 - Read current dogfood rollout notes: [`docs/DOGFOOD.md`](docs/DOGFOOD.md)
 - Read current doctor contract: [`docs/DOCTOR.md`](docs/DOCTOR.md)
 - Read publish and release gates: [`docs/PUBLISH.md`](docs/PUBLISH.md)
@@ -94,9 +95,9 @@ Install `godex` into one repository as a local operating layer.
 
 Status:
 
-- target v1 install surface
+- working beta install surface
 - safest default for real users
-- install contract designed, scripts not shipped yet
+- ships install, restore, doctor, quick proof, and example pack
 
 ### Full Install
 
@@ -113,7 +114,7 @@ Status:
 
 ### Stage
 
-`beta delivery planning`
+`project install beta`
 
 ### Done
 
@@ -134,14 +135,19 @@ Status:
 - third benchmark round executed with visual-layout stress coverage
 - next-phase beta delivery spec and plan added
 - current Codex workspace wired for `godex` dogfood
+- working project installer added
+- project restore path added
+- installer-grade project doctor added
+- quick post-install proof command added
+- first install-safe example pack added
+- MIT license added
 
 ### Not Done Yet
 
-- working project installer
 - working global installer
-- before/after demo set
 - release assets
-- OSS license selection
+- broader install proof beyond maintainer loops
+- stronger fix for review-style long findings layout
 
 ## Repo Map
 
@@ -149,12 +155,12 @@ Status:
 - [`AGENTS.md`](AGENTS.md): durable behavior contract for contributors and agentic workers
 - [`prompts/`](prompts): quick-paste acquisition layer
 - [`skills/`](skills): durable upgrade layer design
-- [`installers/`](installers): safe install contract and future scripts
+- [`installers/`](installers): shipped project install, restore, doctor, and quick-proof scripts
 - [`benchmarks/`](benchmarks): proof layer design
 - [`benchmarks/runs/2026-04-15-round1.md`](benchmarks/runs/2026-04-15-round1.md): first real benchmark result
 - [`benchmarks/runs/2026-04-15-round2.md`](benchmarks/runs/2026-04-15-round2.md): second benchmark result after spacing tightening
 - [`benchmarks/runs/2026-04-15-round3.md`](benchmarks/runs/2026-04-15-round3.md): third benchmark result with visual-layout stress
-- [`examples/`](examples): before/after showcase plan
+- [`examples/`](examples): shipped project-install example pack and future showcase area
 - [`docs/`](docs): compatibility, acceptance, publish, and research docs
 - [`specs/product-foundation-20260415/`](specs/product-foundation-20260415): foundation spec and execution plan
 - [`specs/dogfood-rollout-20260415/`](specs/dogfood-rollout-20260415): current product and local rollout spec
@@ -163,9 +169,9 @@ Status:
 - [`specs/visual-layout-round3-20260415/`](specs/visual-layout-round3-20260415): current visual-layout + round-3 benchmark spec
 - [`specs/beta-delivery-20260415/`](specs/beta-delivery-20260415): next mainline beta-delivery spec and execution plan
 
-## Release Bar
+## Beta Bar
 
-`godex` should not be presented as a finished product until all of these are true:
+`godex` should not be presented as a real public beta until all of these are true:
 
 1. at least one install mode works end to end
 2. install is non-destructive and backed up by default
@@ -176,10 +182,12 @@ Status:
 
 ## Current Boundary
 
-The repository is now strong enough to present as a serious product foundation with a real dogfood lane.
+The repository is now strong enough to present as a real project-first beta with one working install mode.
 
-It is not yet an install-complete `v1`, but the next mainline is now explicit: project-first beta delivery rather than more general prompt polishing.
+It is still not `v1`.
 
-The third benchmark round now exists, and it sharpens the picture further. `godex` is now clearly stronger than the clean baseline on intake mirroring and on behavior/config reporting when many files must stay visible. Baseline caught up on full-objective retention, and the remaining stubborn weakness is now narrower still: review-style long findings are still denser than they should be.
+Global install remains deferred, broader external install proof is still thin, and review-style long findings are still denser than the target product standard.
 
-The biggest remaining product gaps are a real project installer, installer-grade doctor states, user-facing proof after install, broader dogfood evidence, a stronger fix for review-output spacing, and license choice.
+The benchmark rounds now show a stable pattern: `godex` is stronger than the clean baseline on intake mirroring and on behavior/config reporting when many files must stay visible.
+
+The remaining product gaps are narrower: release assets, broader install proof, global install or another second install surface, and a stronger fix for review-output spacing.

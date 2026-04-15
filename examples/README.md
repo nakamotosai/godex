@@ -1,6 +1,6 @@
 # examples
 
-This directory will hold public showcase material for `godex`.
+This directory holds public showcase material for `godex`.
 
 ## Planned Example Packs
 
@@ -18,5 +18,6 @@ They also keep the repo honest by showing the exact behavior change being claime
 
 ## Current Status
 
-- example surfaces defined
-- no before/after packs recorded yet
+- `project-install-beta/` is the first shipped before/after example pack
+- the pack is designed to survive copying into an installed target repo under `.godex/examples/`
+- more scenario packs are still pending

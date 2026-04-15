@@ -2,7 +2,31 @@
 set -euo pipefail
 
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-workspace_root="${1:-/home/ubuntu/codex}"
+default_workspace="/home/ubuntu/codex"
+
+resolve_path() {
+  python3 - <<'PY' "$1"
+import os
+import sys
+
+print(os.path.abspath(sys.argv[1]))
+PY
+}
+
+if [[ $# -gt 0 ]]; then
+  target_root="$(resolve_path "$1")"
+  if [[ "${target_root}" != "${default_workspace}" && "${target_root}" != "${repo_root}" ]]; then
+    exec "${repo_root}/installers/project-doctor.py" "${target_root}"
+  fi
+  if [[ "${target_root}" = "${repo_root}" ]]; then
+    workspace_root="${default_workspace}"
+  else
+    workspace_root="${target_root}"
+  fi
+else
+  workspace_root="${default_workspace}"
+fi
+
 workspace_agents="${workspace_root}/AGENTS.md"
 
 overall="healthy"
