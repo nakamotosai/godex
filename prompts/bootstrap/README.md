@@ -1,30 +1,11 @@
-# godex Bootstrap Prompt
+# bootstrap compatibility path
 
-This is the fastest way to make a fresh Codex session behave more like `godex`.
+This directory no longer carries the primary product prompt.
 
-## Use It When
+It remains only so old links and old references to `bootstrap/GODEX_BOOTSTRAP.md` do not break immediately.
 
-- the user is on a mostly vanilla Codex setup
-- the user wants an immediate behavior upgrade before installing anything
-- the user wants to test whether the `godex` operating model feels better
+The canonical prompt-first artifact is now:
 
-## What It Should Improve
+- [`../GODEX_METHOD_PROMPT.md`](../GODEX_METHOD_PROMPT.md)
 
-- first-reply task mirroring
-- stronger scope retention
-- stronger verification discipline
-- lower-noise closeouts
-- less drift into partial staged slices after the objective is already clear
-
-## What It Cannot Replace
-
-- durable local memory
-- install-time compatibility checks
-- doctor
-- benchmark
-- safe merge with an existing local Codex setup
-
-## Current Status
-
-- first draft exists
-- intended as the entry point, not the final product
+Use that file for new adoption.

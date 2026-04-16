@@ -1,169 +1,71 @@
 # godex
 
-## 这是一个给你当前 Codex 直接安装的强化包
+## 这是一套给当前 Codex 用的纯方法论提示词
 
-> 用途很简单：强化你现在正在用的 Codex。
+> 用途很简单：把一段方法论提示词交给你自己的 Codex，让它先看清你本地已经有什么，再自己补齐缺的那部分。
 >
-> 它不是让你先研究一遍再自己照着做的“方法论文档”，也不是发布包模板。
+> 它不再默认把自己当成要原样安装的包，也不假设每个人都适合同一套 `AGENTS.md` 追加方式。
 >
-> 你打开这个仓库，默认应该想到的是“怎么装到我的 Codex 上”，不是“这个项目的设计思路是什么”。
+> 你打开这个仓库，默认应该想到的是“把哪段提示词贴给我的 Codex，让它自己做本地适配”，不是“先跑哪个安装脚本”。
 
-> 把普通 Codex 强化成更清晰、更稳、更少废话的工程代理。
+> 目标不是复制维护者的文件结构。
+>
+> 目标是让你的 Codex 在你自己的环境里，变得更清晰、更稳、更少废话。
 
 English: [README.en.md](README.en.md)
 
 `README.md` 是这个仓库唯一的当前状态真相源。
 
-## 如果你只是想安装
+## 现在怎么用
 
-不要先研究 `godex` 的产品结构，也不要先让 Codex 给你出“进化方案”。
+直接打开这份主提示词，整段贴进一个新 Codex 会话：
 
-先选一种安装方式，直接落地。
+- [prompts/GODEX_METHOD_PROMPT.md](prompts/GODEX_METHOD_PROMPT.md)
 
-### 1. 只想立刻体验，不改本地文件
+它会要求对方 Codex 先做本地审视，而不是先套模板：
 
-直接把这个文件内容贴进一个新 Codex 会话：
+- 读取它当前环境里的 `AGENTS.md`、skills、workflow、memory、mistakebook、README 和相邻规则文件
+- 把现有能力分成：已具备、部分具备、缺失、冲突
+- 只补真正缺的 durable layer，而不是整包覆盖
+- 自行判断该把规则放进 `AGENTS.md`、skill、workflow 文档、`SPEC.md` / `PLAN.md` 模板，还是既有记忆面
+- 如果本地没有 spec 流程，就先搭一个轻量但能落地的 spec 工作法
+- 如果本地已经有等价能力，就跳过，不重复造系统
+- 做完后再跑一遍冲突验收和最小必要验证
+- 把长期规则沉到本地文件，避免以后每轮都重新灌整段大提示词
 
-- [prompts/bootstrap/GODEX_BOOTSTRAP.md](prompts/bootstrap/GODEX_BOOTSTRAP.md)
+## 这套方法真正保留的核心增强
 
-### 2. 最推荐：项目级安装
-
-适合绝大多数人。只影响一个仓库，风险最低。
-
-```bash
-bash installers/install-project.sh --dry-run /path/to/your/repo
-```
-
-```bash
-bash installers/install-project.sh /path/to/your/repo
-```
-
-```bash
-/path/to/your/repo/.godex/bin/godex-doctor /path/to/your/repo
-```
-
-安装说明：
-
-- [docs/PROJECT_INSTALL.md](docs/PROJECT_INSTALL.md)
-
-### 3. 想让本机 Codex 默认都带上 godex 行为
-
-这是全局安装。范围更大，所以默认先 `dry-run`。
-
-```bash
-bash installers/install-global.sh --dry-run ~/.codex
-```
-
-```bash
-bash installers/install-global.sh ~/.codex
-```
-
-```bash
-~/.codex/godex/bin/godex-doctor ~/.codex
-```
-
-安装说明：
-
-- [docs/GLOBAL_INSTALL.md](docs/GLOBAL_INSTALL.md)
-
-### 4. 如果你是让 Codex 替你安装
-
-把下面这段和仓库链接一起发给它，不要只丢链接。
-
-```text
-请安装这个仓库里的 godex，用来强化我当前的 Codex。
-
-默认走 project install，不要先做产品审视、借鉴分析、演化方案或发布包设计。
-
-先读 README 和 docs/PROJECT_INSTALL.md，
-然后执行：
-1. dry-run
-2. install
-3. doctor
-
-如果遇到 manual_review，就停止实际改动，并明确告诉我这是因为目标 AGENTS.md 显式禁止自动追加，而不是因为它“看起来复杂”。
-```
-
-### 5. 不要这样发给 Codex
-
-下面这种说法很容易把 Codex 带偏：
-
-- “审视并借鉴这个项目”
-- “对我本地 Codex 进行改进、进化”
-- “研究一下这个项目怎么设计的，再给我一个方案”
-
-这种提示会让它优先把 `godex` 当成一个要分析的开源产品，而不是一个要直接安装的强化包。
-
-## 安装后会得到什么
-
-- 首条回复会先复述你的任务，再行动。
-- 已接受的完整目标不会被悄悄缩成“最小下一步”。
-- 没有验证，不算完成。
-- 收尾会更短、更清晰，不再默认塞一大堆废话和代码墙。
-- 反复强调过的偏好会更容易在会话里变成默认行为。
-
-## 当前版本
-
-- main 分支：`v1.0.2-dev`
-- 最新公开发布：`v1.0.1`
+- 首条回复先回显任务：目标、关键边界、第一步动作要说清楚
+- 不把完整目标偷偷缩成“最小下一步”，也不把 spec / plan 当默认暂停点
+- 先读本地事实，再区分事实、推断和待验证假设
+- 该有 spec 时就补 spec，不该流程化的小任务不要硬上流程戏
+- 没有验证，不算完成
+- 收尾先讲结果和行为变化，再讲验证和真实边界
+- 长 finding、长段落、长列表项保持可扫读，不堆成一堵墙
+- 反复出现的用户纠正要沉淀成后续默认，而不是每次重新提醒
 
 ## 当前状态
 
-- quick paste 可用
-- project install 可用
-- global install 可用
-- project/global 都带 backup、restore、doctor、quick proof
-- `--dry-run` 预检可用
-- global `--dry-run` 对不存在路径保持零落盘
-- 普通结构化 `AGENTS.md` 默认可自动追加安装
-- `manual_review` 现在只用于显式禁止自动追加的 `AGENTS.md`
-
-## 当前验证
-
-- repo doctor：
-  `bash installers/godex-doctor.sh --repo-only`
-- install proof：
-  `bash benchmarks/scripts/verify_install_surfaces.sh`
-- 本轮兼容性修复验证记录：
-  [benchmarks/runs/2026-04-16-install-compat-validation.md](benchmarks/runs/2026-04-16-install-compat-validation.md)
-- 公开发布：
-  https://github.com/nakamotosai/godex/releases/tag/v1.0.1
+- 主产品形态：prompt-first methodology
+- 主提示词：已可直接粘贴使用
+- 安装脚本：保留在仓库里，但不再是默认主路径
+- 旧的 install / doctor / benchmark 资产：视为历史阶段产物或维护者自用辅助面
 
 ## 当前边界
 
-- 如果 project/global `AGENTS.md` 显式写了 `godex: manual_review` 或 `godex: no_auto_append`，安装器会停在 `manual_review`
-- 一等支持目标是 Codex CLI 的 Unix shell 环境
-- Windows 当前走 WSL / Unix-shell 路线，不是 PowerShell-first
-- 这已经超出维护者自用验证，但还不是大规模社区验证
+- 这套提示词不会替用户做价值判断；遇到真正破坏性、高风险或强风格冲突，仍应由对方 Codex 按本地规则谨慎决策
+- 它能指导“如何本地适配”，但适配质量仍取决于对方 Codex 是否真的先读本地事实
+- 仓库里仍保留 install-first 时代的脚本和文档，主要用于历史追溯、对照或维护者内部验证，不再代表默认采纳方式
 
-## 常用文档
+## 历史资产
 
-- 项目安装：
-  [docs/PROJECT_INSTALL.md](docs/PROJECT_INSTALL.md)
-- 全局安装：
-  [docs/GLOBAL_INSTALL.md](docs/GLOBAL_INSTALL.md)
-- 手工合并：
-  [docs/MANUAL_MERGE.md](docs/MANUAL_MERGE.md)
-- 故障排查：
-  [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md)
-- 升级说明：
-  [docs/UPGRADE.md](docs/UPGRADE.md)
-- 支持矩阵：
-  [docs/SUPPORT_MATRIX.md](docs/SUPPORT_MATRIX.md)
-- doctor 说明：
-  [docs/DOCTOR.md](docs/DOCTOR.md)
+如果你是来研究旧方案而不是采用新方案，再看这些：
 
-## 给维护者或研究者
+- [prompts/README.md](prompts/README.md)
+- [installers/README.md](installers/README.md)
+- [docs/PUBLISH.md](docs/PUBLISH.md)
 
-如果你不是来安装，而是来研究这个项目的结构，再看这些：
+当前公开发布仍停留在旧的 install-first 版本：
 
-- 仓库行为约束：
-  [AGENTS.md](AGENTS.md)
-- 安装层设计：
-  [installers/README.md](installers/README.md)
-- proof 层设计：
-  [benchmarks/README.md](benchmarks/README.md)
-- 当前发布口径：
-  [docs/PUBLISH.md](docs/PUBLISH.md)
-- 当前规格：
-  [specs/v1-closeout-20260415/SPEC.md](specs/v1-closeout-20260415/SPEC.md)
+- 最新公开发布：`v1.0.1`
+- 当前 `main` 分支方向：prompt-first pivot

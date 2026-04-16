@@ -1,39 +1,42 @@
 # Publish
 
-This document tracks how `godex` moves from foundation to public release.
+This document tracks how `godex` moves from the old install-first shape toward the new prompt-first public shape.
 
 ## Current Publish State
 
 - public GitHub repository exists: `https://github.com/nakamotosai/godex`
 - default branch: `main`
-- current release target: `v1.0.1`
-- current release assets live under `releases/v1.0.1/`
+- latest public release: `v1.0.1`
+- `v1.0.1` reflects the earlier install-first phase
+- current `main` direction is the prompt-first methodology pivot
 
-## Current Release Pack
+## Current Public Pack Direction
 
-- release pack: `releases/v1.0.1/`
-- release notes: `releases/v1.0.1/RELEASE_NOTES.md`
-- GitHub release body: `releases/v1.0.1/GITHUB_RELEASE_BODY.md`
-- short public announcement: `releases/v1.0.1/X_ANNOUNCEMENT.md`
-- checklist: `releases/v1.0.1/CHECKLIST.md`
+The default public artifact should now be:
 
-## Release Sequence
+- one canonical methodology prompt
+- one README that explains prompt-first adoption clearly
+- prompt docs that explain local adaptation, not package installation first
 
-1. keep project install and global install working
-2. keep repo doctor and install proof passing
-3. keep README and release assets aligned with reality
-4. keep broader validation record current
-5. create annotated tag `v1.0.1`
-6. publish the GitHub release from `releases/v1.0.1/GITHUB_RELEASE_BODY.md`
+Installers remain in-repo as historical or supporting assets, not the default public call to action.
+
+## Release Sequence For The Pivot
+
+1. keep the canonical prompt self-sufficient and understandable
+2. keep `README.md` aligned with the prompt-first truth
+3. keep prompt-layer docs aligned with the same adoption story
+4. keep historical installer docs clearly demoted instead of silently pretending they are still primary
+5. decide later whether the prompt-first pivot becomes a new public release tag
 
 ## Release Contract
 
-- `v1.0.1` is allowed to be honest and lean
-- safe install is more important than clever auto-merge
-- explicit no-auto-append `AGENTS.md` targets may stop at `manual_review`
-- support target stays Codex CLI on Unix-like shells
+- the prompt must tell target Codex instances to inspect local reality first
+- the prompt must support selective adoption instead of fixed-package assumptions
+- the prompt must leave durable local structure behind
+- the prompt must include conflict handling and post-change acceptance
+- public wording must not mislead readers into thinking install scripts are still the default path
 
 ## Historical Snapshot
 
 The earlier public-beta pack at `releases/project-first-beta-20260415/` remains in the repo as history only.
-The earlier `v1.0.0` release is now historical and superseded by `v1.0.1`.
+The earlier `v1.0.0` and `v1.0.1` releases also remain as install-first historical snapshots.

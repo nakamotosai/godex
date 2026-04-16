@@ -1,23 +1,29 @@
 # prompts
 
-This directory is the quick-paste acquisition layer for `godex`.
+This directory is now the primary product layer for `godex`.
 
-Its job is to give a mostly vanilla Codex user an immediate upgrade path without requiring durable installation on minute one.
+The main artifact is a pure-text methodology prompt that tells another Codex how to inspect its own local setup, adapt selectively, and leave behind durable local rules instead of depending on a fixed package install.
 
-## Current Artifacts
+## Canonical Artifact
 
-- [`bootstrap/GODEX_BOOTSTRAP.md`](bootstrap/GODEX_BOOTSTRAP.md): first draft of the session bootstrap prompt
-- [`bootstrap/README.md`](bootstrap/README.md): what the bootstrap prompt is for, what it guarantees, and where it stops
-- [`upgrade/README.md`](upgrade/README.md): planned migration prompts for moving from quick paste to durable install
+- [`GODEX_METHOD_PROMPT.md`](GODEX_METHOD_PROMPT.md): the prompt-first product entry
+
+## Supporting Artifacts
+
+- [`bootstrap/GODEX_BOOTSTRAP.md`](bootstrap/GODEX_BOOTSTRAP.md): compatibility alias from the old naming
+- [`bootstrap/README.md`](bootstrap/README.md): why that alias still exists
+- [`upgrade/README.md`](upgrade/README.md): planned follow-on prompts after the first local adaptation
 
 ## Design Rules
 
-- Keep the bootstrap prompt short enough to paste into a real session without turning into prompt bloat.
-- Use the prompt to create lift, not to carry the entire product forever.
-- Hand users toward the durable layer instead of pretending prompt-only is the final state.
-- Keep wording understandable for non-expert users.
+- The prompt must start from local reality, not generic package-install assumptions.
+- The prompt must help the target Codex keep existing strengths and fill only real gaps.
+- The prompt must tell the target Codex where durable behavior should live: `AGENTS.md`, skills, workflow docs, templates, or memory surfaces.
+- The prompt must not force a duplicate spec system, duplicate skills, or giant context baggage.
+- The prompt must end with local conflict acceptance and real verification.
 
 ## Current Status
 
-- bootstrap surface: first draft exists
-- upgrade prompt pack: planned, not implemented
+- canonical methodology prompt: ready
+- compatibility alias: retained
+- follow-on upgrade prompt pack: not written yet

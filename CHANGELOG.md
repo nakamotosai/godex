@@ -4,11 +4,17 @@ All notable changes to `godex` are recorded here.
 
 ## Unreleased
 
-### Fixed
+### Changed
 
-- install preflight no longer misclassifies ordinary structured `AGENTS.md` files as `manual_review`
-- `manual_review` is now reserved for explicit opt-out markers such as `godex: manual_review` and `godex: no_auto_append`
-- install proof now covers both structured-compatible targets and explicit manual-review opt-out targets
+- `godex` main-branch product direction now pivots from install-first packaging to a prompt-first methodology
+- root product messaging now treats a canonical pure-text prompt as the primary adoption path
+- prompt-layer docs now describe local self-adaptation instead of treating prompt-only usage as a temporary bridge to install
+- installers are now documented as historical or supporting utilities rather than the main public entry
+
+### Added
+
+- canonical methodology prompt at `prompts/GODEX_METHOD_PROMPT.md`
+- prompt instructions for local inspection, selective durable adoption, conflict handling, spec setup, verification, and context control
 
 ## v1.0.1 - 2026-04-16
 

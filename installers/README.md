@@ -1,17 +1,18 @@
 # installers
 
-This directory ships the install, restore, doctor, and quick-proof entrypoints for `godex`.
+This directory now contains historical and supporting utilities from the earlier install-first phase of `godex`.
 
-## Product Direction
+It is no longer the primary product entry.
 
-`godex` now ships two real install surfaces:
+## Current Role
 
-- project install for one repository
-- global install for one Codex home
+These scripts remain useful for:
 
-Project install remains the safest default.
+- maintainer dogfood and comparison work
+- historical inspection of the install-first phase
+- backup, restore, doctor, or benchmark experiments in controlled environments
 
-Global install exists for users who want a broader default layer and accept a slightly larger mutation surface.
+If a new user is simply trying to adopt `godex`, the default path is now the canonical methodology prompt in [`../prompts/GODEX_METHOD_PROMPT.md`](../prompts/GODEX_METHOD_PROMPT.md), not these scripts.
 
 ## Shipped Scripts
 
@@ -26,7 +27,7 @@ Global install exists for users who want a broader default layer and accept a sl
 - `global-benchmark.sh`: run the quick post-install proof loop for a Codex home
 - `godex-doctor.sh`: keep the current repo dogfood check and delegate to project doctor for target repos
 
-## Safety Contract
+## Historical Safety Contract
 
 - do not silently overwrite an existing `AGENTS.md`
 - backup before mutation
@@ -38,6 +39,5 @@ Global install exists for users who want a broader default layer and accept a sl
 
 ## Current Status
 
-- project install is implemented for `v1.0.1`
-- global install is implemented for `v1.0.1`
-- project and global backup, restore, doctor, and quick-proof surfaces are implemented
+- install-first utilities remain available
+- they are no longer the default public adoption surface
